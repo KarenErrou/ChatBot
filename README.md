@@ -20,7 +20,9 @@ The goal of the proseminar is to create a chatbot that is able to perform emotio
 >
 > -- <cite>Wikipedia</cite>
 
+Reasoning processes of humans are mainly different than reasoning principles of machines, as humans made decisions basing not only on logics and facts, but basing on emotions, biases and comparatively very limited information. 
 
+This project will collect and design ontologies and data representing human emotions and design reasoning mechanisms employing these. The reasoning mechanisms can be inbuilt in practical scenarios e.g. in online marketing - designing of a chatbot that appeals to emotions of humans and trying to change their behaviour. Or a character that goes beyond the "personal assistant" mode.
 
 ## Prerequisites
 
