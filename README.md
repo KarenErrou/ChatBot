@@ -26,9 +26,25 @@ This project will collect and design ontologies and data representing human emot
 
 ## Prerequisites
 
+TODO
+
 ### npm natural
 
-## User Input Processing
+TODO
+
+## Dataset
+
+TODO
+
+### Reads
+
+[Google dataset search.](https://toolbox.google.com/datasetsearch)
+
+[CKAN (datasets search).](https://ckan.org)
+
+[Linked Open Vocabularies.](https://lov.linkeddata.es/dataset/lov)
+
+## Natural Language Processing
 
 TODO
 
