@@ -1,0 +1,22 @@
+{
+  "name": "chatbot",
+  "version": "1.0.0",
+  "description": "A emotional reasoning chatbot",
+  "main": "app.js",
+  "directories": {
+    "example": "examples"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julietcetera/semantic-web-course.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/julietcetera/semantic-web-course/issues"
+  },
+  "homepage": "https://github.com/julietcetera/semantic-web-course#readme",
+  "dependencies": {
+    "natural": "^0.6.1"
+  }
+}
