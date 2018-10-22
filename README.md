@@ -24,27 +24,42 @@ Reasoning processes of humans are mainly different than reasoning principles of 
 
 This project will collect and design ontologies and data representing human emotions and design reasoning mechanisms employing these. The reasoning mechanisms can be inbuilt in practical scenarios e.g. in online marketing - designing of a chatbot that appeals to emotions of humans and trying to change their behaviour. Or a character that goes beyond the "personal assistant" mode.
 
-## Prerequisites
+## Dataset Search
 
-TODO
+- [Linked Open Vocabularies.](https://lov.linkeddata.es/dataset/lov)
+- [Google dataset search.](https://toolbox.google.com/datasetsearch)
+- [CKAN (datasets search).](https://ckan.org)
+
+## Means to Model Emotions 
+
+### Emotion Markup Language (EmotionML)
+
+[EmotionML](https://www.w3.org/TR/emotionml/)
+
+### Human Emotions Onotology (HEO)
+
+[Human Emotions Ontology (HEO)](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.460.2603&rep=rep1&type=pdf)
+
+### Onyx - An Emotion Modelling Ontology
+
+[Onyx: A Linked Data Approach to Emotion Representation](http://oa.upm.es/37389/1/INVE_MEM_2015_190501.pdf)
+
+### Human Stress Ontology (HSO)
+
+[Human Stress Ontology (HSO)](https://onlinelibrary.wiley.com/doi/epdf/10.1080/00050061003664811)
+
+### Linked Data Models for Emotion and Sentiment Analysis W3C Community Group
+
+[Linked Data Models for Emotion and Sentiment Analysis W3C Community Group](https://www.w3.org/community/sentiment/) (apparently not very active)
+
+## Knowledge Graph
+
+## Natural Language Processing
 
 ### npm natural
 
-TODO
-
-## Dataset
-
-TODO
-
-### Reads
-
-[Google dataset search.](https://toolbox.google.com/datasetsearch)
-
-[CKAN (datasets search).](https://ckan.org)
-
-[Linked Open Vocabularies.](https://lov.linkeddata.es/dataset/lov)
-
-## Natural Language Processing
+- [Text tagger](https://github.com/NaturalNode/natural#pos-tagger)
+- [Automatically Constructing a Dictionary for Information Extraction Tasks](https://www.cs.utah.edu/~riloff/pdfs/aaai93.pdf)
 
 ### POS tagger
 
@@ -97,24 +112,6 @@ TODO
 
 [Table is from here.](https://github.com/dariusk/pos-js)
 
-### Reads
-
-[Text tagger](https://github.com/NaturalNode/natural#pos-tagger)
-
-[Automatically Constructing a Dictionary for Information Extraction Tasks](https://www.cs.utah.edu/~riloff/pdfs/aaai93.pdf)
-
-## Reasoning
-
-TODO
-
-### Knowledge Graph
-
-TODO
-
 ## Response Sentence Creation
 
-TODO 
-
-### Reads
-
-[npm naturals bayesian classifier](https://github.com/NaturalNode/natural#bayesian-and-logistic-regression)
+- [npm naturals bayesian classifier](https://github.com/NaturalNode/natural#bayesian-and-logistic-regression)
