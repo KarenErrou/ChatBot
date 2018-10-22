@@ -52,7 +52,51 @@ This project will collect and design ontologies and data representing human emot
 
 [Linked Data Models for Emotion and Sentiment Analysis W3C Community Group](https://www.w3.org/community/sentiment/) (apparently not very active)
 
+### WordNet-Affect Taxonomy
+
+[WordNet-Affect Taxonomy](http://www.gsi.dit.upm.es/ontologies/wnaffect/)
+
 ## Knowledge Graph
+
+```
+@prefix mcb: <...movie_chat_bot>.
+@prefix mdb: <...some_movie_graph??>.
+@prefix onyx: <http://gsi.dit.upm.es/ontologies/onyx/ns>.
+@prefix wna: <http://gsi.dit.upm.es/ontologies/wnaffect/ns>.
+
+mcb:User a rdfs:Class;
+	rdfs:comment "A user that is chatting with the bot";
+	rdfs:label "User";
+	onyx:hasEmotion [
+		onyx:hasEmotionCategory wna:anger;
+		onyx:hasEmotionIntensity :1.0;
+	];
+	mcb:hasMovieHistory [ // store this in some sort of database?
+		mcb:Movie mdb:a; // movie instances from some movie graph
+		mcb:Movie mdb:b;
+	];
+
+mcb:Movie a rdfs:Class;
+	rdfs:comment "A Movie";
+	rdfs:label "Movie";
+	mcb:hasRelatedEmotions [
+		onyx:Emotion onyx:sad // just example instances
+		onyx:Emotion onyx:thrilling // just example instances
+	];
+
+mcb:hasRelatedEmotions a rdfs:Property;
+	rdfs:comment "Movies emotions related to them";
+	rdfs:label "hasRelatedEmotions";
+	rdfs:type rdf:Bag;
+	rdfs:domain mcb:Movie;
+
+mcb:hasMovieHistory a rdfs:Property;
+	rdfs:comment "A users history of watched movies";
+	rdfs:label "MovieHistory";
+	rdfs:type rdf:Bag;
+	rdfs:domain mcb:User;
+	
+```
 
 ## Natural Language Processing
 
