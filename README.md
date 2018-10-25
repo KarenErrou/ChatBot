@@ -30,6 +30,12 @@ This project will collect and design ontologies and data representing human emot
 - [Google dataset search.](https://toolbox.google.com/datasetsearch)
 - [CKAN (datasets search).](https://ckan.org)
 
+### Movies and their Non-numerical reviews for Deducing Emotions
+
+- [A small set of 16 movies](https://www.kaggle.com/jonsteve/user-reviews-of-16-movies-on-rotten-tomatoes)
+- [A large set of movies usually used for binary sentiment classification (positive|negative)](http://www.cs.cornell.edu/people/pabo/movie-review-data/)
+- [Another set of 25,000 movies also for binary sentiment classsification](http://ai.stanford.edu/~amaas/data/sentiment/)
+
 ## Means to Model Emotions 
 
 ### Emotion Markup Language (EmotionML)
@@ -42,7 +48,8 @@ This project will collect and design ontologies and data representing human emot
 
 ### Onyx - An Emotion Modelling Ontology
 
-[Onyx: A Linked Data Approach to Emotion Representation](http://oa.upm.es/37389/1/INVE_MEM_2015_190501.pdf)
+- [Specification](http://www.gsi.dit.upm.es/ontologies/onyx/)
+- [Onyx: A Linked Data Approach to Emotion Representation](http://oa.upm.es/37389/1/INVE_MEM_2015_190501.pdf)
 
 ### Human Stress Ontology (HSO)
 
@@ -56,11 +63,20 @@ This project will collect and design ontologies and data representing human emot
 
 [WordNet-Affect Taxonomy](http://www.gsi.dit.upm.es/ontologies/wnaffect/)
 
-## Knowledge Graph
+## Movie Related Knowledge Graphs
+
+### Schema.org Movie
+
+[Specification](https://schema.org/Movie)
+
+## Our Knowledge Graph
+
+[A first glance of our graph model.](https://drive.google.com/file/d/1T9ww8kX9F9dy6ytcPoA-I7eyKJZaKS-5/view)
 
 ```
-@prefix mcb: <...movie_chat_bot>.
-@prefix mdb: <...some_movie_graph??>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns# >.
+@prefix schema: <http://schema.org/Movie>.
 @prefix onyx: <http://gsi.dit.upm.es/ontologies/onyx/ns>.
 @prefix wna: <http://gsi.dit.upm.es/ontologies/wnaffect/ns>.
 
@@ -71,32 +87,56 @@ mcb:User a rdfs:Class;
 		onyx:hasEmotionCategory wna:anger;
 		onyx:hasEmotionIntensity :1.0;
 	];
-	mcb:hasMovieHistory [ // store this in some sort of database?
-		mcb:Movie mdb:a; // movie instances from some movie graph
-		mcb:Movie mdb:b;
+	mcb:hasMovieHistory [
+		schema:Movie mcb:pulp_fiction;
+		schema:Movie mcb:deadpool;
 	];
 
 mcb:Movie a rdfs:Class;
 	rdfs:comment "A Movie";
 	rdfs:label "Movie";
 	mcb:hasRelatedEmotions [
-		onyx:Emotion onyx:sad // just example instances
-		onyx:Emotion onyx:thrilling // just example instances
+		onyx:Emotion onyx:Sad;
+		onyx:Emotion onyx:Thrilled;
 	];
 
-mcb:hasRelatedEmotions a rdfs:Property;
+mcb:hasRelatedEmotions a rdf:Property;
 	rdfs:comment "Movies emotions related to them";
 	rdfs:label "hasRelatedEmotions";
 	rdfs:type rdf:Bag;
-	rdfs:domain mcb:Movie;
+	rdfs:domain schema:Movie;
 
-mcb:hasMovieHistory a rdfs:Property;
+mcb:hasMovieHistory a rdf:Property;
 	rdfs:comment "A users history of watched movies";
 	rdfs:label "MovieHistory";
 	rdfs:type rdf:Bag;
 	rdfs:domain mcb:User;
 	
 ```
+
+### Exploratory SparQL Queries
+
+#### The distinct wikidata types that may be aligned with the types in your dataset (advanced query) 
+
+#### Total number of triples
+
+#### Total number of instantiations
+
+#### Total number of distinct classes
+
+#### Total number of distinct properties
+
+#### List of all classes used in your dataset per data source (see named graphs)
+
+#### List of all properties used in your dataset per data source
+
+#### Total number of instances per class per data source (reasoning on and off)
+
+#### Total number of distinct subjects per property per data source 
+
+#### Total number of distinct objects per property per data source
+
+#### Distinct properties used on top 5 classes in terms of amount of instances (reasoning on and off)
 
 ## Natural Language Processing
 
