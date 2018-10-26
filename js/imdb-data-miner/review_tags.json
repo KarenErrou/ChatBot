@@ -1,0 +1,25 @@
+{
+	"object":{
+		"get_text":[
+		],
+		"get_attr":[
+			["meta[property='og:title']","content"],
+			["meta[property='og:image']","content"],
+			["meta[property='og:url']","content"],
+			["meta[property='pageId']","content"]
+		],
+		"subobjects":[
+			{
+				"get_text":[
+					"div.text.show-more__control",
+					"span.display-name-link",
+					"span.review-date",
+					"span.rating-other-user-rating span:not([class])",
+					"a.title"
+				],
+				"get_attr":[
+				]
+			}
+		]
+	}
+}

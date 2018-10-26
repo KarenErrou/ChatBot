@@ -1,0 +1,30 @@
+{
+	"object":{
+		"get_text":[
+			"div.originalTitle",
+			"div.subtext time",
+			"div.subtext a",
+			"span[itemprop='ratingCount']",
+			"span[itemprop='ratingValue']",
+			"span[itemprop='bestRating']",
+			"span#titleYear a",
+			"div.inline.canwrap p span",
+			"div.credit_summary_item a"
+		],
+		"get_attr":[
+			["meta[property='og:image']","content"],
+			["meta[name='description']","content"]
+		],
+		"subobjects":[
+			{
+				"get_text":[
+					"td.character a"
+				],
+				"get_attr":[
+					["td.primary_photo a img","src"],
+					["td.primary_photo a img","alt"]
+				]
+			}
+		]
+	}
+}
