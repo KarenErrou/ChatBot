@@ -116,27 +116,127 @@ mcb:hasMovieHistory a rdf:Property;
 
 ### Exploratory SparQL Queries
 
-#### The distinct wikidata types that may be aligned with the types in your dataset (advanced query) 
+#### The distinct wikidata types that may be aligned with the types in your dataset (advanced query)
 
 #### Total number of triples
 
+```
+SELECT (COUNT(?s) AS ?triples)
+WHERE {
+    ?s ?p ?o
+}
+```
+
 #### Total number of instantiations
+
+```
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT (COUNT(?s) AS ?instances)
+WHERE {
+    ?s a ?c .
+    ?c a owl:Class
+}
+```
 
 #### Total number of distinct classes
 
+```
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT (COUNT(DISTINCT ?c) AS ?classes)
+WHERE {
+    ?c a owl:Class
+}
+```
+
 #### Total number of distinct properties
+
+```
+SELECT (COUNT(DISTINCT ?p) AS ?properties)
+WHERE {
+    [] ?p []
+}
+```
 
 #### List of all classes used in your dataset per data source (see named graphs)
 
+```
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT DISTINCT (?g AS ?graphs) (?c AS ?classes)
+WHERE {
+    GRAPH ?g {
+        ?c a owl:Class
+    }
+}
+```
+
 #### List of all properties used in your dataset per data source
+
+```
+SELECT DISTINCT (?g AS ?graphs) (?p AS ?properties)
+WHERE {
+    GRAPH ?g {
+        [] ?p []
+    }
+}
+```
 
 #### Total number of instances per class per data source (reasoning on and off)
 
+```
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT ?c (COUNT(?s) AS ?instances)
+WHERE {
+    GRAPH ?g {
+        ?s a ?c .
+        ?c a owl:Class
+    }
+}
+GROUP BY (?c)
+```
+
 #### Total number of distinct subjects per property per data source 
+
+```
+SELECT (?p AS ?properties) (COUNT(DISTINCT ?s) AS ?subjects)
+WHERE {
+    GRAPH ?g {
+        ?s ?p []
+    }
+}
+GROUP BY (?p)
+```
 
 #### Total number of distinct objects per property per data source
 
+```
+SELECT (?p AS ?properties) (COUNT(DISTINCT ?o) AS ?objects)
+WHERE {
+    GRAPH ?g {
+        [] ?p ?o
+    }
+}
+GROUP BY (?p)
+```
+
 #### Distinct properties used on top 5 classes in terms of amount of instances (reasoning on and off)
+
+```
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT DISTINCT (?p AS ?properties) (?c AS ?classes) (COUNT(?s) AS ?instances)
+WHERE {
+    ?s ?p ?c .
+    ?c a owl:Class .
+    ?s a ?c
+}
+GROUP BY ?p ?c
+ORDER BY DESC COUNT(?s)
+LIMIT 5
+```
 
 ## Natural Language Processing
 
