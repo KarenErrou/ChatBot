@@ -57,3 +57,4 @@ ids.forEach(function(id){
 
 rdf.print();
 rdf.validate();
+rdf.printToFile();

@@ -63,6 +63,13 @@ exports.print = function() {
 	console.log(chalk.blue(rdf));
 }
 
+exports.printToFile = function() {
+	const fs = require('fs');
+	fs.writeFile('./graph.ttl', rdf, 'utf8', (err)=>{
+		if (err) throw err;
+	});
+}
+
 exports.validate = function() {
 	const N3 = require('n3');
 	const parser = new N3.Parser();
