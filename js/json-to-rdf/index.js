@@ -11,6 +11,7 @@ const prefixes = {
 	movie: "http://schema.org/Movie",
 	person: "http://schema.org/Person",
 	review: "http://schema.org/Review",
+	ar: "http://schema.org/AggregateRating",
 	schema: "http://schema.org/",
 	onyx: "http://www.gsi.dit.upm.es/ontologies/onyx/ns#",
 	rdfs: "http://www.w3.org/2000/01/rdf-schema#",
@@ -49,10 +50,24 @@ ids.forEach(function(id){
 		rdf.finishConcept('person:name','\"'+actors[i]+'\"');
 	}
 
+	rdf.makeConcept('#'+id+'-aggregateRating');
+	rdf.extendConcept('ar:ratingCount',movie.primary[1]);
+	rdf.extendConcept('ar:ratingValue',movie.primary[2]);
+	rdf.extendConcept('ar:bestRating',movie.primary[3]);
+	rdf.finishConcept('ar:itemReviewed','<#'+id+'>');
+
 	rdf.makeConcept('#'+id);
 	rdf.extendConcept('rdf:type','schema:Movie');
 	rdf.extendConcept('movie:identifier','\"'+id+'\"');
 	rdf.extendConcept('movie:name','\"'+review.primary[0]+'\"');
+
+	movie.primary[0] = String(movie.primary[0]).replace(/[^a-zA-Z0-9.!?']/g, '');
+	rdf.extendConcept('movie:duration','\"'+movie.primary[0]+'\"');
+	rdf.extendConcept('movie:dateCreated',movie.primary[4]);
+
+	movie.primary[5] = String(movie.primary[5]).replace(/[^a-zA-Z0-9.!?' ]/g, '');
+	rdf.extendConcept('movie:text','\"'+movie.primary[5]+'\"');
+	rdf.extendConcept('movie:aggregateRating','<#'+id+'-aggregateRating>');
 
 	var actor_range = movie.secondary.length/2;
 	var actors = movie.secondary.slice(actor_range+1, actor_range*2);
@@ -65,9 +80,9 @@ ids.forEach(function(id){
 		characters[i] = String(characters[i]).replace(/[^a-zA-Z0-9.!?']/g, '');
 		rdf.extendConcept('schema:character','\"'+characters[i]+'\"');
 	}
-
 	rdf.finishConcept('movie:image', '\"'+review.primary[1]+'\"');
 
+	/* extract review stuff */
 	var range = review.secondary.length/5;
 	var review_text = review.secondary.slice(0,range);
 	var reviewer = review.secondary.slice(range+1, range*2);

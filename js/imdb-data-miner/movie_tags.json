@@ -1,9 +1,7 @@
 {
 	"object":{
 		"get_text":[
-			"div.originalTitle",
 			"div.subtext time",
-			"div.subtext a",
 			"span[itemprop='ratingCount']",
 			"span[itemprop='ratingValue']",
 			"span[itemprop='bestRating']",
