@@ -18,10 +18,9 @@
 		"subobjects":[
 			{
 				"get_text":[
-					"td.character a"
+					"td.character"
 				],
 				"get_attr":[
-					["td.primary_photo a img","src"],
 					["td.primary_photo a img","alt"]
 				]
 			}

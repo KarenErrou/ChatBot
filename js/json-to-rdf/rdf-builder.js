@@ -4,7 +4,7 @@ var chalk = require('chalk');
 var rdf = '';
 
 function log(string){
-	if (false)
+	if (true)
 		console.log(string);
 }
 
@@ -65,17 +65,19 @@ exports.print = function() {
 
 exports.printToFile = function() {
 	const fs = require('fs');
-	fs.writeFile('./graph.ttl', rdf, 'utf8', (err)=>{
+	var onto = '../../ontology/graph.ttl';
+	fs.writeFile(onto, rdf, 'utf8', (err)=>{
 		if (err) throw err;
+		log(chalk.green('Ontology was saved to: '+onto));
 	});
 }
 
 exports.validate = function() {
 	const N3 = require('n3');
 	const parser = new N3.Parser();
-	parser.parse(rdf, (error, quad, prefixes) => {
-		if (error) {
-			console.log(chalk.red(error));
+	parser.parse(rdf, (err, quad, prefixes) => {
+		if (err) {
+			console.log(chalk.red(err));
 		}
 	});
 }
