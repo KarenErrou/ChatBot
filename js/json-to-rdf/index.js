@@ -32,12 +32,6 @@ getRandomEmotion = function(){
 	return wnaffect.emotions[emotion_counter++];
 }
 
-function isURL(str) {
-	var urlRegex = '^(?!mailto:)(?:(?:http|https|ftp|httpm)://)(?:\\S+(?::\\S*)?@)?(?:(?:(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[0-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z\\u00a1-\\uffff0-9]+-?)*[a-z\\u00a1-\\uffff0-9]+)(?:\\.(?:[a-z\\u00a1-\\uffff0-9]+-?)*[a-z\\u00a1-\\uffff0-9]+)*(?:\\.(?:[a-z\\u00a1-\\uffff]{2,})))|localhost)(?::\\d{2,5})?(?:(/|\\?|#)[^\\s]*)?$';
-	var url = new RegExp(urlRegex, 'i');
-	return str.length < 2083 && url.test(str);
-}
-
 ids.forEach(function(id){
 	var movie = require(movies+id+'.json');
 	var review = require(reviews+id+'.json');
@@ -49,8 +43,6 @@ ids.forEach(function(id){
 	var characters = movie.secondary.slice(0, actor_range);
 	var actors = movie.secondary.slice(actor_range+1, actor_range*2);
 	for (var i=0; i<actors.length; i++) {
-		if (isURL(actors[i])) continue;
-
 		rdf.makeConcept('#'+String(actors[i]).replace(/[^a-zA-Z0-9.!?']/g, ''));
 		actors[i] = String(actors[i]).replace(/[^a-zA-Z0-9.!?' ]/g, '');
 		rdf.extendConcept('rdf:type','schema:Person');
