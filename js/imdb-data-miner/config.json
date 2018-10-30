@@ -1,0 +1,18 @@
+{
+	"target_entities":{
+		"movies":{
+			"base":"https://www.imdb.com/title/",
+			"postfix":"",
+			"save_dir":"../../data/movies/",
+			"tags":"./tags/movies.json"
+		},
+		"reviews":{
+			"base":"https://www.imdb.com/title/",
+			"postfix":"/reviews?ref_=tt_urv",
+			"save_dir":"../../data/reviews/",
+			"tags":"./tags/reviews.json"
+		}
+	},
+	"targets":["starwars.json","other.json","jurassicpark.json","random.json"],
+	"targets_dir":"./targets/"
+}

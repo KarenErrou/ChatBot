@@ -1,77 +1,126 @@
-const request = require("request");
 const rp = require("request-promise");
-
-// virtual dom
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
-var targets_file = 'targets.json';
-var tags_file = 'tags.json';
-process.argv.forEach(function (val, i, array){
-	if (i == 2)
-		targets_file = val;
-	if (i == 3)
-		tags_file = val;
-});
+// setup configs
+var config = require('./config.json');
 
 // target urls
-const targets = require('./'+targets_file);
-// what to extract
-const tags = require('./'+tags_file).object;
+var targets = [];
+config.targets.forEach(function(file){
 
-targets.paths.forEach(function(path, i, array){
+	var topic = require(config.targets_dir+file);
+	topic.forEach(function(t){
+		targets.push(t);
+	});
+});
 
-	var sample = {
-		primary: [],
-		secondary: []
-	};
+/* append ids for further processing */
+var file = '../../data/movies.json';
+var ids = require(file);
+targets.forEach(function(t){
+	ids.push(t);
+});
 
-	// promising request to target url
-	rp(targets.base + path + targets.postfix)
-	.then(function(body) {
-	
-		if (body == null || body == undefined) return;
+var idsjson = JSON.stringify(ids);
+const fs = require('fs');
+fs.writeFile(file, idsjson, 'utf8', (err)=>{
+	if (err) throw err;
+});
 
-		const dom = new JSDOM(body);
-		global.$ = require("jquery")(dom.window);
+/* get target entity information */
+var entities = []
+for (var key in config.target_entities) {
 
-		tags.get_text.forEach(function(item){
-			$(item).each(function(i, o){
-				sample.primary.push($(this).text());
-			});
-		});
+	// ignore meta properties
+	if (!config.target_entities.hasOwnProperty(key))
+		continue;
+	var tags_file = config.target_entities[key].tags;
+	config.target_entities[key].tags = require(tags_file);
+	entities.push(config.target_entities[key]);
+}
 
-		tags.get_attr.forEach(function(item){
-			sample.primary.push($(item[0]).attr(item[1]));
-		});
+entities.forEach(function(entity){
+	targets.forEach(function(target){
 
-		var sec = [];
-		tags.subobjects.forEach(function(obj){
+		rp(entity.base + target + entity.postfix)
+			.then(function(body) {
 
-			obj.get_text.forEach(function(item){
-				$(item).each(function(i, o){
-					sec.push($(this).text());
+				if (body == null || body == undefined)
+					return;
+
+				// virtual dom
+				const dom = new JSDOM(body);
+				global.$ = require("jquery")(dom.window);
+
+				var sample = {}
+
+				/* items where a quantity of exactly 1 is expected */
+				var singular_tags = entity.tags.singular;
+				for (var key in singular_tags.get_text) {
+
+					// ignore meta properties
+					if (!singular_tags.get_text.hasOwnProperty(key))
+						continue;
+
+					sample[key] = [];
+					$(singular_tags.get_text[key]).each(function(){
+						sample[key].push($(this).text());
+					});
+				}
+
+				for (var key in singular_tags.get_attr) {
+					
+					// ignore meta properties
+					if (!singular_tags.get_attr.hasOwnProperty(key))
+						continue;
+
+					sample[key] = [];
+					var query = singular_tags.get_attr[key];
+					sample[key].push($(query[0]).attr(query[1]));
+				}
+
+				/* items where a quantity of >1 is expected */
+				var plural_tags = entity.tags.plural;
+				for (var key in plural_tags.get_text) {
+
+					// ignore meta properties
+					if (!plural_tags.get_text.hasOwnProperty(key))
+						continue;
+
+					sample[key] = [];
+					$(plural_tags.get_text[key]).each(function(){
+						sample[key].push($(this).text());
+					});
+				}
+
+				for (var key in plural_tags.get_attr) {
+					
+					// ignore meta properties
+					if (!plural_tags.get_attr.hasOwnProperty(key))
+						continue;
+
+					sample[key] = [];
+					var query = plural_tags.get_attr[key];
+					$(query[0]).each(function(item){
+						sample[key].push($(this).attr(query[1]));
+					});
+				}
+
+				return sample;
+			})
+			.then(function(sample){
+
+				var file = entity.save_dir+target+'.json';
+				var samplejson = JSON.stringify(sample);
+				const fs = require('fs');
+				fs.writeFile(file, samplejson, 'utf8', (err)=>{
+					if (err) throw err;
 				});
-			});
-
-			obj.get_attr.forEach(function(item){
-				$(item[0]).each(function(i, o){
-					sec.push($(this).attr(item[1]));
-				});
-			});
-
-		});
-		sample.secondary = sec;
-		return sample;
-
-	})
-	.then(function (sample) {
-		const fs = require('fs');
-		fs.writeFile(targets.savedir+path+'.json', JSON.stringify(sample), 'utf8', (err)=>{
-			if (err) throw err;
-		});
-	})
-	.catch(function (err) {
-		console.log("[ERROR] " + err);
-	});	
+			})
+			.catch((err) => {
+				console.log(err);
+				//throw err;
+			});	
+	});
 });

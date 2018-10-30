@@ -17,6 +17,7 @@ const prefixes = {
 };
 rdf.makePrefixes(prefixes);
 
+/* apply random emotions until we figure out how to do it properly */
 const wnaffect = require("./emotions.json"); 
 wnaffect.emotions.forEach(function(emotion){
 	rdf.makeConcept('#'+emotion);
@@ -25,20 +26,24 @@ wnaffect.emotions.forEach(function(emotion){
 
 var emotion_counter = 0;
 getRandomEmotion = function(){
-	if (emotion_counter > wnaffect.emotions.length-1) emotion_counter = 0;
+	if (emotion_counter > wnaffect.emotions.length-1)
+		emotion_counter = 0;
 	return wnaffect.emotions[emotion_counter++];
 }
 
 ids.forEach(function(id){
-	var movie = require(movies+id+'.json');
-	var review = require(reviews+id+'.json');
+	var movie;
+	var review;
+	/* when the miner has 404 errors stuff might be corrupted so this is for robustness */
+	try {
+		movie = require(movies+id+'.json');
+		review = require(reviews+id+'.json');
+	} catch(e) {
+		console.log(e);
+		return;
+	}
 
-	console.log((review.secondary.length%5) == 0);
-	if ((review.secondary.length%5) == 0) return;
-
-	var actor_range = movie.secondary.length/2;
-	var characters = movie.secondary.slice(0, actor_range);
-	var actors = movie.secondary.slice(actor_range+1, actor_range*2);
+	var actors = movie["movie-actor"];
 	for (var i=0; i<actors.length; i++) {
 		rdf.makeConcept('#'+String(actors[i]).replace(/[^a-zA-Z0-9.!?']/g, ''));
 		actors[i] = String(actors[i]).replace(/[^a-zA-Z0-9.!?' ]/g, '');
@@ -47,53 +52,50 @@ ids.forEach(function(id){
 	}
 
 	rdf.makeConcept('#'+id+'-aggregateRating');
-	rdf.extendConcept('schema:ratingCount',movie.primary[1]);
-	rdf.extendConcept('schema:ratingValue',movie.primary[2]);
-	rdf.extendConcept('schema:bestRating',movie.primary[3]);
+	rdf.extendConcept('schema:ratingCount',movie["movie-rating-count"][0]);
+	rdf.extendConcept('schema:ratingValue',movie["movie-rating-value"][0]);
+	rdf.extendConcept('schema:bestRating',movie["movie-best-rating"][0]);
 	rdf.finishConcept('schema:itemReviewed','<#'+id+'>');
 
 	rdf.makeConcept('#'+id);
 	rdf.extendConcept('rdf:type','schema:Movie');
 	rdf.extendConcept('schema:identifier','\"'+id+'\"');
-	rdf.extendConcept('schema:name','\"'+review.primary[0]+'\"');
+	rdf.extendConcept('schema:name','\"'+movie["movie-title"][0]+'\"');
 
-	movie.primary[0] = String(movie.primary[0]).replace(/[^a-zA-Z0-9.!?']/g, '');
-	rdf.extendConcept('schema:duration','\"'+movie.primary[0]+'\"');
-	rdf.extendConcept('schema:dateCreated',movie.primary[4]);
+	movie["movie-duration"][0] = String(movie["movie-duration"][0]).replace(/[^a-zA-Z0-9.!?']/g, '');
+	rdf.extendConcept('schema:duration','\"'+movie["movie-duration"][0]+'\"');
+	rdf.extendConcept('schema:dateCreated',movie["movie-year"][0]);
 
-	movie.primary[5] = String(movie.primary[5]).replace(/[^a-zA-Z0-9.!?' ]/g, '');
-	rdf.extendConcept('schema:text','\"'+movie.primary[5]+'\"');
+	movie["movie-description"][0] = String(movie["movie-description"][0]).replace(/[^a-zA-Z0-9.!?' ]/g, '');
+	rdf.extendConcept('schema:text','\"'+movie["movie-description"][0]+'\"');
 	rdf.extendConcept('schema:aggregateRating','<#'+id+'-aggregateRating>');
 
-	var actor_range = movie.secondary.length/2;
-	var actors = movie.secondary.slice(actor_range+1, actor_range*2);
+	var actors = movie["movie-actor"];
 	for (var i=0; i<actors.length; i++) {
 		actors[i] = String(actors[i]).replace(/[^a-zA-Z0-9.!?' ]/g, '');
 		rdf.extendConcept('schema:actor','\"'+actors[i]+'\"');
 	}
-	var characters = movie.secondary.slice(0, actor_range);
+
+	var characters = movie["movie-character"];
 	for (var i=0; i<characters.length; i++) {
 		characters[i] = String(characters[i]).replace(/[^a-zA-Z0-9.!?']/g, '');
 		rdf.extendConcept('schema:character','\"'+characters[i]+'\"');
 	}
-	rdf.finishConcept('schema:image', '\"'+review.primary[1]+'\"');
+	rdf.finishConcept('schema:image', '\"'+movie["movie-image"][0]+'\"');
 
 	/* extract review stuff */
-	var range = review.secondary.length/5;
-	var review_text = review.secondary.slice(0,range);
-	var reviewer = review.secondary.slice(range+1, range*2);
-	var date = review.secondary.slice((range*2)+1, range*3); 
-	var rating = review.secondary.slice((range*3)+1, range*4); 
-	var title = review.secondary.slice((range*4)+1, range*5); 
+	var review_text = review["review-text"];
+	var reviewer = review["review-user"];
+	var date = review["review-date"]; 
+	var rating = review["review-rating"]; 
+	var title = review["review-title"]; 
 
-	for (var i=0; i<range; i++) {
-		if (reviewer[i]==undefined) continue;
+	for (var i=0; i<review_text.length; i++) {
 
 		/* a single review */
 		reviewer[i] = String(reviewer[i]).replace(/[^a-zA-Z0-9]/g, '_');
 		rdf.makeConcept('#'+id+'-'+reviewer[i]);
 		rdf.extendConcept('schema:about', '<#'+id+'>');
-
 		rdf.extendConcept('schema:author', '\"'+reviewer[i]+'\"');
 
 		/* robustness is necessary due to flaws in the data */
@@ -125,13 +127,13 @@ ids.forEach(function(id){
 		/* custom analysis */
 		rdf.makeConcept('#'+id+'-'+reviewer[i]+'-sentiment-analysis');
 		rdf.extendConcept('onyx:algorithm','\"RNG\"');
-		rdf.extendConcept('onyx:source','\"'+review.primary[2]+'\"');
+		rdf.extendConcept('onyx:source','\"'+review["review-url"][0]+'\"');
 		rdf.extendConcept('onyx:usesEmotionalModel','\"http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel\"');
 		rdf.finishConcept('prov:generated','<#'+id+'-'+reviewer[i]+'-sentiment>');
 
 	}
-	//console.log(movie);
-	//console.log(review);
+	console.log(movie);
+	console.log(review);
 });
 
 rdf.print();
