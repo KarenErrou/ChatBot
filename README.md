@@ -127,28 +127,35 @@ WHERE {
 }
 ```
 
+|       triples       |
+|:-------------------:|
+| "2715"^^xsd:integer |
+
 #### Total number of instantiations
 
 ```
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-
 SELECT (COUNT(?s) AS ?instances)
 WHERE {
-    ?s a ?c .
-    ?c a owl:Class
+    [] a ?c
 }
 ```
+
+|     instances      |
+|:------------------:|
+| "302"^^xsd:integer |
 
 #### Total number of distinct classes
 
 ```
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-
 SELECT (COUNT(DISTINCT ?c) AS ?classes)
 WHERE {
-    ?c a owl:Class
+    [] a ?c
 }
 ```
+
+|      classes      |
+|:-----------------:|
+| "10"^^xsd:integer |
 
 #### Total number of distinct properties
 
@@ -159,18 +166,29 @@ WHERE {
 }
 ```
 
+|    properties     |
+|:-----------------:|
+| "36"^^xsd:integer |
+
 #### List of all classes used in your dataset per data source (see named graphs)
 
 ```
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-
 SELECT DISTINCT (?g AS ?graphs) (?c AS ?classes)
 WHERE {
     GRAPH ?g {
-        ?c a owl:Class
+        [] a ?c
     }
 }
 ```
+
+|      graphs       | classes         |
+|:-----------------:|:----------------|
+| http://imdb.com/1 | person:         |
+| http://imdb.com/1 | movie:          |
+| http://imdb.com/1 | onyx:EmotionSet |
+| http://imdb.com/2 | person:         |
+| http://imdb.com/2 | movie:          |
+| http://imdb.com/2 | onyx:EmotionSet |
 
 #### List of all properties used in your dataset per data source
 
@@ -183,60 +201,102 @@ WHERE {
 }
 ```
 
+|      graphs       | properties              |
+|:-----------------:|:------------------------|
+| http://imdb.com/1 | rdf:type                |
+| http://imdb.com/2 | rdf:type                |
+| http://imdb.com/1 | onyx:hasEmotionCategory |
+| http://imdb.com/2 | onyx:hasEmotionCategory |
+|        ...        | ...                     |
+
 #### Total number of instances per class per data source (reasoning on and off)
 
 ```
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-
-SELECT ?c (COUNT(?s) AS ?instances)
+SELECT DISTINCT (?g as ?graphs) (?c as ?classes) (COUNT(?s) AS ?instances)
 WHERE {
     GRAPH ?g {
-        ?s a ?c .
-        ?c a owl:Class
+        ?s a ?c
     }
 }
-GROUP BY (?c)
+GROUP BY ?g ?c
 ```
+
+|      graphs       | classes         |     instances     |
+|:-----------------:|:----------------|------------------:|
+| http://imdb.com/1 | person:         | "56"^^xsd:integer |
+| http://imdb.com/1 | movie:          | "4"^^xsd:integer  |
+| http://imdb.com/1 | onyx:EmotionSet | "94"^^xsd:integer |
+| http://imdb.com/2 | person:         | "42"^^xsd:integer |
+| http://imdb.com/2 | movie:          | "3"^^xsd:integer  |
+| http://imdb.com/2 | onyx:EmotionSet | "44"^^xsd:integer |
 
 #### Total number of distinct subjects per property per data source 
 
 ```
-SELECT (?p AS ?properties) (COUNT(DISTINCT ?s) AS ?subjects)
+SELECT DISTINCT (?g as ?graphs) (?p AS ?properties) (COUNT(DISTINCT ?s) AS ?subjects)
 WHERE {
     GRAPH ?g {
         ?s ?p []
     }
 }
-GROUP BY (?p)
+GROUP BY ?g ?p
 ```
+
+|      graphs       | properties              |           subjects |
+|:-----------------:|:------------------------|-------------------:|
+| http://imdb.com/1 | rdf:type                | "154"^^xsd:integer |
+| http://imdb.com/2 | rdf:type                |  "89"^^xsd:integer |
+| http://imdb.com/1 | onyx:hasEmotionCategory |  "29"^^xsd:integer |
+| http://imdb.com/2 | onyx:hasEmotionCategory |  "29"^^xsd:integer |
+|        ...        | ...                     |                ... |
 
 #### Total number of distinct objects per property per data source
 
 ```
-SELECT (?p AS ?properties) (COUNT(DISTINCT ?o) AS ?objects)
+SELECT DISTINCT (?g as ?graphs) (?p AS ?properties) (COUNT(DISTINCT ?o) AS ?objects)
 WHERE {
     GRAPH ?g {
         [] ?p ?o
     }
 }
-GROUP BY (?p)
+GROUP BY ?g ?p
 ```
+
+|      graphs       | properties              |           objects |
+|:-----------------:|:------------------------|------------------:|
+| http://imdb.com/1 | rdf:type                |  "3"^^xsd:integer |
+| http://imdb.com/2 | rdf:type                |  "3"^^xsd:integer |
+| http://imdb.com/1 | onyx:hasEmotionCategory | "29"^^xsd:integer |
+| http://imdb.com/2 | onyx:hasEmotionCategory | "29"^^xsd:integer |
+|        ...        | ...                     |               ... |
 
 #### Distinct properties used on top 5 classes in terms of amount of instances (reasoning on and off)
 
 ```
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-
-SELECT DISTINCT (?p AS ?properties) (?c AS ?classes) (COUNT(?s) AS ?instances)
+SELECT DISTINCT (?p AS ?properties)
 WHERE {
-    ?s ?p ?c .
-    ?c a owl:Class .
-    ?s a ?c
+    ?s ?p [] .
+    ?s a ?c .
+    {
+        # sub query for top 5 classes in terms of amount of instances
+        SELECT ?c (COUNT(?s) as ?count)
+        WHERE {
+            ?s a ?c
+        }
+        GROUP BY ?c
+        ORDER BY DESC (COUNT(?s))
+        LIMIT 5
+    }
 }
-GROUP BY ?p ?c
-ORDER BY DESC COUNT(?s)
-LIMIT 5
 ```
+
+|      properties      |
+|:--------------------:|
+|       rdf:type       |
+|   onyx:emotionText   |
+| onyx:describesObject |
+|   onyx:hasEmotion    |
+|         ...          |
 
 ## Natural Language Processing
 
