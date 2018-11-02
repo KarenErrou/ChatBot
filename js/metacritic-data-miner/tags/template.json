@@ -1,0 +1,14 @@
+{
+	"singular":{
+		"get_text":{
+		},
+		"get_attr":{
+		}
+	},
+	"plural":{
+		"get_text":{
+		},
+		"get_attr":{
+		}
+	}
+}

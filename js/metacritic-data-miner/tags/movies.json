@@ -1,0 +1,31 @@
+{
+	"singular":{
+		"get_text":{
+			"movie-duration":"div.runtime span:not([class])",
+			"movie-rating-value":"div.distribution a.metascore_anchor",
+			"movie-best-rating":"",
+			"movie-year":"span.release_year",
+			"movie-director":"div.director span:not([class])"
+		},
+		"get_attr":{
+			"movie-description":["meta[name='description']","content"],
+			"movie-title":["meta[property='og:title']","content"],
+			"movie-image":["meta[property='og:image']","content"],
+			"movie-short-description":["meta[property='og:description']","content"],
+			"movie-url":["meta[property='og:url']","content"],
+			"movie-id":["meta[property='pageId']","content"]
+		},
+		"get_sum":{
+			"movie-rating-count":["div.count.fr", 3]
+		}
+	},
+	"plural":{
+		"get_text":{
+			"movie-character":"td.character a"
+		},
+		"get_attr":{
+			"movie-actor-img":["td.primary_photo a img.loadlate","src"],
+			"movie-actor":["td.primary_photo a img","alt"]
+		}
+	}
+}

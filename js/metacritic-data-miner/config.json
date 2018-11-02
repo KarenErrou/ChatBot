@@ -1,0 +1,18 @@
+{
+	"target_entities":{
+		"movies":{
+			"base":"https://www.metacritic.com/movie/",
+			"postfix":"",
+			"save_dir":"../../data/movies/",
+			"tags":"./tags/movies.json"
+		},
+		"reviews":{
+			"base":"https://www.metacritic.com/movie/",
+			"postfix":"/user-reviews",
+			"save_dir":"../../data/reviews/",
+			"tags":"./tags/reviews.json"
+		}
+	},
+	"targets":["pulp-fiction.json"],
+	"targets_dir":"./targets/"
+}

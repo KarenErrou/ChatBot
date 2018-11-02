@@ -1,0 +1,23 @@
+{
+	"singular":{
+		"get_text":{
+			
+		},
+		"get_attr":{
+			"review-url":["meta[property='og:url']","content"]
+		},
+		"get_sum":{
+		}
+	},
+	"plural":{
+		"get_text":{
+			"review-text":"div.review_body span:not([class])",
+			"review-user":"span.author",
+			"review-date":"span.date",
+			"review-rating":"div.metascore_w.user",
+			"review-title":""
+		},
+		"get_attr":{
+		}
+	}
+}

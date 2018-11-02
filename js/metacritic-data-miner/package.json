@@ -1,0 +1,19 @@
+{
+  "name": "content-get-webcrawler",
+  "version": "1.0.0",
+  "description": "A small webcrawler tailored for my needs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
+    "jquery": "^3.3.1",
+    "jsdom": "^12.2.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  }
+}
