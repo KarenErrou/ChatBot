@@ -16,17 +16,18 @@ config.targets.forEach(function(file){
 });
 
 /* append ids for further processing */
-/*var file = '../../data/movies.json';
+var file = '../../data/metacritic/movies.json';
 var ids = require(file);
 targets.forEach(function(t){
 	ids.push(t);
 });
+// TODO: make set out of movies.json
 
 var idsjson = JSON.stringify(ids);
 const fs = require('fs');
 fs.writeFile(file, idsjson, 'utf8', (err)=>{
 	if (err) throw err;
-});*/
+});
 
 /* get target entity information */
 var entities = []
@@ -147,10 +148,10 @@ entities.forEach(function(entity){
 				var file = entity.save_dir+target+'.json';
 				var samplejson = JSON.stringify(sample);
 				const fs = require('fs');
-				/*fs.writeFile(file, samplejson, 'utf8', (err)=>{
+				fs.writeFile(file, samplejson, 'utf8', (err)=>{
 					if (err) throw err;
-				});*/
-				console.log(samplejson);
+				});
+				//console.log(samplejson);
 			})
 			.catch((err) => {
 				console.log(err);

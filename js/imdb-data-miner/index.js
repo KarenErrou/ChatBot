@@ -16,11 +16,12 @@ config.targets.forEach(function(file){
 });
 
 /* append ids for further processing */
-var file = '../../data/movies.json';
+var file = '../../data/imdb/movies.json';
 var ids = require(file);
 targets.forEach(function(t){
 	ids.push(t);
 });
+// TODO: make set out of movies.json to spare us some useless computation
 
 var idsjson = JSON.stringify(ids);
 const fs = require('fs');

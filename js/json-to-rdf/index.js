@@ -1,7 +1,14 @@
-var ids = require("../../data/movies.json");
-
-var movies = "../../data/movies/";
-var reviews = "../../data/reviews/";
+/* this for now still is imdb specific
+ * this will probably be generalized with some foreach's
+ * -> for every data source create single ttl file
+ * -> insert into graph db as named graph
+ * -> will make config.json file for this
+ * -> source json files MUST have same property names
+ * -> this file will have to become much more robust
+ * */
+var ids = require("../../data/imdb/movies.json");
+var movies = "../../data/imdb/movies/";
+var reviews = "../../data/imdb/reviews/";
 
 var rdf = require('./rdf-builder.js');
 

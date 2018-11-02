@@ -3,13 +3,13 @@
 		"movies":{
 			"base":"https://www.imdb.com/title/",
 			"postfix":"",
-			"save_dir":"../../data/movies/",
+			"save_dir":"../../data/imdb/movies/",
 			"tags":"./tags/movies.json"
 		},
 		"reviews":{
 			"base":"https://www.imdb.com/title/",
 			"postfix":"/reviews?ref_=tt_urv",
-			"save_dir":"../../data/reviews/",
+			"save_dir":"../../data/imdb/reviews/",
 			"tags":"./tags/reviews.json"
 		}
 	},

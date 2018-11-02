@@ -3,13 +3,13 @@
 		"movies":{
 			"base":"https://www.metacritic.com/movie/",
 			"postfix":"",
-			"save_dir":"../../data/movies/",
+			"save_dir":"../../data/metacritic/movies/",
 			"tags":"./tags/movies.json"
 		},
 		"reviews":{
 			"base":"https://www.metacritic.com/movie/",
 			"postfix":"/user-reviews",
-			"save_dir":"../../data/reviews/",
+			"save_dir":"../../data/metacritic/reviews/",
 			"tags":"./tags/reviews.json"
 		}
 	},
