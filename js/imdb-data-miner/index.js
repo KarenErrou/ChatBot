@@ -21,8 +21,12 @@ var ids = require(file);
 targets.forEach(function(t){
 	ids.push(t);
 });
-// TODO: make set out of movies.json to spare us some useless computation
 
+/* make set out of movies.json to spare us some useless computation */
+var ids_set = new Set(ids);
+ids = Array.from(ids_set);
+
+/* save ids back to file */
 var idsjson = JSON.stringify(ids);
 const fs = require('fs');
 fs.writeFile(file, idsjson, 'utf8', (err)=>{
