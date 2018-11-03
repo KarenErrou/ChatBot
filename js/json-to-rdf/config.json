@@ -1,0 +1,17 @@
+{
+	"data_dir":"../../data/",
+	"sub_dir":[
+		"reviews",
+		"movies"
+	],
+	"sources":[
+		{
+			"source":"imdb",
+			"graph":"imdb"
+		},
+		{
+			"source":"metacritic",
+			"graph":"metacritic"
+		}
+	]
+}

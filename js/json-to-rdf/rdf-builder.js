@@ -63,13 +63,15 @@ exports.print = function() {
 	console.log(chalk.blue(rdf));
 }
 
-exports.printToFile = function() {
+exports.printToFile = function(filename) {
 	const fs = require('fs');
-	var onto = '../../ontology/graph.ttl';
+	var onto = '../../ontology/'+filename+'.ttl';
+	var content = rdf;
 	fs.writeFile(onto, rdf, 'utf8', (err)=>{
 		if (err) throw err;
 		log(chalk.green('Ontology was saved to: '+onto));
 	});
+	rdf = '';
 }
 
 exports.validate = function() {
