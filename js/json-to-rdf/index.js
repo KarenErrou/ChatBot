@@ -69,11 +69,16 @@ config.sources.forEach(function(entry){
 		rdf.makeConcept('#'+id);
 		rdf.extendConcept('rdf:type','schema:Movie');
 		rdf.extendConcept('schema:identifier','\"'+id+'\"');
+		movie["movie-title"][0] = String(movie["movie-title"][0]).replace(/[^a-zA-Z0-9.!?'() ]/g, '');
 		rdf.extendConcept('schema:name','\"'+movie["movie-title"][0]+'\"');
 
 		movie["movie-duration"][0] = String(movie["movie-duration"][0]).replace(/[^a-zA-Z0-9.!?']/g, '');
 		rdf.extendConcept('schema:duration','\"'+movie["movie-duration"][0]+'\"');
-		rdf.extendConcept('schema:dateCreated',movie["movie-year"][0]);
+
+		//if (movie["movie-year"][0] instanceof Date && !isNaN(movie["movie-year"][0]))
+		rdf.extendConcept('schema:dateCreated','\"'+movie["movie-year"][0]+'\"');
+		//else
+		//	rdf.extendConcept('schema:dateCreated','\"'+new Date().now+'\"');
 
 		movie["movie-description"][0] = String(movie["movie-description"][0]).replace(/[^a-zA-Z0-9.!?' ]/g, '');
 		rdf.extendConcept('schema:text','\"'+movie["movie-description"][0]+'\"');
@@ -108,10 +113,10 @@ config.sources.forEach(function(entry){
 			rdf.extendConcept('schema:author', '\"'+reviewer[i]+'\"');
 
 			/* robustness is necessary due to flaws in the data */
-			if (date[i] instanceof Date && !isNaN(date[i]))
-				rdf.extendConcept('schema:dateCreated', '\"'+new Date(date[i])+'\"');
-			else
-				rdf.extendConcept('schema:dateCreated', '\"'+new Date()+'\"');
+			//if (date[i] instanceof Date && !isNaN(date[i]))
+			rdf.extendConcept('schema:dateCreated', '\"'+new Date(date[i])+'\"');
+			//else
+			//	rdf.extendConcept('schema:dateCreated', '\"'+new Date().now+'\"');
 
 			/* robustness is necessary due to flaws in the data */
 			if (isNaN(rating[i]))

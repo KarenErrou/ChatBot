@@ -13,6 +13,20 @@
 			"tags":"./tags/reviews.json"
 		}
 	},
-	"targets":["starwars.json","other.json","jurassicpark.json","random.json"],
+	"already_used_targets":[
+		"starwars.json",
+		"other.json",
+		"jurassicpark.json",
+		"random1.json",
+		"random2.json",
+		"random3.json",
+		"random4.json",
+		"random5.json",
+		"random6.json",
+		"random7.json",
+		"random8.json"
+	],
+	"to_be_used_targets":[],
+	"targets":["random9.json"],
 	"targets_dir":"./targets/"
 }
