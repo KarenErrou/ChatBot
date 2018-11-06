@@ -134,7 +134,7 @@ config.sources.forEach(function(entry){
 			rdf.makeConcept('#'+id+'-'+reviewer[i]+'-sentiment');
 			rdf.extendConcept('rdf:type', 'onyx:EmotionSet');
 			rdf.extendConcept('onyx:emotionText','\"'+review_text[i]+'\"');
-			rdf.extendConcept('onyx:describesObject','<#'+id+'-'+reviewer[i]+'-sentiment>');
+			rdf.extendConcept('onyx:describesObject','<#'+id+'>');
 			rdf.extendConcept('onyx:hasEmotion', '<#'+getRandomEmotion()+'>');
 			rdf.finishConcept('prov:Entity', '<#'+id+'-'+reviewer[i]+'>');
 
