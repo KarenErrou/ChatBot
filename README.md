@@ -14,6 +14,7 @@ revision:
 
 # Emotional Reasoning Chat Bot
 
+
 ## 1 - Introduction
 
 The goal of the proseminar is to create a chatbot that is able to perform emotional reasoning.
@@ -26,6 +27,7 @@ Reasoning processes of humans are mainly different than reasoning principles of 
 
 This project will collect and design ontologies and data representing human emotions and design reasoning mechanisms employing these. The reasoning mechanisms can be inbuilt in practical scenarios e.g. in online marketing - designing of a chatbot that appeals to emotions of humans and trying to change their behaviour. Or a character that goes beyond the "personal assistant" mode.
 
+
 ## 2 - Domain Overview
 
 - [Linked Open Vocabularies.](https://lov.linkeddata.es/dataset/lov)
@@ -37,6 +39,7 @@ This project will collect and design ontologies and data representing human emot
 - [A small set of 16 movies](https://www.kaggle.com/jonsteve/user-reviews-of-16-movies-on-rotten-tomatoes)
 - [A large set of movies usually used for binary sentiment classification (positive|negative)](http://www.cs.cornell.edu/people/pabo/movie-review-data/)
 - [Another set of 25,000 movies also for binary sentiment classsification](http://ai.stanford.edu/~amaas/data/sentiment/)
+
 
 ## 3 - Initial Vocabulary Selection and Domain Specification
 
@@ -296,7 +299,8 @@ Example (sub graph of our knowledge graph):
     prov:generated <#tt3778644-poopville-sentiment>.
 ```
 
-## 4 - Exploratory queries on the loaded dataset
+
+## 4 - Exploratory Queries on the Loaded Dataset
 
 #### The distinct wikidata types that may be aligned with the types in your dataset (advanced query)
 
@@ -327,22 +331,22 @@ WHERE {
 }
 ```
 
-|       triples       |
-|:-------------------:|
-| "2715"^^xsd:integer |
+|        triples        |
+|:---------------------:|
+| "152198"^^xsd:integer |
 
 #### Total number of instantiations
 
 ```
 SELECT (COUNT(?s) AS ?instances)
 WHERE {
-    [] a ?c
+    ?s a []
 }
 ```
 
-|     instances      |
-|:------------------:|
-| "302"^^xsd:integer |
+|       instances      |
+|:--------------------:|
+| "15449"^^xsd:integer |
 
 #### Total number of distinct classes
 
@@ -368,7 +372,7 @@ WHERE {
 
 |    properties     |
 |:-----------------:|
-| "36"^^xsd:integer |
+| "34"^^xsd:integer |
 
 #### List of all classes used in your dataset per data source (see named graphs)
 
@@ -381,14 +385,13 @@ WHERE {
 }
 ```
 
-|      graphs       | classes         |
-|:-----------------:|:----------------|
-| http://imdb.com/1 | person:         |
-| http://imdb.com/1 | movie:          |
-| http://imdb.com/1 | onyx:EmotionSet |
-| http://imdb.com/2 | person:         |
-| http://imdb.com/2 | movie:          |
-| http://imdb.com/2 | onyx:EmotionSet |
+| graphs                      | classes         |
+|:----------------------------|:----------------|
+| https://www.metacritic.com/ | schema:Movie    |
+| https://www.metacritic.com/ | onyx:EmotionSet |
+| https://www.imdb.com/       | schema:Person   |
+| https://www.imdb.com/       | schema:Movie    |
+| https://www.imdb.com/       | onyx:EmotionSet |
 
 #### List of all properties used in your dataset per data source
 
@@ -401,13 +404,13 @@ WHERE {
 }
 ```
 
-|      graphs       | properties              |
-|:-----------------:|:------------------------|
-| http://imdb.com/1 | rdf:type                |
-| http://imdb.com/2 | rdf:type                |
-| http://imdb.com/1 | onyx:hasEmotionCategory |
-| http://imdb.com/2 | onyx:hasEmotionCategory |
-|        ...        | ...                     |
+| graphs                      | properties              |
+|:----------------------------|:------------------------|
+| https://www.metacritic.com/ | rdf:type                |
+| http://imdb.com/            | rdf:type                |
+| https://www.metacritic.com/ | onyx:hasEmotionCategory |
+| http://imdb.com/            | onyx:hasEmotionCategory |
+| ...                         | ...                     |
 
 #### Total number of instances per class per data source (reasoning on and off)
 
@@ -421,14 +424,19 @@ WHERE {
 GROUP BY ?g ?c
 ```
 
-|      graphs       | classes         |     instances     |
-|:-----------------:|:----------------|------------------:|
-| http://imdb.com/1 | person:         | "56"^^xsd:integer |
-| http://imdb.com/1 | movie:          | "4"^^xsd:integer  |
-| http://imdb.com/1 | onyx:EmotionSet | "94"^^xsd:integer |
-| http://imdb.com/2 | person:         | "42"^^xsd:integer |
-| http://imdb.com/2 | movie:          | "3"^^xsd:integer  |
-| http://imdb.com/2 | onyx:EmotionSet | "44"^^xsd:integer |
+##### Reasoning On
+
+| graphs                      | classes         |           instances |
+|:----------------------------|:----------------|--------------------:|
+| https://www.metacritic.com/ | schema:Movie    |    "1"^^xsd:integer |
+| https://www.metacritic.com/ | onyx:EmotionSet |   "43"^^xsd:integer |
+| http://imdb.com/            | schema:Person   | "6712"^^xsd:integer |
+| http://imdb.com/            | schema:Movie    |  "468"^^xsd:integer |
+| http://imdb.com/            | onyx:EmotionSet | "8168"^^xsd:integer |
+
+##### Reasoning Off
+
+Did not seem to make a difference.
 
 #### Total number of distinct subjects per property per data source 
 
@@ -442,13 +450,13 @@ WHERE {
 GROUP BY ?g ?p
 ```
 
-|      graphs       | properties              |           subjects |
-|:-----------------:|:------------------------|-------------------:|
-| http://imdb.com/1 | rdf:type                | "154"^^xsd:integer |
-| http://imdb.com/2 | rdf:type                |  "89"^^xsd:integer |
-| http://imdb.com/1 | onyx:hasEmotionCategory |  "29"^^xsd:integer |
-| http://imdb.com/2 | onyx:hasEmotionCategory |  "29"^^xsd:integer |
-|        ...        | ...                     |                ... |
+| graphs                      | properties              |             subjects |
+|:----------------------------|:------------------------|---------------------:|
+| https://www.metacritic.com/ | rdf:type                |    "44"^^xsd:integer |
+| http://imdb.com/            | rdf:type                | "15348"^^xsd:integer |
+| https://www.metacritic.com/ | onyx:hasEmotionCategory |    "29"^^xsd:integer |
+| http://imdb.com/            | onyx:hasEmotionCategory |    "29"^^xsd:integer |
+| ...                         | ...                     |                  ... |
 
 #### Total number of distinct objects per property per data source
 
@@ -462,13 +470,13 @@ WHERE {
 GROUP BY ?g ?p
 ```
 
-|      graphs       | properties              |           objects |
-|:-----------------:|:------------------------|------------------:|
-| http://imdb.com/1 | rdf:type                |  "3"^^xsd:integer |
-| http://imdb.com/2 | rdf:type                |  "3"^^xsd:integer |
-| http://imdb.com/1 | onyx:hasEmotionCategory | "29"^^xsd:integer |
-| http://imdb.com/2 | onyx:hasEmotionCategory | "29"^^xsd:integer |
-|        ...        | ...                     |               ... |
+| graphs                      | properties              |           objects |
+|:----------------------------|:------------------------|------------------:|
+| https://www.metacritic.com/ | rdf:type                |  "2"^^xsd:integer |
+| http://imdb.com/            | rdf:type                |  "3"^^xsd:integer |
+| https://www.metacritic.com/ | onyx:hasEmotionCategory | "29"^^xsd:integer |
+| http://imdb.com/            | onyx:hasEmotionCategory | "29"^^xsd:integer |
+| ...                         | ...                     |               ... |
 
 #### Distinct properties used on top 5 classes in terms of amount of instances (reasoning on and off)
 
@@ -490,22 +498,68 @@ WHERE {
 }
 ```
 
-|      properties      |
-|:--------------------:|
-|       rdf:type       |
-|   onyx:emotionText   |
-| onyx:describesObject |
-|   onyx:hasEmotion    |
-|         ...          |
+##### Reasoning On
 
-## Natural Language Processing
+|                       properties                       |
+|:------------------------------------------------------:|
+|                        rdf:type                        |
+|                    onyx:emotionText                    |
+|                  onyx:describesObject                  |
+|                    onyx:hasEmotion                     |
+|                      prov:Entity                       |
+|                      schema:name                       |
+|                   schema:identifier                    |
+|                    schema:duration                     |
+|                   schema:dateCreated                   |
+|                      schema:text                       |
+|                 schema:aggregateRating                 |
+|                      schema:image                      |
+|                      schema:actor                      |
+|                    schema:character                    |
+|                   rdfs:subPropertyOf                   |
+| http://proton.semanticweb.org/protonsys#transitiveOver |
+|                      rdfs:domain                       |
+|                       rdfs:range                       |
+|                     owl:inverseOf                      |
 
-### npm natural
+19 distinct properties used on top 5 classes in terms of amount of instances.
+
+##### Reasoning Off
+
+|       properties       |
+|:----------------------:|
+|        rdf:type        |
+|    onyx:emotionText    |
+|  onyx:describesObject  |
+|    onyx:hasEmotion     |
+|      prov:Entity       |
+|      schema:name       |
+|   schema:identifier    |
+|    schema:duration     |
+|   schema:dateCreated   |
+|      schema:text       |
+| schema:aggregateRating |
+|      schema:image      |
+|      schema:actor      |
+|    schema:character    |
+
+14 distinct properties used on top 5 classes in terms of amount of instances.
+
+
+## 5 - Conclusion and Next Steps
+
+Now that we gathered the data, the next logical step would be to find a way to translate the reviews into an annotation of emotions. However, we found that the quality of the reviews in regards of length and emotional wording varies a lot between data sources and also between authors. We will have to see how well these reviews are suited for our needs and maybe even involve movie scripts in order to obtain an annotation of emotions, which may give better results.
+
+Whichever we choose, in the end we will also have to define a way to process natural language. This mechanism is important for the process of extracting an annotation of emotion from our data sources as well as for obtaining an emotional state from the user by processing their chat messages.
+
+### Natural Language Processing
+
+#### npm natural
 
 - [Text tagger](https://github.com/NaturalNode/natural#pos-tagger)
 - [Automatically Constructing a Dictionary for Information Extraction Tasks](https://www.cs.utah.edu/~riloff/pdfs/aaai93.pdf)
 
-### POS tagger
+#### POS tagger
 
 |tag |meaning              |examples  |
 |:--:|:-------------------:|:--------:|
@@ -556,6 +610,6 @@ WHERE {
 
 [Table is from here.](https://github.com/dariusk/pos-js)
 
-## Response Sentence Creation
+### Response Sentence Creation
 
 - [npm naturals bayesian classifier](https://github.com/NaturalNode/natural#bayesian-and-logistic-regression)
