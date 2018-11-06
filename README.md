@@ -146,7 +146,7 @@ The results for movies are stored in seperate jsons which are linked by the movi
 
 Example:
 
-```
+```json
 {
     "target_entities":{
         "movies":{
@@ -181,7 +181,7 @@ Example:
 
 Example:
 
-```
+```json
 {
     "singular":{
         "get_text":{
@@ -300,9 +300,27 @@ Example (sub graph of our knowledge graph):
 
 #### The distinct wikidata types that may be aligned with the types in your dataset (advanced query)
 
+```sparql
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+SELECT DISTINCT (?wdc AS ?WikiDataClass) (?eqc AS ?EquivalentClass) WHERE {
+    SERVICE <https://query.wikidata.org/sparql> {
+	# wdt:P1709 - equivalent class
+	# its description even says from other ontologies
+        ?wdc wdt:P1709 ?eqc .
+    }
+    [] a ?eqc .
+}
+```
+
+|           WikiDataClass                | EquivalentClass |
+|:--------------------------------------:|:---------------:|
+| http://www.wikidata.org/entity/Q5      | schema:Person   |
+| http://www.wikidata.org/entity/Q215627 | schema:Person   |
+| http://www.wikidata.org/entity/Q11424  | schema:Movie    |
+
 #### Total number of triples
 
-```
+```sparql
 SELECT (COUNT(?s) AS ?triples)
 WHERE {
     ?s ?p ?o
@@ -315,7 +333,7 @@ WHERE {
 
 #### Total number of instantiations
 
-```
+```sparql
 SELECT (COUNT(?s) AS ?instances)
 WHERE {
     [] a ?c
@@ -328,7 +346,7 @@ WHERE {
 
 #### Total number of distinct classes
 
-```
+```sparql
 SELECT (COUNT(DISTINCT ?c) AS ?classes)
 WHERE {
     [] a ?c
@@ -341,7 +359,7 @@ WHERE {
 
 #### Total number of distinct properties
 
-```
+```sparql
 SELECT (COUNT(DISTINCT ?p) AS ?properties)
 WHERE {
     [] ?p []
@@ -354,7 +372,7 @@ WHERE {
 
 #### List of all classes used in your dataset per data source (see named graphs)
 
-```
+```sparql
 SELECT DISTINCT (?g AS ?graphs) (?c AS ?classes)
 WHERE {
     GRAPH ?g {
@@ -374,7 +392,7 @@ WHERE {
 
 #### List of all properties used in your dataset per data source
 
-```
+```sparql
 SELECT DISTINCT (?g AS ?graphs) (?p AS ?properties)
 WHERE {
     GRAPH ?g {
@@ -393,7 +411,7 @@ WHERE {
 
 #### Total number of instances per class per data source (reasoning on and off)
 
-```
+```sparql
 SELECT DISTINCT (?g as ?graphs) (?c as ?classes) (COUNT(?s) AS ?instances)
 WHERE {
     GRAPH ?g {
@@ -414,7 +432,7 @@ GROUP BY ?g ?c
 
 #### Total number of distinct subjects per property per data source 
 
-```
+```sparql
 SELECT DISTINCT (?g as ?graphs) (?p AS ?properties) (COUNT(DISTINCT ?s) AS ?subjects)
 WHERE {
     GRAPH ?g {
@@ -434,7 +452,7 @@ GROUP BY ?g ?p
 
 #### Total number of distinct objects per property per data source
 
-```
+```sparql
 SELECT DISTINCT (?g as ?graphs) (?p AS ?properties) (COUNT(DISTINCT ?o) AS ?objects)
 WHERE {
     GRAPH ?g {
@@ -454,7 +472,7 @@ GROUP BY ?g ?p
 
 #### Distinct properties used on top 5 classes in terms of amount of instances (reasoning on and off)
 
-```
+```sparql
 SELECT DISTINCT (?p AS ?properties)
 WHERE {
     ?s ?p [] .
