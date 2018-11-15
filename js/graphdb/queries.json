@@ -1,0 +1,21 @@
+{
+  "demo": [
+    "PREFIX wdt: <http://www.wikidata.org/prop/direct/> SELECT DISTINCT (?wdc AS ?WikiDataClass) (?eqc AS ?EquivalentClass) WHERE { SERVICE <https://query.wikidata.org/sparql> { ?wdc wdt:P1709 ?eqc } [] a ?eqc }", 
+    "SELECT (COUNT(?s) AS ?triples) WHERE { ?s ?p ?o }",
+    "SELECT (COUNT(?s) AS ?instances) WHERE { ?s a [] }",
+    "SELECT (COUNT(DISTINCT ?c) AS ?classes) WHERE { [] a ?c }",
+    "SELECT (COUNT(DISTINCT ?p) AS ?properties) WHERE { [] ?p [] }",
+    "SELECT DISTINCT (?g AS ?graphs) (?c AS ?classes) WHERE { GRAPH ?g {[] a ?c} }",
+    "SELECT DISTINCT (?g AS ?graphs) (?p AS ?properties) WHERE { GRAPH ?g {[] ?p []} }",
+    "SELECT DISTINCT (?g as ?graphs) (?c as ?classes) (COUNT(?s) AS ?instances) WHERE { GRAPH ?g { ?s a ?c } } GROUP BY ?g ?c",
+    "SELECT DISTINCT (?g as ?graphs) (?p AS ?properties) (COUNT(DISTINCT ?s) AS ?subjects) WHERE { GRAPH ?g {?s ?p []} }GROUP BY ?g ?p",
+    "SELECT DISTINCT (?g as ?graphs) (?p AS ?properties) (COUNT(DISTINCT ?o) AS ?objects) WHERE { GRAPH ?g {[] ?p ?o} } GROUP BY ?g ?p",
+    "SELECT DISTINCT (?p AS ?properties) WHERE { ?s ?p [] . ?s a ?c . { SELECT ?c (COUNT(?s) as ?count) WHERE { ?s a ?c } GROUP BY ?c ORDER BY DESC (COUNT(?s)) LIMIT 5}}"
+  ],
+  "app": [
+  
+  ],
+  "import": [
+  
+  ]
+}
