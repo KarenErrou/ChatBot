@@ -1,5 +1,9 @@
 # curl REST API samples
 
+## NodeJS
+
+See: [sparql-client-2](https://www.npmjs.com/package/sparql-client-2)
+
 ## Query Something
 
     $ curl -G -H "Accept:application/x-trig"

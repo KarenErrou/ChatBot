@@ -17,5 +17,16 @@
   ],
   "import": [
   
+  ],
+  "remote": [
+    {
+      "description":"Load all films from dbpedia.",		  
+      "q":"prefix dbpedia-owl: <http://dbpedia.org/ontology/> select ?film where { SERVICE <http://dbpedia.org/sparql> { ?film a dbpedia-owl:Film} }"
+    },
+    {
+      "description":"Load all films from wikidata.",
+      "q":"PREFIX wdt: <http://www.wikidata.org/prop/direct/> select ?film where { SERVICE <https://query.wikidata.org/sparql> { ?film wdt:P31 <http://www.wikidata.org/entity/Q11424>}}"						
+    }
+  
   ]
 }

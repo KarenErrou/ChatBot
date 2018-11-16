@@ -2,18 +2,25 @@ const SparqlClient = require('sparql-client-2');
 const SPARQL = SparqlClient.SPARQL;
 
 const config = require('./config.json');
-const endpoint = config.base.local + config.test2;
+const default_endpoint = config.base.local + config.repo.test2;
  
-const client = new SparqlClient(endpoint);
- 
-const query = require('./queries.json');
-query.demo.forEach(function(q){
-	client.query(q)
-		.execute()
-		.then(function (results) {
-			console.dir(results, {depth: null});
-		})
-		.catch(function (error) {
-			console.log(error);
-		});
-})
+exports.query = function(request, callback) {
+
+	var client;
+	if (request.endpoint != null && request.endpoint != undefined)
+		client = new SparqlClient(request.endpoint);
+	else
+		client = new SparqlClient(default_endpoint);
+
+	client.query(request.query)
+	.execute()
+	.then(function(results){
+		if (results != null && results != undefined)
+			callback(results);
+		else
+			console.log("No results!");
+	})
+	.catch(function(error){
+		console.log(error);
+	});
+}

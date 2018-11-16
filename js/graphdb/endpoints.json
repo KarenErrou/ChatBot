@@ -1,0 +1,4 @@
+{
+	"dbpedia":"http://dbpedia.org/sparql",
+	"wikidata":"https://query.wikidata.org/sparql"
+}

@@ -1,14 +1,11 @@
 {
-  "name": "graphdb",
+  "name": "load-wikidata",
   "version": "1.0.0",
-  "description": "Query Something",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "sparql-client-2": "^0.6.3"
-  }
+  "license": "ISC"
 }
