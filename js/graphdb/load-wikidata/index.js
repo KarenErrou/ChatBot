@@ -19,6 +19,9 @@ var qmovies ="PREFIX wdt: <http://www.wikidata.org/prop/direct/> " +
 
 var movies = [];
 
+var imdb = [];
+var metacritic = [];
+
 graphdb.query({query:qmovies}, function(results){
 
 	console.log(results);
@@ -29,16 +32,41 @@ graphdb.query({query:qmovies}, function(results){
 			movie: e.film.value,
 			imdbid: e.imdbid.value
 		};
-		if (e.mcid != undefined)
-			movie["mcid"] = e.mcid.value;
 
+		if (e.mcid != undefined) {
+			movie["mcid"] = e.mcid.value;
+			metacritic.push(e.mcid.value);
+		}
+
+		imdb.push(e.imdbid.value);
 		movies.push(movie);
 	});
 
-	var file = 'temp.json';
+	var file = '../../../data/wikidata/wikidata.json';
 	var moviesjson = JSON.stringify(movies);
 	const fs = require('fs');
 	fs.writeFile(file, moviesjson, 'utf8', (err)=>{
 		if (err) throw err;
 	});
+	console.log(imdb);
+	console.log(metacritic);
+
+	/* split imdb entries into chunks of size 25*/
+	var i, filenum=0, j, temp=[], chunk=25;
+	for (i=0,j=imdb.length; i<j; i+=chunk) {
+		temparray = imdb.slice(i,i+chunk);
+
+		var f = '../../imdb-data-miner/targets/wikidata/'+filenum+'.json';
+		fs.writeFileSync(f, JSON.stringify(temparray));
+		filenum++;
+	}
+
+	filenum=0;
+	for (i=0,j=imdb.length; i<j; i+=chunk) {
+		temparray = metacritic.slice(i,i+chunk);
+
+		var f = '../../metacritic-data-miner/targets/wikidata/'+filenum+'.json';
+		fs.writeFileSync(f, JSON.stringify(temparray));
+		filenum++;
+	}
 });
