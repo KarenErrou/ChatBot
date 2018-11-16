@@ -1,0 +1,4 @@
+{
+	"source":"../../data/wikidata/wikidata.json",
+	"store":"wikidata"
+}
