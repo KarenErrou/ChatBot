@@ -402,6 +402,19 @@ The same example sub graph as a visual graph:
 
 <img src="./img/001_graph.png" width="100%" height="100%"/>
 
+### Derived Axioms
+
+ - A movie has to have one id
+ - A movie has either one or zero Metacritic ids
+ - An actor plays a role
+ - An actor can be an animal or a person
+ - A movie can have multiple genres but at least 1
+ - A movie can have multiple languages or none
+ - Joy is a positive emotion
+ - Pulp Fiction is different from Star Wars
+ - Two movies can have the same title
+ - The domain of schema:actor is a movie
+
 ## - Triple Storage and Querying
 
 ### Overview of the Selected Triple Store
