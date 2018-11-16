@@ -4,7 +4,7 @@ var chalk = require('chalk');
 var rdf = '';
 
 function log(string){
-	if (true)
+	if (false)
 		console.log(string);
 }
 

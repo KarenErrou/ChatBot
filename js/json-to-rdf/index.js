@@ -9,7 +9,7 @@
 var config = require('./config.json');
 
 config.sources.forEach(function(entry){
-	var rdf = require('./rdf-builder.js');
+	var rdf = require('../rdf-builder/rdf-builder.js');
 	var ids = require(config.data_dir + entry.source + '/movies.json');
 	var movies = config.data_dir + entry.source + '/movies/';
 	var reviews = config.data_dir + entry.source + '/reviews/';
