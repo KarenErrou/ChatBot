@@ -1,0 +1,554 @@
+@base <http://movie.chatbot.org/>.
+@prefix schema: <http://schema.org/>.
+@prefix onyx: <http://www.gsi.dit.upm.es/ontologies/onyx/ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix prov: <http://www.w3.org/ns/prov#>.
+@prefix wnaffect: <http://www.gsi.dit.upm.es/ontologies/wnaffect/ns#>.
+
+<#Hate>
+	onyx:hasEmotionCategory wnaffect:Hate.
+
+<#Dislike>
+	onyx:hasEmotionCategory wnaffect:Dislike.
+
+<#Anger>
+	onyx:hasEmotionCategory wnaffect:Anger.
+
+<#Anxiety>
+	onyx:hasEmotionCategory wnaffect:Anxiety.
+
+<#Ingratitude>
+	onyx:hasEmotionCategory wnaffect:Ingratitude.
+
+<#Humility>
+	onyx:hasEmotionCategory wnaffect:Humility.
+
+<#Compassion>
+	onyx:hasEmotionCategory wnaffect:Compassion.
+
+<#Daze>
+	onyx:hasEmotionCategory wnaffect:Daze.
+
+<#Sadness>
+	onyx:hasEmotionCategory wnaffect:Sadness.
+
+<#Negative-Fear>
+	onyx:hasEmotionCategory wnaffect:Negative-Fear.
+
+<#Despair>
+	onyx:hasEmotionCategory wnaffect:Despair.
+
+<#Shame>
+	onyx:hasEmotionCategory wnaffect:Shame.
+
+<#Love>
+	onyx:hasEmotionCategory wnaffect:Love.
+
+<#Calmness>
+	onyx:hasEmotionCategory wnaffect:Calmness.
+
+<#Affection>
+	onyx:hasEmotionCategory wnaffect:Affection.
+
+<#Self-Pride>
+	onyx:hasEmotionCategory wnaffect:Self-Pride.
+
+<#Enthusiasm>
+	onyx:hasEmotionCategory wnaffect:Enthusiasm.
+
+<#Positivie-Fear>
+	onyx:hasEmotionCategory wnaffect:Positivie-Fear.
+
+<#Liking>
+	onyx:hasEmotionCategory wnaffect:Liking.
+
+<#Joy>
+	onyx:hasEmotionCategory wnaffect:Joy.
+
+<#Positive-Expectation>
+	onyx:hasEmotionCategory wnaffect:Positive-Expectation.
+
+<#Fearlessness>
+	onyx:hasEmotionCategory wnaffect:Fearlessness.
+
+<#Positive-Hope>
+	onyx:hasEmotionCategory wnaffect:Positive-Hope.
+
+<#Levity>
+	onyx:hasEmotionCategory wnaffect:Levity.
+
+<#Gratitude>
+	onyx:hasEmotionCategory wnaffect:Gratitude.
+
+<#Neutral-Unconcern>
+	onyx:hasEmotionCategory wnaffect:Neutral-Unconcern.
+
+<#Apathy>
+	onyx:hasEmotionCategory wnaffect:Apathy.
+
+<#Surprise>
+	onyx:hasEmotionCategory wnaffect:Surprise.
+
+<#Ambiguous-Agitation>
+	onyx:hasEmotionCategory wnaffect:Ambiguous-Agitation.
+
+<#ZoltnMucsi>
+	rdf:type schema:Person;
+	schema:name "Zoltn Mucsi".
+
+<#PterScherer>
+	rdf:type schema:Person;
+	schema:name "Pter Scherer".
+
+<#LajosBalzsovits>
+	rdf:type schema:Person;
+	schema:name "Lajos Balzsovits".
+
+<#EszterCspai>
+	rdf:type schema:Person;
+	schema:name "Eszter Cspai".
+
+<#MtCzak>
+	rdf:type schema:Person;
+	schema:name "Mt Czak".
+
+<#NraDucza>
+	rdf:type schema:Person;
+	schema:name "Nra Ducza".
+
+<#vaErds>
+	rdf:type schema:Person;
+	schema:name "va Erds".
+
+<#EszterFarkas>
+	rdf:type schema:Person;
+	schema:name "Eszter Farkas".
+
+<#VeraFarkas>
+	rdf:type schema:Person;
+	schema:name "Vera Farkas".
+
+<#CsabaFazekas>
+	rdf:type schema:Person;
+	schema:name "Csaba Fazekas".
+
+<#VeronikaFazekas>
+	rdf:type schema:Person;
+	schema:name "Veronika Fazekas".
+
+<#DnielFehr>
+	rdf:type schema:Person;
+	schema:name "Dniel Fehr".
+
+<#EndreFlrin>
+	rdf:type schema:Person;
+	schema:name "Endre Flrin".
+
+<#EszterFldes>
+	rdf:type schema:Person;
+	schema:name "Eszter Fldes".
+
+<#JzsefFlp>
+	rdf:type schema:Person;
+	schema:name "Jzsef Flp".
+
+<#tt0814091-aggregateRating>
+	schema:ratingCount 191;
+	schema:ratingValue 5.9;
+	schema:bestRating 10;
+	schema:itemReviewed <#tt0814091>.
+
+<#tt0814091>
+	rdf:type schema:Movie;
+	schema:identifier "tt0814091";
+	schema:name "Ede megev ebdem (2006)";
+	schema:duration "1h30min";
+	schema:dateCreated "2006";
+	schema:text "    Kapa and Pepe contemplates the Hungarian capitalism of today. The power belongs to those with money.";
+	schema:aggregateRating <#tt0814091-aggregateRating>;
+	schema:actor "Zoltn Mucsi";
+	schema:actor "Pter Scherer";
+	schema:actor "Lajos Balzsovits";
+	schema:actor "Eszter Cspai";
+	schema:actor "Mt Czak";
+	schema:actor "Nra Ducza";
+	schema:actor "va Erds";
+	schema:actor "Eszter Farkas";
+	schema:actor "Vera Farkas";
+	schema:actor "Csaba Fazekas";
+	schema:actor "Veronika Fazekas";
+	schema:actor "Dniel Fehr";
+	schema:actor "Endre Flrin";
+	schema:actor "Eszter Fldes";
+	schema:actor "Jzsef Flp";
+	schema:image "https://m.media-amazon.com/images/M/MV5BZmRiZTEwNzQtNzg3NC00YjQwLWI1YjctYTg3MmQzMGRiZjE2XkEyXkFqcGdeQXVyMTU1NTI2MA@@._V1_UY1200_CR112,0,630,1200_AL_.jpg".
+
+<#SndorGspr>
+	rdf:type schema:Person;
+	schema:name "Sndor Gspr".
+
+<#KrolyGesztesi>
+	rdf:type schema:Person;
+	schema:name "Kroly Gesztesi".
+
+<#SzonjaOroszln>
+	rdf:type schema:Person;
+	schema:name "Szonja Oroszln".
+
+<#GyzSzab>
+	rdf:type schema:Person;
+	schema:name "Gyz Szab".
+
+<#NraParti>
+	rdf:type schema:Person;
+	schema:name "Nra Parti".
+
+<#ZoltnMucsi>
+	rdf:type schema:Person;
+	schema:name "Zoltn Mucsi".
+
+<#PterScherer>
+	rdf:type schema:Person;
+	schema:name "Pter Scherer".
+
+<#MnikaUllmann>
+	rdf:type schema:Person;
+	schema:name "Mnika Ullmann".
+
+<#ZoltnBezerdy>
+	rdf:type schema:Person;
+	schema:name "Zoltn Bezerdy".
+
+<#SndorBadr>
+	rdf:type schema:Person;
+	schema:name "Sndor Badr".
+
+<#BlaSzerednyey>
+	rdf:type schema:Person;
+	schema:name "Bla Szerednyey".
+
+<#JnosBata>
+	rdf:type schema:Person;
+	schema:name "Jnos Bata".
+
+<#TsogbaatarBatzorig>
+	rdf:type schema:Person;
+	schema:name "Tsogbaatar Batzorig".
+
+<#LiliBordn>
+	rdf:type schema:Person;
+	schema:name "Lili Bordn".
+
+<#PterBozs>
+	rdf:type schema:Person;
+	schema:name "Pter Bozs".
+
+<#tt0815116-aggregateRating>
+	schema:ratingCount 450;
+	schema:ratingValue 3.6;
+	schema:bestRating 10;
+	schema:itemReviewed <#tt0815116>.
+
+<#tt0815116>
+	rdf:type schema:Movie;
+	schema:identifier "tt0815116";
+	schema:name "Egy bolond szzat csinl (2006)";
+	schema:duration "1h40min";
+	schema:dateCreated "2006";
+	schema:aggregateRating <#tt0815116-aggregateRating>;
+	schema:actor "Sndor Gspr";
+	schema:actor "Kroly Gesztesi";
+	schema:actor "Szonja Oroszln";
+	schema:actor "Gyz Szab";
+	schema:actor "Nra Parti";
+	schema:actor "Zoltn Mucsi";
+	schema:actor "Pter Scherer";
+	schema:actor "Mnika Ullmann";
+	schema:actor "Zoltn Bezerdy";
+	schema:actor "Sndor Badr";
+	schema:actor "Bla Szerednyey";
+	schema:actor "Jnos Bata";
+	schema:actor "Tsogbaatar Batzorig";
+	schema:actor "Lili Bordn";
+	schema:actor "Pter Bozs";
+	schema:image "https://m.media-amazon.com/images/M/MV5BMjE2ZTE5NjEtMGMyZi00M2E3LWJhODItYjFhYWQ4MDgwNDllXkEyXkFqcGdeQXVyNjI4NzI5NDE@._V1_UY1200_CR91,0,630,1200_AL_.jpg".
+
+<#StephenChow>
+	rdf:type schema:Person;
+	schema:name "Stephen Chow".
+
+<#ChristyChung>
+	rdf:type schema:Person;
+	schema:name "Christy Chung".
+
+<#ManTatNg>
+	rdf:type schema:Person;
+	schema:name "ManTat Ng".
+
+<#PhilipChan>
+	rdf:type schema:Person;
+	schema:name "Philip Chan".
+
+<#JoeCheng>
+	rdf:type schema:Person;
+	schema:name "Joe Cheng".
+
+<#KaSangCheng>
+	rdf:type schema:Person;
+	schema:name "KaSang Cheng".
+
+<#JackyCheung>
+	rdf:type schema:Person;
+	schema:name "Jacky Cheung".
+
+<#RadiumCheung>
+	rdf:type schema:Person;
+	schema:name "Radium Cheung".
+
+<#BillyChow>
+	rdf:type schema:Person;
+	schema:name "Billy Chow".
+
+<#PaulChun>
+	rdf:type schema:Person;
+	schema:name "Paul Chun".
+
+<#VincentKok>
+	rdf:type schema:Person;
+	schema:name "Vincent Kok".
+
+<#LeoKu>
+	rdf:type schema:Person;
+	schema:name "Leo Ku".
+
+<#BeiDakLai>
+	rdf:type schema:Person;
+	schema:name "BeiDak Lai".
+
+<#BenLam>
+	rdf:type schema:Person;
+	schema:name "Ben Lam".
+
+<#LikChiLee>
+	rdf:type schema:Person;
+	schema:name "LikChi Lee".
+
+<#tt0110852-aggregateRating>
+	schema:ratingCount 2,023;
+	schema:ratingValue 6.9;
+	schema:bestRating 10;
+	schema:itemReviewed <#tt0110852>.
+
+<#tt0110852>
+	rdf:type schema:Movie;
+	schema:identifier "tt0110852";
+	schema:name "Love on Delivery (1994)";
+	schema:duration "1h40min";
+	schema:dateCreated "1994";
+	schema:text "    Ho KamAn is a love struck dimsum delivery boy who falls for a beautiful judo student. After being humiliated by her boyfriend Ho KamAn goes out and seeks the services of an aging kungfu master who teaches him a half ass style of kung fu Karate Kid style. After actually learning how to fight using this style much to the master's surprise he dresses up like Garfield and beats up the boyfriend of the beautiful judo student. But he's challenged to a fight by the master's former foe. Is Ho KamAn up to the challenge?";
+	schema:aggregateRating <#tt0110852-aggregateRating>;
+	schema:actor "Stephen Chow";
+	schema:actor "Christy Chung";
+	schema:actor "ManTat Ng";
+	schema:actor "Philip Chan";
+	schema:actor "Joe Cheng";
+	schema:actor "KaSang Cheng";
+	schema:actor "Jacky Cheung";
+	schema:actor "Radium Cheung";
+	schema:actor "Billy Chow";
+	schema:actor "Paul Chun";
+	schema:actor "Vincent Kok";
+	schema:actor "Leo Ku";
+	schema:actor "BeiDak Lai";
+	schema:actor "Ben Lam";
+	schema:actor "LikChi Lee";
+	schema:image "https://m.media-amazon.com/images/M/MV5BMWIwMDFiMGMtZjE2My00YWM5LTg4ZDgtNTZjNWY5MjI0NWNjXkEyXkFqcGdeQXVyNjAwNjg0MTM@._V1_UY1200_CR115,0,630,1200_AL_.jpg".
+
+<#tt0110852-gorthu>
+	schema:about <#tt0110852>;
+	schema:author "gorthu";
+	schema:dateCreated "Sat Apr 18 2009 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 8;
+	schema:headline " One of Chow's very best. Right up there with Forbidden City Cop Fight Back to School 1 and 2 and Shaolin Soccer";
+	schema:reviewBody "Christy Chung stars as a Judo student and her teacher feels that he should be able to have her. Since she knows that she can have anybody she decides to play around with her teacher and Stephen Chow shows up at just the right moment to get asked out to a Jacky Cheung concert right in front of the Judo teacher. In a poop involved confrontation the teacher accidentally hits Chritsy in the face and Chow doesn't stand up for her. He says that he loves her dearly but she won't date a coward. He starts training in kung fu and like all Chow movies there is no training and this is just a reason for more comedy. They drag the story out with tons of hilarious stunts and jokes. So after briefly learning kung fu Chow sort of gets lucky against the Judo master where he fights him in a Garfield mask. After saving Christy from possibly being rapedd he ends up losing credit for his good deed and she finds a boyfriend in no time. One that can protect her that is. This guy just kind of shows up to get rid of all types of martial arts since his Karate is so superior. He also takes the credit for being the masked Garfield hero and Chow ends up having to fight him in a contest.There are 3 fight scenes. The first one is played for laughs the second is a huge throwdown and one of the very few times I found myself rewinding a Stephen Chow movie for the action. A lot of effort was put into this scene and that is for sure. The final battle in the arena is a mix of comedy and realism. Some of the choreography is good and MMA is put to good use. Chow never does end up learning kung fu so he has to defeat his enemy by using his wit. Luckily he did do some weird training on top of a moving van and it proves to be very useful. The gags never stop. Another Stephen Chow classic.".
+
+<#tt0110852-gorthu-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "Christy Chung stars as a Judo student and her teacher feels that he should be able to have her. Since she knows that she can have anybody she decides to play around with her teacher and Stephen Chow shows up at just the right moment to get asked out to a Jacky Cheung concert right in front of the Judo teacher. In a poop involved confrontation the teacher accidentally hits Chritsy in the face and Chow doesn't stand up for her. He says that he loves her dearly but she won't date a coward. He starts training in kung fu and like all Chow movies there is no training and this is just a reason for more comedy. They drag the story out with tons of hilarious stunts and jokes. So after briefly learning kung fu Chow sort of gets lucky against the Judo master where he fights him in a Garfield mask. After saving Christy from possibly being rapedd he ends up losing credit for his good deed and she finds a boyfriend in no time. One that can protect her that is. This guy just kind of shows up to get rid of all types of martial arts since his Karate is so superior. He also takes the credit for being the masked Garfield hero and Chow ends up having to fight him in a contest.There are 3 fight scenes. The first one is played for laughs the second is a huge throwdown and one of the very few times I found myself rewinding a Stephen Chow movie for the action. A lot of effort was put into this scene and that is for sure. The final battle in the arena is a mix of comedy and realism. Some of the choreography is good and MMA is put to good use. Chow never does end up learning kung fu so he has to defeat his enemy by using his wit. Luckily he did do some weird training on top of a moving van and it proves to be very useful. The gags never stop. Another Stephen Chow classic.";
+	onyx:describesObject <#tt0110852>;
+	onyx:hasEmotion <#Hate>;
+	prov:Entity <#tt0110852-gorthu>.
+
+<#tt0110852-gorthu-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "http://www.imdb.com/title/tt0110852/reviews";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#tt0110852-gorthu-sentiment>.
+
+<#tt0110852-Captain_Couth>
+	schema:about <#tt0110852>;
+	schema:author "Captain_Couth";
+	schema:dateCreated "Wed May 19 2010 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 9;
+	schema:headline " Love on Delivery";
+	schema:reviewBody "Love on Delivery stars Stephen Chow as Ho a wimpy delivery boy who falls in love with Lily Christy Chung a kungfu student. But her instructor Black Bear Joe Cheng has been trying to court her and butts heads with Ho. Black Bear challenges Ho to a fight but the cowardly Ho ducks when Black Bear tried to punch him hitting Lily instead. Humiliated by such a display of cowardice Ho turns to a broken down kungfu master Tat Ng Man Tat to teach him the art of fighting But Tat's unconventional methods of training may not be as effective as they seem.A funny and violent film starring Stephen Chow who also wrote the screenplay. The beautiful Christy Chung costars who speaks her dialog phonetically. The always interesting Ben Lam costars as Tuen an invincible Karate master who believes karate is better than kungfu and will do whatever he has to do to prove it. Jacky Cheung Philip Chan and Billy Chow make cameo appearances as well. The wild fight scenes were directed by Ching Siutung who also codirected the film. The film parodies Rocky Rocky III The Terminator Garfield aka Ga Fei Miao and the Karate Kid series. Tat wears a wifebeater just like Miyagi Chow tries to master the crane kick as well. A funny and more realistic version of the film as well. A couple of music videos are worked into the film as well which are pretty funny. Remember being a good fighter is not all about how strong you are but how to out wit your opponent.Highly recommended.".
+
+<#tt0110852-Captain_Couth-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "Love on Delivery stars Stephen Chow as Ho a wimpy delivery boy who falls in love with Lily Christy Chung a kungfu student. But her instructor Black Bear Joe Cheng has been trying to court her and butts heads with Ho. Black Bear challenges Ho to a fight but the cowardly Ho ducks when Black Bear tried to punch him hitting Lily instead. Humiliated by such a display of cowardice Ho turns to a broken down kungfu master Tat Ng Man Tat to teach him the art of fighting But Tat's unconventional methods of training may not be as effective as they seem.A funny and violent film starring Stephen Chow who also wrote the screenplay. The beautiful Christy Chung costars who speaks her dialog phonetically. The always interesting Ben Lam costars as Tuen an invincible Karate master who believes karate is better than kungfu and will do whatever he has to do to prove it. Jacky Cheung Philip Chan and Billy Chow make cameo appearances as well. The wild fight scenes were directed by Ching Siutung who also codirected the film. The film parodies Rocky Rocky III The Terminator Garfield aka Ga Fei Miao and the Karate Kid series. Tat wears a wifebeater just like Miyagi Chow tries to master the crane kick as well. A funny and more realistic version of the film as well. A couple of music videos are worked into the film as well which are pretty funny. Remember being a good fighter is not all about how strong you are but how to out wit your opponent.Highly recommended.";
+	onyx:describesObject <#tt0110852>;
+	onyx:hasEmotion <#Dislike>;
+	prov:Entity <#tt0110852-Captain_Couth>.
+
+<#tt0110852-Captain_Couth-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "http://www.imdb.com/title/tt0110852/reviews";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#tt0110852-Captain_Couth-sentiment>.
+
+<#tt0110852-Dan_Harkless>
+	schema:about <#tt0110852>;
+	schema:author "Dan_Harkless";
+	schema:dateCreated "Thu Oct 14 1999 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 8;
+	schema:headline " The funniest Hong Kong movie I've seen";
+	schema:reviewBody "This is the funniest Hong Kong movie I've seen though I've only seen a few dozen  even better than Jackie Chan's stuff.  In fact it's one of the funniest comedies of any kind that I've seen.The scene where the seemingly indestructable hero keeps popping up fists on his hips in a Superman pose wearing that incredibly ridiculous Gar Fai AKA Jim Davis' Garfield mask is to die for.".
+
+<#tt0110852-Dan_Harkless-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "This is the funniest Hong Kong movie I've seen though I've only seen a few dozen  even better than Jackie Chan's stuff.  In fact it's one of the funniest comedies of any kind that I've seen.The scene where the seemingly indestructable hero keeps popping up fists on his hips in a Superman pose wearing that incredibly ridiculous Gar Fai AKA Jim Davis' Garfield mask is to die for.";
+	onyx:describesObject <#tt0110852>;
+	onyx:hasEmotion <#Anger>;
+	prov:Entity <#tt0110852-Dan_Harkless>.
+
+<#tt0110852-Dan_Harkless-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "http://www.imdb.com/title/tt0110852/reviews";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#tt0110852-Dan_Harkless-sentiment>.
+
+<#tt0110852-juubei_2>
+	schema:about <#tt0110852>;
+	schema:author "juubei_2";
+	schema:dateCreated "Tue Aug 08 2006 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 7;
+	schema:headline " Its a bird... its a plane its... Garfield?!";
+	schema:reviewBody "Stephen Chow is a comedic genius. Sure Love on Delivery can at times be childish or even banal but the overall effect is one of sheer insanity of the best kind. One of my favorite scenes is the satire of the Terminator. The characters are genuinely funny caricatures of the down on his luck loser deliveryboy the dreamy lover girl the pennypinching boss the cocky martial arts instructor the dirty cheat out to make a quick buck and many more.Like Shaolin Soccer Chow manages to create a mindless romantic comedy mixed with chopsocky martial arts and it works but expect something more like a cartoon that your typical western comedy.".
+
+<#tt0110852-juubei_2-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "Stephen Chow is a comedic genius. Sure Love on Delivery can at times be childish or even banal but the overall effect is one of sheer insanity of the best kind. One of my favorite scenes is the satire of the Terminator. The characters are genuinely funny caricatures of the down on his luck loser deliveryboy the dreamy lover girl the pennypinching boss the cocky martial arts instructor the dirty cheat out to make a quick buck and many more.Like Shaolin Soccer Chow manages to create a mindless romantic comedy mixed with chopsocky martial arts and it works but expect something more like a cartoon that your typical western comedy.";
+	onyx:describesObject <#tt0110852>;
+	onyx:hasEmotion <#Anxiety>;
+	prov:Entity <#tt0110852-juubei_2>.
+
+<#tt0110852-juubei_2-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "http://www.imdb.com/title/tt0110852/reviews";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#tt0110852-juubei_2-sentiment>.
+
+<#tt0110852-ChungMo>
+	schema:about <#tt0110852>;
+	schema:author "ChungMo";
+	schema:dateCreated "Sun Feb 12 2006 00:00:00 GMT+0100 (Central European Standard Time)";
+	schema:reviewRating 9;
+	schema:headline " Another example of why Chow is a classic comedian";
+	schema:reviewBody "Not knowing any of Chow's films before seeing Shaolin Soccer I only heard about this HK comic actor and thought he was just another of the typical broad comedians that come out of the HK film industry. Shaolin Soccer was a real revelation but it could have been a unique instance. Kung Fu Hustle showed me that he was an accomplished comedic talent. I have been trying to find his earlier films and am finally succeeding. I encourage you to do the same.There's a lot to compare Chow with the classic comedians of the US film industry. Unlike Jacky Chan who has publicly stated his fondness for Buster Keaton Chow seems to be more related to Harold Lloyd style. A low key personality in crazy situations. Unlike Chan and many other HK performers Chow never forces his personality over the top. He surrounds himself with inventive situations and great supporting characters. The one unique aspect about Chow is the philosophic nature of many of the characters he plays. This film is a good example. Lots of very good comic situations and a great climax. The main drawback is the overused wideangle cinematography which make the film look cheaper then it should. This film has a lot in common with his more famous films so it should be enjoyable.Good time.".
+
+<#tt0110852-ChungMo-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "Not knowing any of Chow's films before seeing Shaolin Soccer I only heard about this HK comic actor and thought he was just another of the typical broad comedians that come out of the HK film industry. Shaolin Soccer was a real revelation but it could have been a unique instance. Kung Fu Hustle showed me that he was an accomplished comedic talent. I have been trying to find his earlier films and am finally succeeding. I encourage you to do the same.There's a lot to compare Chow with the classic comedians of the US film industry. Unlike Jacky Chan who has publicly stated his fondness for Buster Keaton Chow seems to be more related to Harold Lloyd style. A low key personality in crazy situations. Unlike Chan and many other HK performers Chow never forces his personality over the top. He surrounds himself with inventive situations and great supporting characters. The one unique aspect about Chow is the philosophic nature of many of the characters he plays. This film is a good example. Lots of very good comic situations and a great climax. The main drawback is the overused wideangle cinematography which make the film look cheaper then it should. This film has a lot in common with his more famous films so it should be enjoyable.Good time.";
+	onyx:describesObject <#tt0110852>;
+	onyx:hasEmotion <#Ingratitude>;
+	prov:Entity <#tt0110852-ChungMo>.
+
+<#tt0110852-ChungMo-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "http://www.imdb.com/title/tt0110852/reviews";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#tt0110852-ChungMo-sentiment>.
+
+<#tt0110852-AnimePunk23>
+	schema:about <#tt0110852>;
+	schema:author "AnimePunk23";
+	schema:dateCreated "Fri Oct 05 2018 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 6;
+	schema:headline " Crazy funny!";
+	schema:reviewBody "This movie is a blast to watch with someone! it's so funny was not expecting all the laughs".
+
+<#tt0110852-AnimePunk23-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "This movie is a blast to watch with someone! it's so funny was not expecting all the laughs";
+	onyx:describesObject <#tt0110852>;
+	onyx:hasEmotion <#Humility>;
+	prov:Entity <#tt0110852-AnimePunk23>.
+
+<#tt0110852-AnimePunk23-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "http://www.imdb.com/title/tt0110852/reviews";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#tt0110852-AnimePunk23-sentiment>.
+
+<#tt0110852-Wizard_8>
+	schema:about <#tt0110852>;
+	schema:author "Wizard_8";
+	schema:dateCreated "Sun Sep 02 2018 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 6;
+	schema:headline " Crazy but fun";
+	schema:reviewBody "If you are not familiar with the goofball style of Hong Kong comedies you probably won't be prepared for what you'll see showcased in Love on Deliver. But even if you do have some familiarity with Hong Kong comedies there's still a good chance you won't be prepared for what you'll see here. The closest I can get to describing the comedy here is the style of American comedian Jerry Lewis... ramped up to about 100 times the level what Lewis was able to do. The results are certainly outlandish and insane... but I admit that I did find enough here that did tickle my funny bone. Even during the times that the humor is just weird without being funny the craziness and wondering what new turn will happen in the story kept me watching. Yes those more familiar with Asian culture will probably get a lot more out of it but even those who are dipping their toe into Asian comedy for the first time will still find it an unforgettable experience... and they'll probably laugh at least a few times to make it worth their time.".
+
+<#tt0110852-Wizard_8-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "If you are not familiar with the goofball style of Hong Kong comedies you probably won't be prepared for what you'll see showcased in Love on Deliver. But even if you do have some familiarity with Hong Kong comedies there's still a good chance you won't be prepared for what you'll see here. The closest I can get to describing the comedy here is the style of American comedian Jerry Lewis... ramped up to about 100 times the level what Lewis was able to do. The results are certainly outlandish and insane... but I admit that I did find enough here that did tickle my funny bone. Even during the times that the humor is just weird without being funny the craziness and wondering what new turn will happen in the story kept me watching. Yes those more familiar with Asian culture will probably get a lot more out of it but even those who are dipping their toe into Asian comedy for the first time will still find it an unforgettable experience... and they'll probably laugh at least a few times to make it worth their time.";
+	onyx:describesObject <#tt0110852>;
+	onyx:hasEmotion <#Compassion>;
+	prov:Entity <#tt0110852-Wizard_8>.
+
+<#tt0110852-Wizard_8-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "http://www.imdb.com/title/tt0110852/reviews";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#tt0110852-Wizard_8-sentiment>.
+
+<#tt0110852-Leofwine_draca>
+	schema:about <#tt0110852>;
+	schema:author "Leofwine_draca";
+	schema:dateCreated "Wed Dec 21 2016 00:00:00 GMT+0100 (Central European Standard Time)";
+	schema:reviewRating 7;
+	schema:headline " Stephen Chow comedy is madcap and likable";
+	schema:reviewBody "I know that Stephen Chow is an acquired taste in the west due to the fact that his Hong Kong comedies feature very Chinesestyle humour which takes some getting used to. LOVE ON DELIVERY is no exception a farcical and furious madcap comedy about a downtrodden delivery boy who falls in love and gets involved in a wideranging storyline involving martial arts champions.I'm pleased to say that this is one of the better Chow comedies I've seen up there with FROM BEIJING WITH LOVE and much better than the last one I saw the wearying MAD MONK. It's not up with the highs of SHAOLIN SOCCER or KUNG FU HUSTLE but it never disappoints and it remains entertaining from beginning to end. The jokes come thick and fast and most hit home. I love the breadth of humour from surrealism to outandout Japanesestyle wackiness pratfalls and slapstick. Even the low brow humour like a scene involving dog's mess really works.Chow can be relied upon to always give everything in these performances and just watching him act makes you feel tired at how much he achieves. The action stuff here features some incredible stunt scenes and physicsdefying moments and is very good. The random cameos from Jacky Cheung Billy Chow and Philip Chan are much appreciated and Ben Lam makes for a suitably imposing antagonist. If you love Stephen Chow you're going to adore LOVE ON DELIVERY.".
+
+<#tt0110852-Leofwine_draca-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "I know that Stephen Chow is an acquired taste in the west due to the fact that his Hong Kong comedies feature very Chinesestyle humour which takes some getting used to. LOVE ON DELIVERY is no exception a farcical and furious madcap comedy about a downtrodden delivery boy who falls in love and gets involved in a wideranging storyline involving martial arts champions.I'm pleased to say that this is one of the better Chow comedies I've seen up there with FROM BEIJING WITH LOVE and much better than the last one I saw the wearying MAD MONK. It's not up with the highs of SHAOLIN SOCCER or KUNG FU HUSTLE but it never disappoints and it remains entertaining from beginning to end. The jokes come thick and fast and most hit home. I love the breadth of humour from surrealism to outandout Japanesestyle wackiness pratfalls and slapstick. Even the low brow humour like a scene involving dog's mess really works.Chow can be relied upon to always give everything in these performances and just watching him act makes you feel tired at how much he achieves. The action stuff here features some incredible stunt scenes and physicsdefying moments and is very good. The random cameos from Jacky Cheung Billy Chow and Philip Chan are much appreciated and Ben Lam makes for a suitably imposing antagonist. If you love Stephen Chow you're going to adore LOVE ON DELIVERY.";
+	onyx:describesObject <#tt0110852>;
+	onyx:hasEmotion <#Daze>;
+	prov:Entity <#tt0110852-Leofwine_draca>.
+
+<#tt0110852-Leofwine_draca-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "http://www.imdb.com/title/tt0110852/reviews";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#tt0110852-Leofwine_draca-sentiment>.
+
+<#tt0110852-ganbare1>
+	schema:about <#tt0110852>;
+	schema:author "ganbare1";
+	schema:dateCreated "Sat Dec 30 2000 00:00:00 GMT+0100 (Central European Standard Time)";
+	schema:headline " So mindlessly funny it borders on childishness";
+	schema:reviewBody "Don't expect any kind of substance in this film or in most of Chow's films.  Directorproducer Wong Jing has a knack for putting together ridiculously shallow but hilarious plotlines and throw them altogether like the way one tosses a salad.  This film is no different.  However if you like Chow or if you like whacky comedies then you won't be disappointed it sure has some ridiculously funny moments.".
+
+<#tt0110852-ganbare1-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "Don't expect any kind of substance in this film or in most of Chow's films.  Directorproducer Wong Jing has a knack for putting together ridiculously shallow but hilarious plotlines and throw them altogether like the way one tosses a salad.  This film is no different.  However if you like Chow or if you like whacky comedies then you won't be disappointed it sure has some ridiculously funny moments.";
+	onyx:describesObject <#tt0110852>;
+	onyx:hasEmotion <#Sadness>;
+	prov:Entity <#tt0110852-ganbare1>.
+
+<#tt0110852-ganbare1-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "http://www.imdb.com/title/tt0110852/reviews";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#tt0110852-ganbare1-sentiment>.

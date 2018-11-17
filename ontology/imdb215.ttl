@@ -1,0 +1,206 @@
+@base <http://movie.chatbot.org/>.
+@prefix schema: <http://schema.org/>.
+@prefix onyx: <http://www.gsi.dit.upm.es/ontologies/onyx/ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix prov: <http://www.w3.org/ns/prov#>.
+@prefix wnaffect: <http://www.gsi.dit.upm.es/ontologies/wnaffect/ns#>.
+
+<#Hate>
+	onyx:hasEmotionCategory wnaffect:Hate.
+
+<#Dislike>
+	onyx:hasEmotionCategory wnaffect:Dislike.
+
+<#Anger>
+	onyx:hasEmotionCategory wnaffect:Anger.
+
+<#Anxiety>
+	onyx:hasEmotionCategory wnaffect:Anxiety.
+
+<#Ingratitude>
+	onyx:hasEmotionCategory wnaffect:Ingratitude.
+
+<#Humility>
+	onyx:hasEmotionCategory wnaffect:Humility.
+
+<#Compassion>
+	onyx:hasEmotionCategory wnaffect:Compassion.
+
+<#Daze>
+	onyx:hasEmotionCategory wnaffect:Daze.
+
+<#Sadness>
+	onyx:hasEmotionCategory wnaffect:Sadness.
+
+<#Negative-Fear>
+	onyx:hasEmotionCategory wnaffect:Negative-Fear.
+
+<#Despair>
+	onyx:hasEmotionCategory wnaffect:Despair.
+
+<#Shame>
+	onyx:hasEmotionCategory wnaffect:Shame.
+
+<#Love>
+	onyx:hasEmotionCategory wnaffect:Love.
+
+<#Calmness>
+	onyx:hasEmotionCategory wnaffect:Calmness.
+
+<#Affection>
+	onyx:hasEmotionCategory wnaffect:Affection.
+
+<#Self-Pride>
+	onyx:hasEmotionCategory wnaffect:Self-Pride.
+
+<#Enthusiasm>
+	onyx:hasEmotionCategory wnaffect:Enthusiasm.
+
+<#Positivie-Fear>
+	onyx:hasEmotionCategory wnaffect:Positivie-Fear.
+
+<#Liking>
+	onyx:hasEmotionCategory wnaffect:Liking.
+
+<#Joy>
+	onyx:hasEmotionCategory wnaffect:Joy.
+
+<#Positive-Expectation>
+	onyx:hasEmotionCategory wnaffect:Positive-Expectation.
+
+<#Fearlessness>
+	onyx:hasEmotionCategory wnaffect:Fearlessness.
+
+<#Positive-Hope>
+	onyx:hasEmotionCategory wnaffect:Positive-Hope.
+
+<#Levity>
+	onyx:hasEmotionCategory wnaffect:Levity.
+
+<#Gratitude>
+	onyx:hasEmotionCategory wnaffect:Gratitude.
+
+<#Neutral-Unconcern>
+	onyx:hasEmotionCategory wnaffect:Neutral-Unconcern.
+
+<#Apathy>
+	onyx:hasEmotionCategory wnaffect:Apathy.
+
+<#Surprise>
+	onyx:hasEmotionCategory wnaffect:Surprise.
+
+<#Ambiguous-Agitation>
+	onyx:hasEmotionCategory wnaffect:Ambiguous-Agitation.
+
+<#SussilaCourDollenz>
+	rdf:type schema:Person;
+	schema:name "Sussi la Cour Dollenz".
+
+<#AndersNyborg>
+	rdf:type schema:Person;
+	schema:name "Anders Nyborg".
+
+<#AlbertoRey>
+	rdf:type schema:Person;
+	schema:name "Alberto Rey".
+
+<#MarkDuran>
+	rdf:type schema:Person;
+	schema:name "Mark Duran".
+
+<#Mr.Marcus>
+	rdf:type schema:Person;
+	schema:name "Mr. Marcus".
+
+<#EvilEve>
+	rdf:type schema:Person;
+	schema:name "Evil Eve".
+
+<#ThorbjrnKjrbo>
+	rdf:type schema:Person;
+	schema:name "Thorbjrn Kjrbo".
+
+<#RonnyNielsen>
+	rdf:type schema:Person;
+	schema:name "Ronny Nielsen".
+
+<#OleChristensen>
+	rdf:type schema:Person;
+	schema:name "Ole Christensen".
+
+<#NielsAalbkJensen>
+	rdf:type schema:Person;
+	schema:name "Niels Aalbk Jensen".
+
+<#MarcMain>
+	rdf:type schema:Person;
+	schema:name "Marc Main".
+
+<#CasperJrgensen>
+	rdf:type schema:Person;
+	schema:name "Casper Jrgensen".
+
+<#RolfMesserschmidt>
+	rdf:type schema:Person;
+	schema:name "Rolf Messerschmidt".
+
+<#HenrietteBjrnholtSchou>
+	rdf:type schema:Person;
+	schema:name "Henriette Bjrnholt Schou".
+
+<#TineLnborg>
+	rdf:type schema:Person;
+	schema:name "Tine Lnborg".
+
+<#tt0221479-aggregateRating>
+	schema:ratingCount 206;
+	schema:ratingValue 3.9;
+	schema:bestRating 10;
+	schema:itemReviewed <#tt0221479>.
+
+<#tt0221479>
+	rdf:type schema:Movie;
+	schema:identifier "tt0221479";
+	schema:name "Pink Prison (Video 1999)";
+	schema:duration "1h27min";
+	schema:dateCreated "1999";
+	schema:text "    36year old Mila makes a bet that she can make a photoreport from inside the Pink Prison. She does not manage to get in legally but at night she breaks into the prison. This is the start of a different erotic adventures.";
+	schema:aggregateRating <#tt0221479-aggregateRating>;
+	schema:actor "Sussi la Cour Dollenz";
+	schema:actor "Anders Nyborg";
+	schema:actor "Alberto Rey";
+	schema:actor "Mark Duran";
+	schema:actor "Mr. Marcus";
+	schema:actor "Evil Eve";
+	schema:actor "Thorbjrn Kjrbo";
+	schema:actor "Ronny Nielsen";
+	schema:actor "Ole Christensen";
+	schema:actor "Niels Aalbk Jensen";
+	schema:actor "Marc Main";
+	schema:actor "Casper Jrgensen";
+	schema:actor "Rolf Messerschmidt";
+	schema:actor "Henriette Bjrnholt Schou";
+	schema:actor "Tine Lnborg";
+	schema:image "https://m.media-amazon.com/images/G/01/imdb/images-ANDW73HA/imdb_fb_logo._CB1542065250_.png".
+
+<#tt0221479-Nodriesrespect>
+	schema:about <#tt0221479>;
+	schema:author "Nodriesrespect";
+	schema:dateCreated "Sat Feb 14 2009 00:00:00 GMT+0100 (Central European Standard Time)";
+	schema:reviewRating 9;
+	schema:headline " Unchain My Heart...and My Loins Will Follow !";
+	schema:reviewBody "Nowadays mostly regarded as the stillborn publicity stunt of compulsive agent provocateur Lars Von Trier Puzzy Power was an offshoot of his Zentropa production company which proclaimed to purvey more female friendly fornication fare with an earnestness as severe  and equally fake  as that of his previously implemented Dogme Manifesto which advocated a return to cinematic purity. Their first foray the period piece CONSTANCE mainly proved that its director the far from female Knud Vesterskov had no idea of what women actually desired from explicit erotica beyond hazy Mills  Boon type bodiceripping. Vesterskov seemed marginally better suited to the label's sole yet maddeningly uneven gay release HOTMEN COOLBOYZ. With a whopping grand total of three ! titles Puzzy Power ultimately gave way to producer Peter Aalbaek Jensen's shortlived Innocent Pictures perpetrator of Jessica Nilsson's distinctly underwhelming ALL ABOUT ANNA. Fortunately though they did get the recipe right at least once starting by bringing in a filmmaker of the appropriate gender Lysbeth Lynghft who came from a theatrical background prior to landing a position at the Scandinavian branch of MTV.Rather a big deal was made of the fact that PINK PRISON's main character Mila was supposedly 36 therefore considerably older than the average female porn protagonist never mind that she's played by an actress Katja Kean who's considerably closer to the glamorous stereotype and about half a decade younger ! A journalist slash photographer she makes a wager with her amorous editor Yasia Anders Nyborg that she can secure an interview with the elusive Governor who runs the eponymous male prison. Denied entrance Mila sneaks in through the air vent which effectively transforms the narrative into a variation on Alice in Wonderland as various archetypes guide her on her quest to meet the mysterious man in charge. Handcuffed by monolithic guard Alberto Rey she's literally liberated by the prison's Chef Mr. Marcus who gently blows on an ice cube to reveal the tiny key that unlocks her shackles in a beguiling mixture of dream logic and matter of fact fairy tale quality unerringly true to its literary example.The sexual content  satisfyingly explicit whilst refusing to get bogged down by excessive genital closeups  runs the gamut from the almost violently passionate grope with Rey to the tender lovemaking of Mr. Marcus with 9 AND A HALF WEEKS type food play. Mischievously the movie's initial erotic footage is of solitary Michael American Marc Duran also in Jacques Nolot's transgressive art house offering CHATTE A DEUX TETES portraying the film's facsimile of the White Rabbit intently caressing his muscular physique immediately followed by a desperate albeit simulated man to man encounter straight out of Jean Genet imagery clearly designed to reel in the female viewer while rendering her companion possibly queasy. Best of show would have to be Katja's bluetinged shower room fantasy where she's presented with three seemingly disinterested platinumtopped pretty boys among them Ray Srensen aka Ronny Nielsen from Mike Beck's VIKING LEGEND and JANE BOMB who grow increasingly animated through our heroine's insistent attentions. Not too surprisingly the Governor turns out to be a woman the sturdy Evil Eve who was in Beck's SEXSEMESTERN. Applying a strapon to the strapped down Mila she ultimately ushers in Michael to deliver on the sustained featurelength tease.Every aspect of production has been handled with consummate care. The crystalclear camera work makes compelling use of light and shadow and Nils Lassen's eclectic soundtrack can actually be enjoyed rather than endured. Reducing her characters to fictional figures coded by costume Lynghft has made sure not to tax her cast's abilities too much yet still accords them the attention required to make them flourish as performers. Kean in particular so often the prototypical ice goddess rewards these efforts with a passionfilled tour de force that justifies and cements her superstar status.".
+
+<#tt0221479-Nodriesrespect-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "Nowadays mostly regarded as the stillborn publicity stunt of compulsive agent provocateur Lars Von Trier Puzzy Power was an offshoot of his Zentropa production company which proclaimed to purvey more female friendly fornication fare with an earnestness as severe  and equally fake  as that of his previously implemented Dogme Manifesto which advocated a return to cinematic purity. Their first foray the period piece CONSTANCE mainly proved that its director the far from female Knud Vesterskov had no idea of what women actually desired from explicit erotica beyond hazy Mills  Boon type bodiceripping. Vesterskov seemed marginally better suited to the label's sole yet maddeningly uneven gay release HOTMEN COOLBOYZ. With a whopping grand total of three ! titles Puzzy Power ultimately gave way to producer Peter Aalbaek Jensen's shortlived Innocent Pictures perpetrator of Jessica Nilsson's distinctly underwhelming ALL ABOUT ANNA. Fortunately though they did get the recipe right at least once starting by bringing in a filmmaker of the appropriate gender Lysbeth Lynghft who came from a theatrical background prior to landing a position at the Scandinavian branch of MTV.Rather a big deal was made of the fact that PINK PRISON's main character Mila was supposedly 36 therefore considerably older than the average female porn protagonist never mind that she's played by an actress Katja Kean who's considerably closer to the glamorous stereotype and about half a decade younger ! A journalist slash photographer she makes a wager with her amorous editor Yasia Anders Nyborg that she can secure an interview with the elusive Governor who runs the eponymous male prison. Denied entrance Mila sneaks in through the air vent which effectively transforms the narrative into a variation on Alice in Wonderland as various archetypes guide her on her quest to meet the mysterious man in charge. Handcuffed by monolithic guard Alberto Rey she's literally liberated by the prison's Chef Mr. Marcus who gently blows on an ice cube to reveal the tiny key that unlocks her shackles in a beguiling mixture of dream logic and matter of fact fairy tale quality unerringly true to its literary example.The sexual content  satisfyingly explicit whilst refusing to get bogged down by excessive genital closeups  runs the gamut from the almost violently passionate grope with Rey to the tender lovemaking of Mr. Marcus with 9 AND A HALF WEEKS type food play. Mischievously the movie's initial erotic footage is of solitary Michael American Marc Duran also in Jacques Nolot's transgressive art house offering CHATTE A DEUX TETES portraying the film's facsimile of the White Rabbit intently caressing his muscular physique immediately followed by a desperate albeit simulated man to man encounter straight out of Jean Genet imagery clearly designed to reel in the female viewer while rendering her companion possibly queasy. Best of show would have to be Katja's bluetinged shower room fantasy where she's presented with three seemingly disinterested platinumtopped pretty boys among them Ray Srensen aka Ronny Nielsen from Mike Beck's VIKING LEGEND and JANE BOMB who grow increasingly animated through our heroine's insistent attentions. Not too surprisingly the Governor turns out to be a woman the sturdy Evil Eve who was in Beck's SEXSEMESTERN. Applying a strapon to the strapped down Mila she ultimately ushers in Michael to deliver on the sustained featurelength tease.Every aspect of production has been handled with consummate care. The crystalclear camera work makes compelling use of light and shadow and Nils Lassen's eclectic soundtrack can actually be enjoyed rather than endured. Reducing her characters to fictional figures coded by costume Lynghft has made sure not to tax her cast's abilities too much yet still accords them the attention required to make them flourish as performers. Kean in particular so often the prototypical ice goddess rewards these efforts with a passionfilled tour de force that justifies and cements her superstar status.";
+	onyx:describesObject <#tt0221479>;
+	onyx:hasEmotion <#Hate>;
+	prov:Entity <#tt0221479-Nodriesrespect>.
+
+<#tt0221479-Nodriesrespect-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "http://www.imdb.com/title/tt0221479/reviews";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#tt0221479-Nodriesrespect-sentiment>.
