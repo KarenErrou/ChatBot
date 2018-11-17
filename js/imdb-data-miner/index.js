@@ -1,9 +1,10 @@
+exports.mine = function(config){
 const rp = require("request-promise");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
 // setup configs
-var config = require('./config.json');
+//var config = require('./config.json');
 
 // target urls
 var targets = [];
@@ -29,21 +30,25 @@ ids = Array.from(ids_set);
 /* save ids back to file */
 var idsjson = JSON.stringify(ids);
 const fs = require('fs');
-fs.writeFile(file, idsjson, 'utf8', (err)=>{
-	if (err) throw err;
-});
+fs.writeFileSync(file, idsjson);
 
 /* get target entity information */
 var entities = []
-for (var key in config.target_entities) {
-
-	// ignore meta properties
-	if (!config.target_entities.hasOwnProperty(key))
-		continue;
-	var tags_file = config.target_entities[key].tags;
-	config.target_entities[key].tags = require(tags_file);
-	entities.push(config.target_entities[key]);
-}
+//for (var key in config.target_entities) {
+//
+//	// ignore meta properties
+//	if (!config.target_entities.hasOwnProperty(key))
+//		continue;
+//	//var tags_file = config.target_entities[key].tags;
+//	//console.log(tags_file);
+//	//config.target_entities[key].tags = require(tags_file);
+//	config.target_entities[key].tags = require('./tags/movies.json');
+//	entities.push(config.target_entities[key]);
+//}
+config.target_entities["movies"].tags = require('./tags/movies.json');
+config.target_entities["reviews"].tags = require('./tags/reviews.json');
+entities.push(config.target_entities["movies"]);
+entities.push(config.target_entities["reviews"]);
 
 entities.forEach(function(entity){
 	targets.forEach(function(target){
@@ -119,9 +124,7 @@ entities.forEach(function(entity){
 				var file = entity.save_dir+target+'.json';
 				var samplejson = JSON.stringify(sample);
 				const fs = require('fs');
-				fs.writeFile(file, samplejson, 'utf8', (err)=>{
-					if (err) throw err;
-				});
+				fs.writeFileSync(file, samplejson);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -129,3 +132,4 @@ entities.forEach(function(entity){
 			});	
 	});
 });
+}
