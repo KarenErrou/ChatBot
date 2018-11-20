@@ -14,17 +14,82 @@ config.sources.forEach(function(entry){
 	var movies = config.data_dir + entry.source + '/movies/';
 	var reviews = config.data_dir + entry.source + '/reviews/';
 
-	rdf.makeBase('http://movie.chatbot.org/');
+	//rdf.makeBase('http://movie.chatbot.org/');
 
 	const prefixes = {
+		mcb: "http://movie.chatbot.org/",
 		schema: "http://schema.org/",
 		onyx: "http://www.gsi.dit.upm.es/ontologies/onyx/ns#",
 		rdfs: "http://www.w3.org/2000/01/rdf-schema#",
 		rdf: "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
 		prov: "http://www.w3.org/ns/prov#",
-		wnaffect: "http://www.gsi.dit.upm.es/ontologies/wnaffect/ns#"
+		wnaffect: "http://www.gsi.dit.upm.es/ontologies/wnaffect/ns#",
+		xsd: "http://www.w3.org/2001/XMLSchema",
+		owl: "http://www.w3.org/2002/07/owl"
 	};
 	rdf.makePrefixes(prefixes);
+
+	/* object properties */
+
+ 	// The domain of schema:actor is a movie
+	rdf.makeConcept('mcb:hasActor');
+	rdf.extendConcept('rdf:type','owl:ObjectProperty');
+	rdf.extendConcept('rdfs:range','schema:Person');
+	rdf.finishConcept('rdfs:domain','schema:Movie');
+
+	/* data properties */
+
+	// A movie has to have one unique id (via functional property)
+	rdf.makeConcept('mcb:hasId');
+	rdf.extendConcept('rdf:type','owl:DatatypeProperty, owl:FunctionalProperty');
+	rdf.extendConcept('rdfs:range','xsd:string');
+	rdf.finishConcept('rdfs:domain','schema:Movie');
+
+	// A movie has either one or zero Metacritic ids
+
+	// Two movies can have the same title (not a functional property)
+	rdf.makeConcept('mcb:hasTitle');
+	rdf.extendConcept('rdf:type','owl:DatatypeProperty');
+	rdf.extendConcept('rdfs:range','xsd:string');
+	rdf.finishConcept('rdfs:domain','schema:Movie');
+	
+	rdf.makeConcept('mcb:hasGenre');
+	rdf.extendConcept('rdf:type','owl:DatatypeProperty');
+	rdf.extendConcept('rdfs:range','xsd:string');
+	rdf.finishConcept('rdfs:domain','schema:Movie');
+
+	rdf.makeConcept('mcb:hasLanguage');
+	rdf.extendConcept('rdf:type','owl:DatatypeProperty');
+	rdf.extendConcept('rdfs:range','xsd:string');
+	rdf.finishConcept('rdfs:domain','schema:Movie');
+
+	/* classes */
+
+	rdf.makeConcept('schema:Person');
+	rdf.finishConcept('rdf:type','owl:Class');
+
+	rdf.makeConcept('schema:Movie');
+	rdf.finishConcept('rdf:type','owl:Class');
+
+	// An actor is a person
+	rdf.makeConcept('mcb:actorIsPerson');
+	rdf.extendConcept('rdf:type','owl:Restriction');
+	rdf.extendConcept('owl:onProperty','mcb:hasActor');
+	rdf.finishConcept('owl:allValuesFrom','schema:Person');
+
+	// A movie can have multiple genres but at least 1
+	rdf.makeConcept('mcb:atLeastOneGenre');
+	rdf.extendConcept('rdf:type','owl:Restriction');
+	rdf.extendConcept('owl:onProperty','mcb:hasGenre');
+	rdf.finishConcept('owl:minCardinality','"1"^^xsd:nonNegativeInteger');
+
+	// A movie can have multiple languages or none
+	rdf.makeConcept('mcb:anyNumberOfLanguages');
+	rdf.extendConcept('rdf:type','owl:Restriction');
+	rdf.extendConcept('owl:onProperty','mcb:hasLanguage');
+	rdf.finishConcept('owl:minCardinality','"0"^^xsd:nonNegativeInteger');
+
+	// Pulp Fiction is different from Star Wars
 
 	/* apply random emotions until we figure out how to do it properly */
 	const wnaffect = require("./emotions.json"); 
@@ -68,9 +133,9 @@ config.sources.forEach(function(entry){
 
 		rdf.makeConcept('#'+id);
 		rdf.extendConcept('rdf:type','schema:Movie');
-		rdf.extendConcept('schema:identifier','\"'+id+'\"');
+		rdf.extendConcept('mcb:hasId','\"'+id+'\"');
 		movie["movie-title"][0] = String(movie["movie-title"][0]).replace(/[^a-zA-Z0-9.!?'() ]/g, '');
-		rdf.extendConcept('schema:name','\"'+movie["movie-title"][0]+'\"');
+		rdf.extendConcept('mcb:hasTitle','\"'+movie["movie-title"][0]+'\"');
 
 		movie["movie-duration"][0] = String(movie["movie-duration"][0]).replace(/[^a-zA-Z0-9.!?']/g, '');
 		rdf.extendConcept('schema:duration','\"'+movie["movie-duration"][0]+'\"');
@@ -86,8 +151,8 @@ config.sources.forEach(function(entry){
 
 		var actors = movie["movie-actor"];
 		for (var i=0; i<actors.length; i++) {
-			actors[i] = String(actors[i]).replace(/[^a-zA-Z0-9.!?' ]/g, '');
-			rdf.extendConcept('schema:actor','\"'+actors[i]+'\"');
+			actors[i] = String(actors[i]).replace(/[^a-zA-Z0-9.!?']/g, '');
+			rdf.extendConcept('mcb:hasActor','<#'+actors[i]+'>');
 		}
 
 		var characters = movie["movie-character"];
