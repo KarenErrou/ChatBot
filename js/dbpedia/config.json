@@ -1,0 +1,4 @@
+{
+	"source":"../../data/dbpedia/dbpedia_links.json",
+	"store":"dbpedia"
+}

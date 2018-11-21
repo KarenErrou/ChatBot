@@ -2,7 +2,7 @@ const SparqlClient = require('sparql-client-2');
 const SPARQL = SparqlClient.SPARQL;
 
 const config = require('./config.json');
-const default_endpoint = config.base.local + config.repo.test2;
+const default_endpoint = config.base.local + config.repo.presentation;
  
 exports.query = function(request, callback) {
 
