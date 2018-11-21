@@ -67,10 +67,8 @@ exports.printToFile = function(filename) {
 	const fs = require('fs');
 	var onto = '../../ontology/'+filename+'.ttl';
 	var content = rdf;
-	fs.writeFile(onto, rdf, 'utf8', (err)=>{
-		if (err) throw err;
-		log(chalk.green('Ontology was saved to: '+onto));
-	});
+	fs.writeFileSync(onto, rdf);
+	log(chalk.green('Ontology was saved to: '+onto));
 	rdf = '';
 }
 
