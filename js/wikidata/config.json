@@ -1,4 +1,5 @@
 {
-	"source":"../../data/wikidata/wikidata.json",
+	"source":"../../data/wikidata/wikidata_links.json",
+	"genres":"../../data/wikidata/wikidata_genres.json",
 	"store":"wikidata"
 }

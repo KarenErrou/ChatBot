@@ -2,6 +2,7 @@ var config = require('./config.json');
 var rdf = require('../rdf-builder/rdf-builder.js');
 
 var wikidata = require(config.source);
+var genres = require(config.genres);
 
 rdf.makeBase('http://movie.chatbot.org/');
 const prefixes = {
@@ -17,12 +18,18 @@ wikidata.forEach(function(entry){
 
 	rdf.makeConcept('#'+entry.imdbid);
 	rdf.extendConcept('schema:identifier', '\"'+entry.imdbid+'\"');
-	rdf.extendConcept('owl:sameAs', '\"'+entry.movie+'\"');
 	if (entry.mcid != undefined)
 		rdf.extendConcept('wdt:P1712','\"'+entry.mcid+'\"');
-	rdf.finishConcept('rdf:type','schema:Movie');
+	rdf.finishConcept('owl:sameAs', '<'+entry.movie+'>');
+
+});
+
+genres.forEach(function(entry){
+	
+	rdf.makeConcept('#'+entry.imdb);
+	rdf.finishConcept('mcb:hasGenre','\"'+entry.genre+'\"');
 });
 
 rdf.print();
 rdf.validate();
-rdf.printToFile(config.store);
+rdf.printToFile('wikidata/'+config.store);
