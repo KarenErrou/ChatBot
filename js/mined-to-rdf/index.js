@@ -15,8 +15,9 @@ config.sources.forEach(function(entry){
 	var movies = config.data_dir + entry.source + '/movies/';
 	var reviews = config.data_dir + entry.source + '/reviews/';
 	
-	var i, filenum=3765, j, temp=[], chunk=25;
-	for (i=filenum*chunk,j=ids.length; i<j; i+=chunk) {
+	var i, filenum=950, j, temp=[], chunk=100;
+	for (i=filenum*chunk,j=(filenum*chunk)+5000; i<j; i+=chunk) {
+	//for (i=filenum*chunk,j=ids.length; i<j; i+=chunk) {
 
 		var rdf = require('../rdf-builder/rdf-builder.js');
 		rdf.makeBase('http://movie.chatbot.org/');
@@ -110,7 +111,7 @@ config.sources.forEach(function(entry){
 			return wnaffect.emotions[emotion_counter++];
 		}
 
-
+		/* temparray to avoid oversized heap */
 		temparray = ids.slice(i,i+chunk);
 		temparray.forEach(function(id){
 			var movie;
@@ -223,7 +224,7 @@ config.sources.forEach(function(entry){
 		});
 		//rdf.print();
 		rdf.validate();
-		rdf.printToFile(entry.graph+filenum);
+		rdf.printToFile('imdb/'+entry.graph+filenum);
 		filenum++;
 		rdf = {};
 	}
