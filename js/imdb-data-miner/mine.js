@@ -1,6 +1,6 @@
 var Miner = require('./index.js');
 
-var i = 563;
+var i = 3880;
 var max = 6800;
 
 setInterval(function(){
@@ -17,4 +17,4 @@ setInterval(function(){
 	i++;
 	console.log("We're at i="+i);
 	console.log(" Where max="+max);
-}, 15000);
+}, 10000);
