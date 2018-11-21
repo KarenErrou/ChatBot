@@ -1,0 +1,1013 @@
+@base <http://movie.chatbot.org/>.
+@prefix schema: <http://schema.org/>.
+@prefix onyx: <http://www.gsi.dit.upm.es/ontologies/onyx/ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix prov: <http://www.w3.org/ns/prov#>.
+@prefix wnaffect: <http://www.gsi.dit.upm.es/ontologies/wnaffect/ns#>.
+
+<#Hate>
+	onyx:hasEmotionCategory wnaffect:Hate.
+
+<#Dislike>
+	onyx:hasEmotionCategory wnaffect:Dislike.
+
+<#Anger>
+	onyx:hasEmotionCategory wnaffect:Anger.
+
+<#Anxiety>
+	onyx:hasEmotionCategory wnaffect:Anxiety.
+
+<#Ingratitude>
+	onyx:hasEmotionCategory wnaffect:Ingratitude.
+
+<#Humility>
+	onyx:hasEmotionCategory wnaffect:Humility.
+
+<#Compassion>
+	onyx:hasEmotionCategory wnaffect:Compassion.
+
+<#Daze>
+	onyx:hasEmotionCategory wnaffect:Daze.
+
+<#Sadness>
+	onyx:hasEmotionCategory wnaffect:Sadness.
+
+<#Negative-Fear>
+	onyx:hasEmotionCategory wnaffect:Negative-Fear.
+
+<#Despair>
+	onyx:hasEmotionCategory wnaffect:Despair.
+
+<#Shame>
+	onyx:hasEmotionCategory wnaffect:Shame.
+
+<#Love>
+	onyx:hasEmotionCategory wnaffect:Love.
+
+<#Calmness>
+	onyx:hasEmotionCategory wnaffect:Calmness.
+
+<#Affection>
+	onyx:hasEmotionCategory wnaffect:Affection.
+
+<#Self-Pride>
+	onyx:hasEmotionCategory wnaffect:Self-Pride.
+
+<#Enthusiasm>
+	onyx:hasEmotionCategory wnaffect:Enthusiasm.
+
+<#Positivie-Fear>
+	onyx:hasEmotionCategory wnaffect:Positivie-Fear.
+
+<#Liking>
+	onyx:hasEmotionCategory wnaffect:Liking.
+
+<#Joy>
+	onyx:hasEmotionCategory wnaffect:Joy.
+
+<#Positive-Expectation>
+	onyx:hasEmotionCategory wnaffect:Positive-Expectation.
+
+<#Fearlessness>
+	onyx:hasEmotionCategory wnaffect:Fearlessness.
+
+<#Positive-Hope>
+	onyx:hasEmotionCategory wnaffect:Positive-Hope.
+
+<#Levity>
+	onyx:hasEmotionCategory wnaffect:Levity.
+
+<#Gratitude>
+	onyx:hasEmotionCategory wnaffect:Gratitude.
+
+<#Neutral-Unconcern>
+	onyx:hasEmotionCategory wnaffect:Neutral-Unconcern.
+
+<#Apathy>
+	onyx:hasEmotionCategory wnaffect:Apathy.
+
+<#Surprise>
+	onyx:hasEmotionCategory wnaffect:Surprise.
+
+<#Ambiguous-Agitation>
+	onyx:hasEmotionCategory wnaffect:Ambiguous-Agitation.
+
+<#pulp-fiction-aggregateRating>
+	schema:ratingCount 24;
+	schema:ratingValue 94;
+	schema:bestRating 100;
+	schema:itemReviewed <#pulp-fiction>.
+
+<#pulp-fiction>
+	rdf:type schema:Movie;
+	schema:identifier "pulp-fiction";
+	schema:name "Pulp Fiction";
+	schema:duration "154min";
+	schema:dateCreated "1994";
+	schema:text "Pulp Fiction movie reviews  Metacritic score Several interlocking stories of crime and intrigue form a temporal mosaic set in the Los Angeles underworld....";
+	schema:aggregateRating <#pulp-fiction-aggregateRating>;
+	schema:image "https://static.metacritic.com/images/products/movies/4/0267c3bb3c2a782833e67bab398383e5-250h.jpg".
+
+<#pulp-fiction-TheNewSpielberg>
+	schema:about <#pulp-fiction>;
+	schema:author "TheNewSpielberg";
+	schema:dateCreated "Mon May 02 2011 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody "One of the zaniest funniest smartest and most entertaining movies I have ever seen. One of my all time favorites as well. John Travolta and Samuel L. Jackson give terrific performances.".
+
+<#pulp-fiction-TheNewSpielberg-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "One of the zaniest funniest smartest and most entertaining movies I have ever seen. One of my all time favorites as well. John Travolta and Samuel L. Jackson give terrific performances.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Hate>;
+	prov:Entity <#pulp-fiction-TheNewSpielberg>.
+
+<#pulp-fiction-TheNewSpielberg-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-TheNewSpielberg-sentiment>.
+
+<#pulp-fiction-grandpajoe6191>
+	schema:about <#pulp-fiction>;
+	schema:author "grandpajoe6191";
+	schema:dateCreated "Tue Sep 27 2011 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 9;
+	schema:headline "undefined";
+	schema:reviewBody "Even years after the release the movie feels fresher than many of the movies made today. Quentin Tarantino  takes a story twists it and turns plays with our expectations and leaves us with a masterpiece.".
+
+<#pulp-fiction-grandpajoe6191-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "Even years after the release the movie feels fresher than many of the movies made today. Quentin Tarantino  takes a story twists it and turns plays with our expectations and leaves us with a masterpiece.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Dislike>;
+	prov:Entity <#pulp-fiction-grandpajoe6191>.
+
+<#pulp-fiction-grandpajoe6191-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-grandpajoe6191-sentiment>.
+
+<#pulp-fiction-dj1982>
+	schema:about <#pulp-fiction>;
+	schema:author "dj1982";
+	schema:dateCreated "Sat Dec 03 2011 00:00:00 GMT+0100 (Central European Standard Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody " Best movie ever..hands down!".
+
+<#pulp-fiction-dj1982-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText " Best movie ever..hands down!";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Anger>;
+	prov:Entity <#pulp-fiction-dj1982>.
+
+<#pulp-fiction-dj1982-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-dj1982-sentiment>.
+
+<#pulp-fiction-Michelep_>
+	schema:about <#pulp-fiction>;
+	schema:author "Michelep_";
+	schema:dateCreated "Wed Dec 20 2006 00:00:00 GMT+0100 (Central European Standard Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody " Best movie of all time.".
+
+<#pulp-fiction-Michelep_-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText " Best movie of all time.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Anxiety>;
+	prov:Entity <#pulp-fiction-Michelep_>.
+
+<#pulp-fiction-Michelep_-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-Michelep_-sentiment>.
+
+<#pulp-fiction-AlvaradoKTA>
+	schema:about <#pulp-fiction>;
+	schema:author "AlvaradoKTA";
+	schema:dateCreated "Thu Jun 07 2012 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 9;
+	schema:headline "undefined";
+	schema:reviewBody " Incredible acting especially Travolta and Jackson incredible stories and incredible piece of art for Pop culture! Though the end is a bit frustrating the plot is great really I mean it.".
+
+<#pulp-fiction-AlvaradoKTA-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText " Incredible acting especially Travolta and Jackson incredible stories and incredible piece of art for Pop culture! Though the end is a bit frustrating the plot is great really I mean it.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Ingratitude>;
+	prov:Entity <#pulp-fiction-AlvaradoKTA>.
+
+<#pulp-fiction-AlvaradoKTA-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-AlvaradoKTA-sentiment>.
+
+<#pulp-fiction-axelkoch>
+	schema:about <#pulp-fiction>;
+	schema:author "axelkoch";
+	schema:dateCreated "Mon Oct 15 2012 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 9;
+	schema:headline "undefined";
+	schema:reviewBody " This is one of the greatest movies ever made absolutely brilliant.".
+
+<#pulp-fiction-axelkoch-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText " This is one of the greatest movies ever made absolutely brilliant.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Humility>;
+	prov:Entity <#pulp-fiction-axelkoch>.
+
+<#pulp-fiction-axelkoch-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-axelkoch-sentiment>.
+
+<#pulp-fiction-julesw_>
+	schema:about <#pulp-fiction>;
+	schema:author "julesw_";
+	schema:dateCreated "Sun Aug 19 2007 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody "One of the best movie i've ever seen.".
+
+<#pulp-fiction-julesw_-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "One of the best movie i've ever seen.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Compassion>;
+	prov:Entity <#pulp-fiction-julesw_>.
+
+<#pulp-fiction-julesw_-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-julesw_-sentiment>.
+
+<#pulp-fiction-ClifC_>
+	schema:about <#pulp-fiction>;
+	schema:author "ClifC_";
+	schema:dateCreated "Mon Mar 09 2009 00:00:00 GMT+0100 (Central European Standard Time)";
+	schema:reviewRating 9;
+	schema:headline "undefined";
+	schema:reviewBody " Funny and entertaining from beginning to end. Amazing script and great acting.".
+
+<#pulp-fiction-ClifC_-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText " Funny and entertaining from beginning to end. Amazing script and great acting.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Daze>;
+	prov:Entity <#pulp-fiction-ClifC_>.
+
+<#pulp-fiction-ClifC_-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-ClifC_-sentiment>.
+
+<#pulp-fiction-KarstenN_>
+	schema:about <#pulp-fiction>;
+	schema:author "KarstenN_";
+	schema:dateCreated "Sat Sep 10 2005 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody " About as perfect as a film will ever get. See it.".
+
+<#pulp-fiction-KarstenN_-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText " About as perfect as a film will ever get. See it.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Sadness>;
+	prov:Entity <#pulp-fiction-KarstenN_>.
+
+<#pulp-fiction-KarstenN_-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-KarstenN_-sentiment>.
+
+<#pulp-fiction-Ali>
+	schema:about <#pulp-fiction>;
+	schema:author "Ali";
+	schema:dateCreated "Tue Sep 20 2005 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody " Easily one of the best most finelycrafted films ever. The only movie that could ever reach the cinematic brilliance of Pulp Fiction was Wizard of Oz more than 70 years ago.".
+
+<#pulp-fiction-Ali-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText " Easily one of the best most finelycrafted films ever. The only movie that could ever reach the cinematic brilliance of Pulp Fiction was Wizard of Oz more than 70 years ago.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Negative-Fear>;
+	prov:Entity <#pulp-fiction-Ali>.
+
+<#pulp-fiction-Ali-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-Ali-sentiment>.
+
+<#pulp-fiction-KentE_>
+	schema:about <#pulp-fiction>;
+	schema:author "KentE_";
+	schema:dateCreated "Sun Apr 01 2007 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody "One of my favorite movies ever and classic Tarantino. Noone can shoot these disjointed action dramas with such finesse and creativity. He won't be able to top this one but he has had great movies before and after it.".
+
+<#pulp-fiction-KentE_-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "One of my favorite movies ever and classic Tarantino. Noone can shoot these disjointed action dramas with such finesse and creativity. He won't be able to top this one but he has had great movies before and after it.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Despair>;
+	prov:Entity <#pulp-fiction-KentE_>.
+
+<#pulp-fiction-KentE_-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-KentE_-sentiment>.
+
+<#pulp-fiction-TroyP_>
+	schema:about <#pulp-fiction>;
+	schema:author "TroyP_";
+	schema:dateCreated "Fri Oct 17 2008 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody "The greatest film ever made. Dialogue in the film is perfect brilliantly written by Tarantino.A superb performance from John Travolta and Samuel L. Jackson.".
+
+<#pulp-fiction-TroyP_-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "The greatest film ever made. Dialogue in the film is perfect brilliantly written by Tarantino.A superb performance from John Travolta and Samuel L. Jackson.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Shame>;
+	prov:Entity <#pulp-fiction-TroyP_>.
+
+<#pulp-fiction-TroyP_-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-TroyP_-sentiment>.
+
+<#pulp-fiction-DaveF>
+	schema:about <#pulp-fiction>;
+	schema:author "DaveF";
+	schema:dateCreated "Fri Sep 19 2008 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody "This is a weak movie not much stories that didn't connect and I really didn't care. This not my favorites. I'll take Revservoir Dogs anytime.".
+
+<#pulp-fiction-DaveF-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "This is a weak movie not much stories that didn't connect and I really didn't care. This not my favorites. I'll take Revservoir Dogs anytime.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Love>;
+	prov:Entity <#pulp-fiction-DaveF>.
+
+<#pulp-fiction-DaveF-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-DaveF-sentiment>.
+
+<#pulp-fiction-NinjaMafia>
+	schema:about <#pulp-fiction>;
+	schema:author "NinjaMafia";
+	schema:dateCreated "Wed Feb 11 2004 00:00:00 GMT+0100 (Central European Standard Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody "Quentin Tarantino is absolutely a genius and this movie proves how is this genialityan outstanding movie with an nonlinear story is greatsome movies would serve this movie as an example.".
+
+<#pulp-fiction-NinjaMafia-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "Quentin Tarantino is absolutely a genius and this movie proves how is this genialityan outstanding movie with an nonlinear story is greatsome movies would serve this movie as an example.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Calmness>;
+	prov:Entity <#pulp-fiction-NinjaMafia>.
+
+<#pulp-fiction-NinjaMafia-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-NinjaMafia-sentiment>.
+
+<#pulp-fiction-JamesM>
+	schema:about <#pulp-fiction>;
+	schema:author "JamesM";
+	schema:dateCreated "Sat Nov 19 2005 00:00:00 GMT+0100 (Central European Standard Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody "Great great great!Awesome movie awesome characters awesome dialogues! Just an unforgettable movie! One of my absolute favourites and I would definitely recommend to watch it. Like seriously go watch it. Now!".
+
+<#pulp-fiction-JamesM-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "Great great great!Awesome movie awesome characters awesome dialogues! Just an unforgettable movie! One of my absolute favourites and I would definitely recommend to watch it. Like seriously go watch it. Now!";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Affection>;
+	prov:Entity <#pulp-fiction-JamesM>.
+
+<#pulp-fiction-JamesM-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-JamesM-sentiment>.
+
+<#pulp-fiction-NickyE_>
+	schema:about <#pulp-fiction>;
+	schema:author "NickyE_";
+	schema:dateCreated "Wed Sep 14 2005 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody "24 years later and not a single movie since has ever topped this masterpiece!".
+
+<#pulp-fiction-NickyE_-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "24 years later and not a single movie since has ever topped this masterpiece!";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Self-Pride>;
+	prov:Entity <#pulp-fiction-NickyE_>.
+
+<#pulp-fiction-NickyE_-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-NickyE_-sentiment>.
+
+<#pulp-fiction-DavidP_>
+	schema:about <#pulp-fiction>;
+	schema:author "DavidP_";
+	schema:dateCreated "Fri Sep 21 2007 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody "Pulp Fiction is both a technical masterpiece of writing and acting as well as a bonifide cultural artifact with an unmatched influence on filmmaking today.".
+
+<#pulp-fiction-DavidP_-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "Pulp Fiction is both a technical masterpiece of writing and acting as well as a bonifide cultural artifact with an unmatched influence on filmmaking today.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Enthusiasm>;
+	prov:Entity <#pulp-fiction-DavidP_>.
+
+<#pulp-fiction-DavidP_-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-DavidP_-sentiment>.
+
+<#pulp-fiction-WesE_>
+	schema:about <#pulp-fiction>;
+	schema:author "WesE_";
+	schema:dateCreated "Tue Nov 15 2005 00:00:00 GMT+0100 (Central European Standard Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody "Pulp Fiction is an astonishing classic with a superb cast and funny and violent story!!".
+
+<#pulp-fiction-WesE_-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "Pulp Fiction is an astonishing classic with a superb cast and funny and violent story!!";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Positivie-Fear>;
+	prov:Entity <#pulp-fiction-WesE_>.
+
+<#pulp-fiction-WesE_-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-WesE_-sentiment>.
+
+<#pulp-fiction-rodericrinehart>
+	schema:about <#pulp-fiction>;
+	schema:author "rodericrinehart";
+	schema:dateCreated "Sat Aug 14 2010 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody "This is probably one of the greatest movies ever to hit the silver screen in my opinion that is. Tarantino you're one hella director keep it up. If you haven't seen this movie or you're debating on seeing it well...SEE IT!!!!!!".
+
+<#pulp-fiction-rodericrinehart-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "This is probably one of the greatest movies ever to hit the silver screen in my opinion that is. Tarantino you're one hella director keep it up. If you haven't seen this movie or you're debating on seeing it well...SEE IT!!!!!!";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Liking>;
+	prov:Entity <#pulp-fiction-rodericrinehart>.
+
+<#pulp-fiction-rodericrinehart-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-rodericrinehart-sentiment>.
+
+<#pulp-fiction-nboley08>
+	schema:about <#pulp-fiction>;
+	schema:author "nboley08";
+	schema:dateCreated "Sun Aug 15 2010 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody "Yo The Godfather I'm really happy for you... Imma let you finish but Pulp Fiction is the best movie of ALL TIME... of ALL TIME!!!  but really I have yet to see better movie".
+
+<#pulp-fiction-nboley08-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "Yo The Godfather I'm really happy for you... Imma let you finish but Pulp Fiction is the best movie of ALL TIME... of ALL TIME!!!  but really I have yet to see better movie";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Joy>;
+	prov:Entity <#pulp-fiction-nboley08>.
+
+<#pulp-fiction-nboley08-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-nboley08-sentiment>.
+
+<#pulp-fiction-Film_Fanatic_15>
+	schema:about <#pulp-fiction>;
+	schema:author "Film_Fanatic_15";
+	schema:dateCreated "Mon Nov 22 2010 00:00:00 GMT+0100 (Central European Standard Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody " Definitely belongs to the 10 best movies of all times !!! The story and the dialogues are just awesome and it's really sad to see that it only received the scriptoscar. What about this ridiculous Forrest Gump is worth these many trophies !".
+
+<#pulp-fiction-Film_Fanatic_15-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText " Definitely belongs to the 10 best movies of all times !!! The story and the dialogues are just awesome and it's really sad to see that it only received the scriptoscar. What about this ridiculous Forrest Gump is worth these many trophies !";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Positive-Expectation>;
+	prov:Entity <#pulp-fiction-Film_Fanatic_15>.
+
+<#pulp-fiction-Film_Fanatic_15-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-Film_Fanatic_15-sentiment>.
+
+<#pulp-fiction-MetallicCritic>
+	schema:about <#pulp-fiction>;
+	schema:author "MetallicCritic";
+	schema:dateCreated "Tue Dec 20 2011 00:00:00 GMT+0100 (Central European Standard Time)";
+	schema:reviewRating 9;
+	schema:headline "undefined";
+	schema:reviewBody "Not a huge fan of all of Tarantino's films but this one is great. Great music.. great cast... great dialog!!!!!!Must see  highlights Samuel J Travolta Steve B... great performances".
+
+<#pulp-fiction-MetallicCritic-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "Not a huge fan of all of Tarantino's films but this one is great. Great music.. great cast... great dialog!!!!!!Must see  highlights Samuel J Travolta Steve B... great performances";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Fearlessness>;
+	prov:Entity <#pulp-fiction-MetallicCritic>.
+
+<#pulp-fiction-MetallicCritic-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-MetallicCritic-sentiment>.
+
+<#pulp-fiction-tedleanse>
+	schema:about <#pulp-fiction>;
+	schema:author "tedleanse";
+	schema:dateCreated "Sun May 06 2012 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody "Overrated to the point of ridicule. Pulp Fiction what is supposed to be one of the greatest films ever was a cluster of bizarre scenes that were patched up like a rag doll.".
+
+<#pulp-fiction-tedleanse-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "Overrated to the point of ridicule. Pulp Fiction what is supposed to be one of the greatest films ever was a cluster of bizarre scenes that were patched up like a rag doll.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Positive-Hope>;
+	prov:Entity <#pulp-fiction-tedleanse>.
+
+<#pulp-fiction-tedleanse-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-tedleanse-sentiment>.
+
+<#pulp-fiction-MikeTheGai>
+	schema:about <#pulp-fiction>;
+	schema:author "MikeTheGai";
+	schema:dateCreated "Sat Jun 23 2012 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 9;
+	schema:headline "undefined";
+	schema:reviewBody " One of my faves.".
+
+<#pulp-fiction-MikeTheGai-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText " One of my faves.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Levity>;
+	prov:Entity <#pulp-fiction-MikeTheGai>.
+
+<#pulp-fiction-MikeTheGai-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-MikeTheGai-sentiment>.
+
+<#pulp-fiction-MouthofSauron>
+	schema:about <#pulp-fiction>;
+	schema:author "MouthofSauron";
+	schema:dateCreated "Thu Apr 18 2013 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody "One of the most influential films of the 1990s Pulp Fiction is a delirious postmodern mix of neonoir thrills pitchblack humor and popculture touchstones.".
+
+<#pulp-fiction-MouthofSauron-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "One of the most influential films of the 1990s Pulp Fiction is a delirious postmodern mix of neonoir thrills pitchblack humor and popculture touchstones.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Gratitude>;
+	prov:Entity <#pulp-fiction-MouthofSauron>.
+
+<#pulp-fiction-MouthofSauron-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-MouthofSauron-sentiment>.
+
+<#pulp-fiction-gzayas91>
+	schema:about <#pulp-fiction>;
+	schema:author "gzayas91";
+	schema:dateCreated "Sun Jul 22 2018 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 5;
+	schema:headline "undefined";
+	schema:reviewBody "apparentlythis movie has been overatted by the critics.this movie's really an incorrigible and incoherant rubbish. i call this movie a ROTTEN FICTION.".
+
+<#pulp-fiction-gzayas91-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "apparentlythis movie has been overatted by the critics.this movie's really an incorrigible and incoherant rubbish. i call this movie a ROTTEN FICTION.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Neutral-Unconcern>;
+	prov:Entity <#pulp-fiction-gzayas91>.
+
+<#pulp-fiction-gzayas91-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-gzayas91-sentiment>.
+
+<#pulp-fiction-Swati>
+	schema:about <#pulp-fiction>;
+	schema:author "Swati";
+	schema:dateCreated "Mon Nov 25 2013 00:00:00 GMT+0100 (Central European Standard Time)";
+	schema:reviewRating 9;
+	schema:headline "undefined";
+	schema:reviewBody "Pulp Fiction was something special. Something different with fantastic character development as well as dialogue and memorable quotes. It's definitely worth watching.".
+
+<#pulp-fiction-Swati-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "Pulp Fiction was something special. Something different with fantastic character development as well as dialogue and memorable quotes. It's definitely worth watching.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Apathy>;
+	prov:Entity <#pulp-fiction-Swati>.
+
+<#pulp-fiction-Swati-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-Swati-sentiment>.
+
+<#pulp-fiction-TheWalrus2000>
+	schema:about <#pulp-fiction>;
+	schema:author "TheWalrus2000";
+	schema:dateCreated "Sat Mar 09 2013 00:00:00 GMT+0100 (Central European Standard Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody "one of the greatest films ever made in my opinion its better than the godfather if you havent seen it youd better because theres no other fil like it.".
+
+<#pulp-fiction-TheWalrus2000-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "one of the greatest films ever made in my opinion its better than the godfather if you havent seen it youd better because theres no other fil like it.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Surprise>;
+	prov:Entity <#pulp-fiction-TheWalrus2000>.
+
+<#pulp-fiction-TheWalrus2000-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-TheWalrus2000-sentiment>.
+
+<#pulp-fiction-theunholymesiah>
+	schema:about <#pulp-fiction>;
+	schema:author "theunholymesiah";
+	schema:dateCreated "Wed Sep 25 2013 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody "Quentin Tarantino creates something new and original  combing the stories of a boxer two hit men and a gangsters wife into a 154 minutes of masterful filmmaking.".
+
+<#pulp-fiction-theunholymesiah-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "Quentin Tarantino creates something new and original  combing the stories of a boxer two hit men and a gangsters wife into a 154 minutes of masterful filmmaking.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Ambiguous-Agitation>;
+	prov:Entity <#pulp-fiction-theunholymesiah>.
+
+<#pulp-fiction-theunholymesiah-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-theunholymesiah-sentiment>.
+
+<#pulp-fiction-MrPenman>
+	schema:about <#pulp-fiction>;
+	schema:author "MrPenman";
+	schema:dateCreated "Tue Oct 08 2013 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody "A very interesting movie. Its combination of extreme violence and creates something unique and fantastic. The cast is filled with some of the best actors out there and the writing is just fantastic. It's unlike anything you've ever seen before.".
+
+<#pulp-fiction-MrPenman-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "A very interesting movie. Its combination of extreme violence and creates something unique and fantastic. The cast is filled with some of the best actors out there and the writing is just fantastic. It's unlike anything you've ever seen before.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Hate>;
+	prov:Entity <#pulp-fiction-MrPenman>.
+
+<#pulp-fiction-MrPenman-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-MrPenman-sentiment>.
+
+<#pulp-fiction-joao1198pedro>
+	schema:about <#pulp-fiction>;
+	schema:author "joao1198pedro";
+	schema:dateCreated "Sat Nov 23 2013 00:00:00 GMT+0100 (Central European Standard Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody "Silly hair terrible casts. Watch it on 90's maybe will be better? I like Quentin Tarantino but this flick seems pointless and strange. Universal acclaim didnt attract me give better score.".
+
+<#pulp-fiction-joao1198pedro-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "Silly hair terrible casts. Watch it on 90's maybe will be better? I like Quentin Tarantino but this flick seems pointless and strange. Universal acclaim didnt attract me give better score.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Dislike>;
+	prov:Entity <#pulp-fiction-joao1198pedro>.
+
+<#pulp-fiction-joao1198pedro-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-joao1198pedro-sentiment>.
+
+<#pulp-fiction-JamisInsomia>
+	schema:about <#pulp-fiction>;
+	schema:author "JamisInsomia";
+	schema:dateCreated "Thu Jul 10 2014 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody "I know everyone says it's a good movie. Yes it is but not my type. I tried to watch it 23 times but I can not resist. Something attracts me at all not at all I get bored so fast ... No offense it is my opinion".
+
+<#pulp-fiction-JamisInsomia-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "I know everyone says it's a good movie. Yes it is but not my type. I tried to watch it 23 times but I can not resist. Something attracts me at all not at all I get bored so fast ... No offense it is my opinion";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Anger>;
+	prov:Entity <#pulp-fiction-JamisInsomia>.
+
+<#pulp-fiction-JamisInsomia-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-JamisInsomia-sentiment>.
+
+<#pulp-fiction-TheRoyalMelon>
+	schema:about <#pulp-fiction>;
+	schema:author "TheRoyalMelon";
+	schema:dateCreated "Wed Dec 02 2015 00:00:00 GMT+0100 (Central European Standard Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody "What the f222 was this sh7t? This is the worst movie i've ever seen! What a mind f777! And how the f999 this movie has this high scores? F777 the academy awards!".
+
+<#pulp-fiction-TheRoyalMelon-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "What the f222 was this sh7t? This is the worst movie i've ever seen! What a mind f777! And how the f999 this movie has this high scores? F777 the academy awards!";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Anxiety>;
+	prov:Entity <#pulp-fiction-TheRoyalMelon>.
+
+<#pulp-fiction-TheRoyalMelon-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-TheRoyalMelon-sentiment>.
+
+<#pulp-fiction-VinceRocks123>
+	schema:about <#pulp-fiction>;
+	schema:author "VinceRocks123";
+	schema:dateCreated "Sun Apr 12 2015 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody "This is one of the most overrated movies ever made I neither like this movie or think it is good or edge people need to get over Tarantino as he is far from a good writer or director terrible movie.".
+
+<#pulp-fiction-VinceRocks123-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "This is one of the most overrated movies ever made I neither like this movie or think it is good or edge people need to get over Tarantino as he is far from a good writer or director terrible movie.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Ingratitude>;
+	prov:Entity <#pulp-fiction-VinceRocks123>.
+
+<#pulp-fiction-VinceRocks123-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-VinceRocks123-sentiment>.
+
+<#pulp-fiction-MovieManiac83>
+	schema:about <#pulp-fiction>;
+	schema:author "MovieManiac83";
+	schema:dateCreated "Fri Apr 24 2015 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody "beautiful number 1 of all movies of all time no dought and if you do not like this movie than you will know my name is the lord".
+
+<#pulp-fiction-MovieManiac83-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText "beautiful number 1 of all movies of all time no dought and if you do not like this movie than you will know my name is the lord";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Humility>;
+	prov:Entity <#pulp-fiction-MovieManiac83>.
+
+<#pulp-fiction-MovieManiac83-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-MovieManiac83-sentiment>.
+
+<#pulp-fiction-CinemaBlend>
+	schema:about <#pulp-fiction>;
+	schema:author "CinemaBlend";
+	schema:dateCreated "Wed May 06 2015 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody " This film is continuously hilarious from beginning to end. With it".
+
+<#pulp-fiction-CinemaBlend-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText " This film is continuously hilarious from beginning to end. With it";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Compassion>;
+	prov:Entity <#pulp-fiction-CinemaBlend>.
+
+<#pulp-fiction-CinemaBlend-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-CinemaBlend-sentiment>.
+
+<#pulp-fiction-YorkMan>
+	schema:about <#pulp-fiction>;
+	schema:author "YorkMan";
+	schema:dateCreated "Mon Feb 01 2016 00:00:00 GMT+0100 (Central European Standard Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody " I still remember how giddy and excited I was while I was watching this movie in the theater. A top ten favorite of mine.".
+
+<#pulp-fiction-YorkMan-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText " I still remember how giddy and excited I was while I was watching this movie in the theater. A top ten favorite of mine.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Daze>;
+	prov:Entity <#pulp-fiction-YorkMan>.
+
+<#pulp-fiction-YorkMan-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-YorkMan-sentiment>.
+
+<#pulp-fiction-Dyliebar>
+	schema:about <#pulp-fiction>;
+	schema:author "Dyliebar";
+	schema:dateCreated "Fri Aug 03 2018 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody " overall a good movie with great dialogue...i wouldnt really call this a movie though rather a combination of 3 short scenes.".
+
+<#pulp-fiction-Dyliebar-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText " overall a good movie with great dialogue...i wouldnt really call this a movie though rather a combination of 3 short scenes.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Sadness>;
+	prov:Entity <#pulp-fiction-Dyliebar>.
+
+<#pulp-fiction-Dyliebar-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-Dyliebar-sentiment>.
+
+<#pulp-fiction-The3AcademySins>
+	schema:about <#pulp-fiction>;
+	schema:author "The3AcademySins";
+	schema:dateCreated "Fri Oct 20 2017 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody " I can honestly say that this is one of the best genre changing films of the past few decades since the godfather or the goodfellas. if i made a list of my top ten favorite movies pulp fiction would without a doubt be on there somewhere.".
+
+<#pulp-fiction-The3AcademySins-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText " I can honestly say that this is one of the best genre changing films of the past few decades since the godfather or the goodfellas. if i made a list of my top ten favorite movies pulp fiction would without a doubt be on there somewhere.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Negative-Fear>;
+	prov:Entity <#pulp-fiction-The3AcademySins>.
+
+<#pulp-fiction-The3AcademySins-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-The3AcademySins-sentiment>.
+
+<#pulp-fiction-MasterRiley>
+	schema:about <#pulp-fiction>;
+	schema:author "MasterRiley";
+	schema:dateCreated "Wed Aug 10 2016 00:00:00 GMT+0200 (Central European Summer Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody " Really good in a brutal weird unconfortable sort of way.".
+
+<#pulp-fiction-MasterRiley-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText " Really good in a brutal weird unconfortable sort of way.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Despair>;
+	prov:Entity <#pulp-fiction-MasterRiley>.
+
+<#pulp-fiction-MasterRiley-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-MasterRiley-sentiment>.
+
+<#pulp-fiction-Benkoko11>
+	schema:about <#pulp-fiction>;
+	schema:author "Benkoko11";
+	schema:dateCreated "Thu Feb 23 2017 00:00:00 GMT+0100 (Central European Standard Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody " Travolta and Jackson are absolutely perfect together one of the best duo's in movie history and that's no overstatement.".
+
+<#pulp-fiction-Benkoko11-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText " Travolta and Jackson are absolutely perfect together one of the best duo's in movie history and that's no overstatement.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Shame>;
+	prov:Entity <#pulp-fiction-Benkoko11>.
+
+<#pulp-fiction-Benkoko11-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-Benkoko11-sentiment>.
+
+<#pulp-fiction-jaasieljunior>
+	schema:about <#pulp-fiction>;
+	schema:author "jaasieljunior";
+	schema:dateCreated "Tue Nov 21 2017 00:00:00 GMT+0100 (Central European Standard Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody " Most people I know love this movie. It's decent. I'd like it a lot better if it weren't for the entire part of the movie with Uma Thurman.".
+
+<#pulp-fiction-jaasieljunior-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText " Most people I know love this movie. It's decent. I'd like it a lot better if it weren't for the entire part of the movie with Uma Thurman.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Love>;
+	prov:Entity <#pulp-fiction-jaasieljunior>.
+
+<#pulp-fiction-jaasieljunior-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-jaasieljunior-sentiment>.
+
+<#pulp-fiction-robertoiglesias>
+	schema:about <#pulp-fiction>;
+	schema:author "robertoiglesias";
+	schema:dateCreated "Fri Mar 16 2018 00:00:00 GMT+0100 (Central European Standard Time)";
+	schema:reviewRating 10;
+	schema:headline "undefined";
+	schema:reviewBody " This moive is amazing! It combines deep thought with a crazy story.".
+
+<#pulp-fiction-robertoiglesias-sentiment>
+	rdf:type onyx:EmotionSet;
+	onyx:emotionText " This moive is amazing! It combines deep thought with a crazy story.";
+	onyx:describesObject <#pulp-fiction>;
+	onyx:hasEmotion <#Calmness>;
+	prov:Entity <#pulp-fiction-robertoiglesias>.
+
+<#pulp-fiction-robertoiglesias-sentiment-analysis>
+	onyx:algorithm "RNG";
+	onyx:source "https://www.metacritic.com/movie/pulp-fiction";
+	onyx:usesEmotionalModel "http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel";
+	prov:generated <#pulp-fiction-robertoiglesias-sentiment>.
