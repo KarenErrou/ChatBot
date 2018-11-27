@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/julietcetera/semantic-web-course#readme",
   "dependencies": {
+    "bayes": "0.0.7",
     "natural": "^0.6.1"
   }
 }
