@@ -32,6 +32,8 @@ mc.forEach(function(movie){
 			relations.push({
 				emotion: bayes.classify(reviews["review-text"][i]),
 				movie: movie.substr(5),
+				url: reviews["review-url"][0],
+				text: reviews["review-text"][i],
 				user: reviews["review-user"][i]
 			});
 		}
@@ -54,6 +56,8 @@ imdb.forEach(function(movie){
 			relations.push({
 				emotion: bayes.classify(reviews["review-text"][i]),
 				movie: movie,
+				url: reviews["review-url"][0],
+				text: reviews["review-text"][i],
 				user: reviews["review-user"][i]
 			});
 		}
