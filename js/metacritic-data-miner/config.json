@@ -1,13 +1,13 @@
 {
 	"target_entities":{
 		"movies":{
-			"base":"https://www.metacritic.com/movie/",
+			"base":"https://www.metacritic.com/",
 			"postfix":"",
 			"save_dir":"../../data/metacritic/movies/",
 			"tags":"./tags/movies.json"
 		},
 		"reviews":{
-			"base":"https://www.metacritic.com/movie/",
+			"base":"https://www.metacritic.com/",
 			"postfix":"/user-reviews",
 			"save_dir":"../../data/metacritic/reviews/",
 			"tags":"./tags/reviews.json"
