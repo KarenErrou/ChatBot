@@ -1,0 +1,17 @@
+{
+	"method": "POST",
+	"uri": "https://localhost:3000/api/v1/review",
+
+	"@context": "http://schema.org",
+	"@type": "ReviewAction",
+	"object" : {
+		"@id": "https://localhost:3000/api/v1/movies/tt12345"
+	},
+	"result": {
+		"@type": "Review",
+		"reviewBody": "This movie sucks",
+		"reviewRating": {
+			"ratingValue": "0.5"
+		}
+	}
+}

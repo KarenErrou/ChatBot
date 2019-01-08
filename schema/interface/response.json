@@ -1,0 +1,9 @@
+{
+	"@context": "http://schema.org",
+	"@type": "ReviewAction",
+	"actionStatus": "CompletedActionStatus",
+	"result" : {
+		"@type": "Review",
+		"url": "https://localhost:3000/api/v1/reviews/somesuperunreadableid"
+	}
+}
