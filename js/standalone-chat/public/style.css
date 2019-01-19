@@ -1,0 +1,18 @@
+body, html {
+  margin: 0;
+  overflow: hidden;
+  height:100%;
+}
+
+#left {
+    background-color: #50FF50;
+}
+
+#right {
+    background-color: #5050FF;
+}
+
+#left, #right{
+  height:100%;
+  overflow-y: scroll; 
+}
