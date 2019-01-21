@@ -14,9 +14,19 @@ app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
+/* Users partaking in the Chat */
+var users = { }
+
 /* Socket Connection */
 io.on('connection', function(socket) {
-    socket.emit('message', { 'user':'Trumpy', 'msg':'Wecome!' });
+    /* Add new user to the Chat */
+    socket.on('join', function(data) {
+        // welcome user and add to users list
+        var nickname = data.user;
+        socket.emit('message', { 'user': 'Trumpy',
+                                 'msg': 'Wecome ' + nickname + '!' });
+        users[socket.id] = nickname;
+    });
 
     /* Response */
     socket.on('message', function(data) {
@@ -24,7 +34,7 @@ io.on('connection', function(socket) {
         socket.broadcast.emit('message', data);
 
         // respond with trumpy message
-        socket.emit('message', { 'user':'Trumpy', 'msg':markov.walk() });
+        socket.emit('message', { 'user': 'Trumpy', 'msg': markov.walk() });
 
         // extract emotion and check for possible movie
         var emotion = bayes.classify(data.msg);
@@ -41,8 +51,10 @@ io.on('connection', function(socket) {
         });
     });
 
+    /* Disconnect */
     socket.on('disconnect', function() {
-        console.log('disconnected');
+        // remove disconnected user
+        delete users[socket.id];
     });
 });
 

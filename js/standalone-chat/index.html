@@ -15,19 +15,41 @@
 
 <script type="text/javascript">
     $(function() {
+        /* Set up initial state */
         var socket = io();
+        var nickname = '';
+        $('#chat').hide();
+        $('#nick').val('');
+        $('#nick').focus();
 
-        /* Outgoing messages */
-        $('form').submit(function() {
-            // send message to server
-            var data = { 'user':'You', 'msg':$('#msg').val() };
-            socket.emit('message', data);
+        /* Handle form events (nickname and message) */
+        $('form').submit(function(event) {
+            if (event.currentTarget.id == 'submit-nick') {
+                var nickname = $('#nick').val();
 
-            // append message to own chat
-            appendOutgoingMessage(data, $('#messages'), $('#left'));
+                // send nickname to server
+                var data = { 'user': nickname };
+                socket.emit('join', data);
 
-            // clear text input
-            $('#msg').val('');
+                // update page
+                $('#login').detach();
+                $('#chat').show();
+                $('#msg').val('');
+                $('#msg').focus();
+            } else if (event.currentTarget.id == 'submit-msg') {
+                var message = $('#msg').val();
+
+                // send message to server
+                var data = { 'user': nickname, 'msg': message };
+                socket.emit('message', data);
+
+                // append message to own chat
+                appendOutgoingMessage({ 'user': 'You', 'msg': message },
+                                      $('#messages'), $('#left'));
+
+                // clear text input
+                $('#msg').val('');
+            }
 
             // do not reload page
             return false;
@@ -47,33 +69,55 @@
 
 <body>
 
-<div class="col-xs-12 col-sm-6" id="left">
+<!-- LOGIN -->
+<div class="container" id="login">
     <div class="panel">
         <div class="panel-heading">
-            <h1>Chat</h1>
+            <h1>Join the Chat!</h1>
         </div>
         <div class="panel-body">
-            <ul class="list-unstyled" id="messages"></ul>
-        </div>
-        <div class="panel-footer">
-            <form action="" class="form-inline">
-                <input id="msg" type="text" class="form-control" placeholder="Type..." />
+            <form action="" class="form-inline" id="submit-nick">
+                <input id="nick" type="text" class="form-control" placeholder="Enter a nickname..." />
                 <small class="pull-right">
-                    <button class="btn btn-warning" id="msg">Send</button>
+                    <button class="btn btn-warning" id="nick">Submit</button>
                 </small>
             </form>
         </div>
     </div>
 </div>
 
-<div class="col-xs-12 col-sm-6" id="right">
-    <div>
-        <div class="panel">
-            <div class="panel-heading">
-                <h1>Movies</h1>
+<!-- CHAT -->
+<div class="container" id="chat">
+    <div class="row">
+        <div class="col-sm-6" id="left">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h1>Chat</h1>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-unstyled" id="messages"></ul>
+                </div>
+                <div class="panel-footer">
+                    <form action="" class="form-inline" id="submit-msg">
+                        <input id="msg" type="text" class="form-control" placeholder="Type..." />
+                        <small class="pull-right">
+                            <button class="btn btn-warning" id="msg">Send</button>
+                        </small>
+                    </form>
+                </div>
             </div>
-            <div class="panel-body">
-                <ul class="list-unstyled" id="movies"></ul>
+        </div>
+
+        <div class="col-sm-6" id="right">
+            <div>
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h1>Movies</h1>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-unstyled" id="movies"></ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
