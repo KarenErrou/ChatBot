@@ -5,7 +5,8 @@ var io = require('socket.io')(server);
 
 var markov = require('../markov-js/markov.js');
 var bayes = require('../nlp/bayes.js');
-var sparql = require('./sparql.js')
+var graphdb = require('../graphdb/index.js');
+var sparql = require('./sparql.js');
 
 /* App Settings */
 app.use('/public', express.static(__dirname + '/public'));
@@ -27,14 +28,13 @@ io.on('connection', function(socket) {
 
         // extract emotion and check for possible movie
         var emotion = bayes.classify(data.msg);
-        sparql.getMovieViaEmotion(emotion, function(data) {
-            if (data !== null) {
+        graphdb.query(sparql.sampleQuery(emotion), function(data) {
+            if (data !== null && data !== undefined) {
                 // process movie data for frontend
-                var rawJSON = JSON.parse(data);
                 var movieJSON = { };
-                for (var i = 0; i < rawJSON.head.vars.length; i++) {
-                    var key = rawJSON.head.vars[i];
-                    movieJSON[key] = rawJSON.results.bindings[0][key].value;
+                for (var i = 0; i < data.head.vars.length; i++) {
+                    var key = data.head.vars[i];
+                    movieJSON[key] = data.results.bindings[0][key].value;
                 }
                 socket.emit('movie', movieJSON);
             }
