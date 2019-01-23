@@ -14,10 +14,11 @@
 <script src="public/chat.js"></script>
 
 <script type="text/javascript">
+    var movies = [];
+
     $(function() {
         /* Set up initial state */
         var socket = io();
-        var nickname = '';
         $('#chat').hide();
         $('#nick').val('');
         $('#nick').focus();
@@ -25,10 +26,10 @@
         /* Handle form events (nickname and message) */
         $('form').submit(function(event) {
             if (event.currentTarget.id == 'submit-nick') {
-                var nickname = $('#nick').val();
+                let nickname = $('#nick').val();
 
                 // send nickname to server
-                var data = { 'user': nickname };
+                let data = { 'user': nickname };
                 socket.emit('join', data);
 
                 // update page
@@ -37,10 +38,10 @@
                 $('#msg').val('');
                 $('#msg').focus();
             } else if (event.currentTarget.id == 'submit-msg') {
-                var message = $('#msg').val();
+                let message = $('#msg').val();
 
                 // send message to server
-                var data = { 'user': nickname, 'msg': message };
+                let data = { 'msg': message };
                 socket.emit('message', data);
 
                 // append message to own chat
@@ -62,7 +63,10 @@
 
         /* Incoming movies */
         socket.on('movie', function(data) {
-            appendMovie(data, $('#movies'), $('#right'));
+            if (!movies.includes(data.id)) {
+                movies.push(data.id);
+                appendMovie(data, $('#movies'), $('#right'));
+            }
         });
     });
 </script>

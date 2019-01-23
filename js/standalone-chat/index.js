@@ -22,22 +22,23 @@ io.on('connection', function(socket) {
     /* Add new user to the Chat */
     socket.on('join', function(data) {
         // welcome user and add to users list
-        var nickname = data.user;
-        socket.emit('message', { 'user': 'Trumpy',
-                                 'msg': 'Wecome ' + nickname + '!' });
+        let nickname = data.user;
+        io.emit('message', { 'user': 'Trumpy',
+                             'msg': 'Wecome ' + nickname + '!' });
         users[socket.id] = nickname;
     });
 
     /* Response */
     socket.on('message', function(data) {
         // send message to everybody but sender
-        socket.broadcast.emit('message', data);
+        socket.broadcast.emit('message',{ 'user': users[socket.id],
+                                          'msg': data.msg});
 
         // respond with trumpy message
-        socket.emit('message', { 'user': 'Trumpy', 'msg': markov.walk() });
+        io.emit('message', { 'user': 'Trumpy', 'msg': markov.walk() });
 
         // extract emotion and check for possible movie
-        var emotion = bayes.classify(data.msg);
+        let emotion = bayes.classify(data.msg);
         graphdb.query(sparql.sampleQuery(emotion), function(data) {
             if (data !== null && data !== undefined) {
                 // process movie data for frontend
