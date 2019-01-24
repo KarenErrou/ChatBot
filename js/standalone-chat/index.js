@@ -24,7 +24,7 @@ io.on('connection', function(socket) {
         // welcome user and add to users list
         let nickname = data.user;
         io.emit('message', { 'user': 'Trumpy',
-                             'msg': 'Wecome ' + nickname + '!' });
+                             'msg': 'Welcome ' + nickname + '!' });
         users[socket.id] = nickname;
     });
 
