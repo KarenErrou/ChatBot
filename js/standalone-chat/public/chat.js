@@ -59,7 +59,7 @@ appendMovie = function(data, list, container) {
                 '<span class="pull-right">',
                     '<img src="',
                     data.img,
-                    '" alt="Movie Image" class="img" />',
+                    '" alt="Movie Image" class="img" style="height:512px; width:auto" />',
                 '</span>',
                 '<div class="clearfix">',
                     '<div class="header">',
