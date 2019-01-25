@@ -1,6 +1,6 @@
-# TODOS for the final presentation
+# TODOS for the final presentation/report
 
- - assemble presentation
+ - [ ] assemble presentation
      - 1. Introduction
          - Description of Use Case
          - Used Data sources
@@ -11,15 +11,25 @@
          - General Description 
          - Validation with SHACL Shapes
          - Demo (focus on functionality and usage of the work done in the first part of the proseminar)
- - assemble report
      - about the same outline as the midterm report with additions
- - ui improvements
- - user registrations + chat log
- - shacl shapes
- - schema.org actions
- - more chat partners
- - meta data (use alignments)
- - put nlp tagged stuff into graph and use it
- - improve machine learning training set for deducing emotions
- - publish app/graphdb via ngrok
- - refactoring??
+ - [ ] shacl shapes
+ - [ ] schema.org actions
+ - [ ] ui improvements
+ - [ ] meta data (use alignments)
+ - [ ] improve machine learning training set for deducing emotions
+ - [ ] publish app/graphdb via ngrok
+ - [X] more chat partners
+ - [ ] put nlp tagged stuff into graph and use it
+ - [ ] improve markov chain (actually use probability distribution)
+ - [ ] refactoring??
+ - [X] user registrations + chat log
+ - [ ] assemble report
+     - Reduce first report a little and add:
+         - Emotion extraction techniques/improvements/plots
+         - Markov chains for nlg
+         - ontotext tagging service
+         - application description
+         - application/graphdb publication/access description
+         - schema.org actions - links to videos (watch action)
+         - shacl - shapes - shacl.js
+         - ontology extensions - user - chatlog - ..
