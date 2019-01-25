@@ -5,6 +5,12 @@ let dag = require('./dag.js');
 require('./raw.json').trump.forEach(function(entry){
 	dag.train(entry);
 });
+require('./raw.json').hitler.forEach(function(entry){
+	dag.train(entry);
+});
+require('./raw.json').mandela.forEach(function(entry){
+	dag.train(entry);
+});
 
 //dag.print();
 dag.save();
