@@ -23,9 +23,36 @@ io.on('connection', function(socket) {
     socket.on('join', function(data) {
         // welcome user and add to users list
         let nickname = data.user;
-        io.emit('message', { 'user': 'Trumpy',
-                             'msg': 'Welcome ' + nickname + '!' });
-        users[socket.id] = nickname;
+
+        graphdb.query(sparql.getUserData(nickname), function(data){
+
+		if (data.results.bindings.length == 0) {
+
+			console.log('Adding new user: ' + nickname);
+			sparql.putUserData(nickname, 'Trumpy', function(data){
+				
+				/* this callback can't be called on update requests
+				 * because graphdb sends no response */
+				console.log('SUCCESS ADDING: ' + nickname);
+			});
+		
+			io.emit('message', { 'user': 'Trumpy',
+		         		     'msg': 'Welcome ' + nickname + '!' });
+		
+		} else {
+			data.results.bindings.forEach(function(entry){
+				console.log(entry);
+				io.emit('message', {
+					'user': entry.author.value,
+					'msg': entry.text.value
+				});
+			
+			});
+		}
+
+		users[socket.id] = nickname;
+	});
+
     });
 
     /* Response */
@@ -34,12 +61,22 @@ io.on('connection', function(socket) {
         socket.broadcast.emit('message',{ 'user': users[socket.id],
                                           'msg': data.msg});
 
+        sparql.putPartOfChat(users[socket.id], data.msg, users[socket.id], function(data){
+		/* not reachable */
+		console.log(data);
+	});
+	
         // respond with trumpy message
-        io.emit('message', { 'user': 'Trumpy', 'msg': markov.walk() });
+	let resp = markov.walk();
+        io.emit('message', { 'user': 'Trumpy', 'msg': resp });
+        sparql.putPartOfChat(users[socket.id], resp, 'Trumpy', function(data){
+		/* not reachable */
+		console.log(data);
+	});
 
         // extract emotion and check for possible movie
         let emotion = bayes.classify(data.msg);
-        graphdb.query(sparql.sampleQuery(emotion), function(data) {
+        graphdb.query(sparql.getMoviePerEmotion(emotion), function(data) {
             if (data !== null && data !== undefined) {
                 // process movie data for frontend
                 var movieJSON = { };
@@ -50,6 +87,7 @@ io.on('connection', function(socket) {
                 socket.emit('movie', movieJSON);
             }
         });
+
     });
 
     /* Disconnect */

@@ -1,0 +1,53 @@
+@base <http://movie.chatbot.org/>.
+@prefix mcb: <http://movie.chatbot.org/>.
+@prefix schema: <http://schema.org/>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix owl: <http://www.w3.org/2002/07/owl>.
+
+<mcb:User>
+	rdf:type owl:Class.
+
+<mcb:hasNickname>
+	rdf:type owl:ObjectProperty;
+	rdfs:range xsd:string;
+	rdfs:domain mcb:User.
+
+<mcb:ChatLog>
+	rdf:type owl:Class.
+
+<mcb:hasChatLog>
+	rdf:type owl:ObjectProperty;
+	rdfs:range mcb:ChatLog;
+	rdfs:domain mcb:User.
+
+<mcb:PartOfChat>
+	rdf:type owl:Class;
+	rdf:property schema:dateCreated;
+	rdf:property schema:text;
+	rdf:property schema:author.
+
+<mcb:hasPartOfChat>
+	rdf:type owl:ObjectProperty;
+	rdfs:range mcb:PartOfChat;
+	rdfs:domain mcb:ChatLog.
+
+# ON INSERT NEW USER
+# <mcb:SomeRandomsChatLog>
+# 	rdf:type mcb:ChatLog.
+#	
+# <mcb:SomeRandom>
+# 	rdf:type mcb:User;
+# 	mcb:hasChatLog <mcb:SomeRandomsChatLog>;
+# 	mcb:hasNickname "SomeRandom".
+
+# ON INSERT NEW CHATLOG
+# <mcb:SomeRandom<datestring>>
+# 	rdf:type mcb:PartOfChat;
+#	schema:dateCreated <datestring>;
+#	schema:text "Your politics suck".
+#
+# <mcb:SomeRandomsChatLog>
+#	rdf:hasPartOfChat <mcb:SomeRandom<datestring>>.
+
+
