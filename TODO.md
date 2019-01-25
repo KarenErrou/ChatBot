@@ -1,10 +1,25 @@
 # TODOS for the final presentation
 
  - assemble presentation
- - user registration + chatlog
+     - 1. Introduction
+         - Description of Use Case
+         - Used Data sources
+         - Final Ontology used to represent the data
+     - 2. Enrichment
+         - Summary of all enrichments made (Information Extraction, Interlinking with LOD)
+     - 3. Application
+         - General Description 
+         - Validation with SHACL Shapes
+         - Demo (focus on functionality and usage of the work done in the first part of the proseminar)
+ - assemble report
+     - about the same outline as the midterm report with additions
  - ui improvements
+ - user registrations + chat log
  - shacl shapes
  - schema.org actions
  - more chat partners
  - meta data (use alignments)
  - put nlp tagged stuff into graph and use it
+ - improve machine learning training set for deducing emotions
+ - publish app/graphdb via ngrok
+ - refactoring??
