@@ -17,10 +17,10 @@
  - [ ] ui improvements
  - [ ] meta data (use alignments)
  - [ ] improve machine learning training set for deducing emotions
- - [ ] publish app/graphdb via ngrok
+ - [X] publish app/graphdb via ngrok
  - [X] more chat partners
  - [ ] put nlp tagged stuff into graph and use it
- - [ ] improve markov chain (actually use probability distribution)
+ - [X] improve markov chain (actually use probability distribution)
  - [ ] refactoring??
  - [X] user registrations + chat log
  - [ ] assemble report
