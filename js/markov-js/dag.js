@@ -76,15 +76,27 @@ exports.train = function(text) {
 	}
 }
 
-function derive(str, word) {
+function getDistribution(word) {
 
 	let keys = Object.keys(graph.words[word]);
-	let prop = keys[keys.length * Math.random() << 0];
+
+	let dist = [];
+	keys.forEach(function(key){
+		for (let i=0; i<graph.words[word][key]; i++)
+			dist.push(key);
+	});
+	return dist;
+}
+
+function derive(str, word) {
+
+	let dist = getDistribution(word);
+	let next = dist[dist.length * Math.random() << 0];
 
 	/* if word is in list of ending words finalize */
-	str += ' ' + prop;
-	if (!graph.end.includes(prop)) {
-		return derive(str, prop);
+	str += ' ' + next;
+	if (!graph.end.includes(next)) {
+		return derive(str, next);
 	} else {
 		return str;
 	}
