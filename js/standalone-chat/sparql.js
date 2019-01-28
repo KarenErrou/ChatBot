@@ -24,11 +24,11 @@ exports.getMoviePerEmotion = function(emotion) {
             'PREFIX onyx: <http://www.gsi.dit.upm.es/ontologies/onyx/ns#> ' +
             'PREFIX wnaffect: <http://www.gsi.dit.upm.es/ontologies/wnaffect/ns#>' +
             'PREFIX mcb: <http://movie.chatbot.org/>' +
-            'SELECT ?m ?id ?name ?dur ?year ?desc ?rtg ?img ' +
+            'SELECT ?m ?id ?title ?duration ?year ?desc ?rtg ?img ' +
             'WHERE { ' +
             '   ?m mcb:hasId ?id . ' +
-            '   ?m mcb:hasTitle ?name . ' +
-            '   ?m schema:duration ?dur . ' +
+            '   ?m mcb:hasTitle ?title . ' +
+            '   ?m schema:duration ?duration . ' +
             '   ?m schema:dateCreated ?year . ' +
             '   ?m schema:text ?desc . ' +
             '   ?m schema:aggregateRating ?rtg . ' +
@@ -39,6 +39,35 @@ exports.getMoviePerEmotion = function(emotion) {
             '   ?s onyx:hasEmotion ?e . ' +
             '   ?e onyx:hasEmotionCategory wnaffect:' + emotion +
             '} LIMIT 1 '
+    }
+}
+
+/* Query for dbpedia */
+exports.getDBpediaMovieData = function(movieId) {
+    return {
+        'endpoint': endpoint,
+        'query':
+            'PREFIX mcb: <http://movie.chatbot.org/>' +
+            'PREFIX owl: <http://www.w3.org/2002/07/owl#>' +
+            'PREFIX dbo: <http://dbpedia.org/ontology/>' +
+            'PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>' +
+            'PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>' +
+            'SELECT ?title ?director' +
+            '       (xsd:float(?dur)/xsd:float(60) AS ?duration)' +
+            '       ?desc ' +
+            'WHERE {' +
+            '   ?m mcb:hasId "' + movieId + '" .' +
+            '   ?m owl:sameAs ?md .' +
+            '   SERVICE <http://dbpedia.org/sparql> {' +
+            '       ?md rdfs:label ?title .' +
+            '       FILTER (LANG(?title) = "en") .' +
+            '       ?md dbo:director ?dir .' +
+            '       ?dir dbo:birthName ?director .' +
+            '       ?md dbo:runtime ?dur .' +
+            '       ?md rdfs:comment ?desc .' +
+            '       FILTER (LANG(?desc) = "en")' +
+            '    }' +
+            '} LIMIT 1'
     }
 }
 

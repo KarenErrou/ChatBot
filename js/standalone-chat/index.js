@@ -125,12 +125,25 @@ io.on('connection', function(socket) {
             if (data !== null && data !== undefined &&
                 data.results.bindings.length > 0) {
                 // process movie data for frontend
-                var movieJSON = { };
+                let movieJSON = { };
                 for (var i = 0; i < data.head.vars.length; i++) {
                     var key = data.head.vars[i];
                     movieJSON[key] = data.results.bindings[0][key].value;
                 }
-                socket.emit('movie', movieJSON);
+
+                graphdb.query(sparql.getDBpediaMovieData(movieJSON.id),
+                              function(data) {
+                    // add dbpedia data if available
+                    if (data !== null && data !== undefined &&
+                        data.results.bindings.length > 0) {
+                        for (var i = 0; i < data.head.vars.length; i++) {
+                            var key = data.head.vars[i];
+                            movieJSON[key] = data.results.bindings[0][key].value;
+                        }
+                    }
+
+                    socket.emit('movie', movieJSON);
+                });
             }
         });
     }
