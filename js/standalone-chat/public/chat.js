@@ -49,6 +49,50 @@ appendOutgoingMessage = function(data, list, container) {
     scroll(list, container);
 }
 
+showEmotionDialog = function(data, item, container) {
+    item.empty();
+
+    var otherButtons = '';
+    for (var i in data.others) {
+        otherButtons +=
+            '<button id="' + data.others[i] + 
+                '" class="btn btn-default btn-block">' +
+            data.others[i] +
+            '</button>';
+    }
+
+    var html = [
+        '<div class="panel">',
+            '<div class="panel-heading">',
+                '<h4>',
+                    'Emotion Analysis:',
+                '</h4>',
+                '<p>',
+                    'Looks like you are experiencing',
+                    data.emotion,
+                    '!',
+                '</p>',
+                '<p>',
+                    data.emotion,
+                    'is a categorized as',
+                    data.category + '.',
+                '</p>',
+            '</div>',
+            '<div class="panel-body">',
+                'If you want to stay in you current mood, click this button:',
+                '<button id="' + data.emotion + '"',
+                    'class="btn btn-default btn-block">',
+                    data.emotion,
+                '</button>',
+                'Otherwise choose one of the other categories:',
+                otherButtons,
+            '</div>',
+        '</div>',
+    ].join("\n");
+    item.append(html);
+    scroll(item, container);
+}
+
 appendMovie = function(data, list, container) {
     var html = [
         '<li class="left clearfix">',

@@ -2116,4 +2116,4 @@
 		<skos:prefLabel xml:lang="en">emotion</skos:prefLabel>
 		<skos:broaderTransitive rdf:resource="http://gsi.dit.upm.es/ontologies/wnaffect/ns#affective-state"/>
 	</skos:Concept>
-</rdf:RDF>t
+</rdf:RDF>

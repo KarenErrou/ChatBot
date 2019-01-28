@@ -61,6 +61,32 @@
             appendIncomingMessage(data, $('#messages'), $('#left'));
         });
 
+        /* Functions for requesting movies */
+        function requestMoviePerEmotion(event) {
+            let data = { 'emotion': event.originalTarget.id };
+            socket.emit('emotion', data);
+            $('#emotion-dialog').empty();
+        }
+
+        function requestMoviePerCategory(event) {
+            let data = { 'emotionCategory': event.originalTarget.id };
+            socket.emit('emotionCategory', data);
+            $('#emotion-dialog').empty();
+        }
+
+        /* Incoming emotions */
+        socket.on('emotion', function(data) {
+            showEmotionDialog(data, $('#emotion-dialog'), $('#right'));
+
+            // bind events for requesting movies to buttons
+            let btn = document.getElementById(data.emotion);
+            btn.addEventListener('click', requestMoviePerEmotion, false);
+            for (let i in data.others) {
+                let btn = document.getElementById(data.others[i]);
+                btn.addEventListener('click', requestMoviePerCategory, false);
+            }
+        });
+
         /* Incoming movies */
         socket.on('movie', function(data) {
             if (!movies.includes(data.id)) {
@@ -119,6 +145,7 @@
                         <h1>Movies</h1>
                     </div>
                     <div class="panel-body">
+                        <div id="emotion-dialog"></div>
                         <ul class="list-unstyled" id="movies"></ul>
                     </div>
                 </div>

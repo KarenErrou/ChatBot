@@ -1,6 +1,20 @@
 /* Server specific - change this to your config! */
 var endpoint = 'http://localhost:7200/repositories/productionV2';
 
+exports.getEmotionCategory = function(emotion) {
+    return {
+        'endpoint': endpoint,
+        'query':
+            'PREFIX skos: <http://www.w3.org/2004/02/skos/core#>'+
+            'select ?category ?subcategory where {'+
+            '    <http://gsi.dit.upm.es/ontologies/wnaffect/ns#' +
+                    emotion.toLowerCase() + '>'+
+            '       skos:broaderTransitive ?subcategory .'+
+            '    ?subcategory skos:broaderTransitive ?category .'+
+            '} limit 1'
+    }
+}
+
 /* Sample Query fetching Movie annotated with emotion */
 exports.getMoviePerEmotion = function(emotion) {
     return {
@@ -9,10 +23,10 @@ exports.getMoviePerEmotion = function(emotion) {
             'PREFIX schema: <http://schema.org/> ' +
             'PREFIX onyx: <http://www.gsi.dit.upm.es/ontologies/onyx/ns#> ' +
             'PREFIX wnaffect: <http://www.gsi.dit.upm.es/ontologies/wnaffect/ns#>' +
-	    'PREFIX mcb: <http://movie.chatbot.org/>' +
+            'PREFIX mcb: <http://movie.chatbot.org/>' +
             'SELECT ?m ?id ?name ?dur ?year ?desc ?rtg ?img ' +
             'WHERE { ' +
-            '   ?m schema:identifier ?id . ' +
+            '   ?m mcb:hasId ?id . ' +
             '   ?m mcb:hasTitle ?name . ' +
             '   ?m schema:duration ?dur . ' +
             '   ?m schema:dateCreated ?year . ' +
@@ -25,6 +39,20 @@ exports.getMoviePerEmotion = function(emotion) {
             '   ?s onyx:hasEmotion ?e . ' +
             '   ?e onyx:hasEmotionCategory wnaffect:' + emotion +
             '} LIMIT 1 '
+    }
+}
+
+/* Getting sample emotion via category */
+exports.getEmotionOfCategory = function(emotionCategory) {
+    return {
+        'endpoint': endpoint,
+        'query':
+            'PREFIX skos: <http://www.w3.org/2004/02/skos/core#>' +
+            'select (SAMPLE(?e) AS ?emo) where {' +
+            '   ?e skos:broaderTransitive ' +
+            '   <http://gsi.dit.upm.es/ontologies/wnaffect/ns#' +
+                 emotionCategory + '> .' +
+            '}'
     }
 }
 

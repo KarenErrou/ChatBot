@@ -14,7 +14,7 @@
      - about the same outline as the midterm report with additions
  - [ ] shacl shapes
  - [ ] schema.org actions
- - [ ] ui improvements
+ - [X] ui improvements
  - [ ] meta data (use alignments)
  - [ ] improve machine learning training set for deducing emotions
  - [X] publish app/graphdb via ngrok

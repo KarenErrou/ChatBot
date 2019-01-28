@@ -1,10 +1,59 @@
 @base <http://movie.chatbot.org/>.
+@prefix mcb: <http://movie.chatbot.org/>.
 @prefix schema: <http://schema.org/>.
 @prefix onyx: <http://www.gsi.dit.upm.es/ontologies/onyx/ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix prov: <http://www.w3.org/ns/prov#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema>.
+@prefix owl: <http://www.w3.org/2002/07/owl>.
 @prefix wnaffect: <http://www.gsi.dit.upm.es/ontologies/wnaffect/ns#>.
+
+<mcb:hasActor>
+	rdf:type owl:ObjectProperty;
+	rdfs:range schema:Person;
+	rdfs:domain schema:Movie.
+
+<mcb:hasId>
+	rdf:type owl:DatatypeProperty, owl:FunctionalProperty;
+	rdfs:range xsd:string;
+	rdfs:domain schema:Movie.
+
+<mcb:hasTitle>
+	rdf:type owl:DatatypeProperty;
+	rdfs:range xsd:string;
+	rdfs:domain schema:Movie.
+
+<mcb:hasGenre>
+	rdf:type owl:DatatypeProperty;
+	rdfs:range xsd:string;
+	rdfs:domain schema:Movie.
+
+<mcb:hasLanguage>
+	rdf:type owl:DatatypeProperty;
+	rdfs:range xsd:string;
+	rdfs:domain schema:Movie.
+
+<schema:Person>
+	rdf:type owl:Class.
+
+<schema:Movie>
+	rdf:type owl:Class.
+
+<mcb:actorIsPerson>
+	rdf:type owl:Restriction;
+	owl:onProperty mcb:hasActor;
+	owl:allValuesFrom schema:Person.
+
+<mcb:atLeastOneGenre>
+	rdf:type owl:Restriction;
+	owl:onProperty mcb:hasGenre;
+	owl:minCardinality "1"^^xsd:nonNegativeInteger.
+
+<mcb:anyNumberOfLanguages>
+	rdf:type owl:Restriction;
+	owl:onProperty mcb:hasLanguage;
+	owl:minCardinality "0"^^xsd:nonNegativeInteger.
 
 <#Hate>
 	onyx:hasEmotionCategory wnaffect:Hate.
@@ -101,8 +150,8 @@
 
 <#pulp-fiction>
 	rdf:type schema:Movie;
-	schema:identifier "pulp-fiction";
-	schema:name "Pulp Fiction";
+	mcb:hasId "pulp-fiction";
+	mcb:hasTitle "Pulp Fiction";
 	schema:duration "154min";
 	schema:dateCreated "1994";
 	schema:text "Pulp Fiction movie reviews  Metacritic score Several interlocking stories of crime and intrigue form a temporal mosaic set in the Los Angeles underworld....";
@@ -114,7 +163,6 @@
 	schema:author "TheNewSpielberg";
 	schema:dateCreated "Mon May 02 2011 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody "One of the zaniest funniest smartest and most entertaining movies I have ever seen. One of my all time favorites as well. John Travolta and Samuel L. Jackson give terrific performances.".
 
 <#pulp-fiction-TheNewSpielberg-sentiment>
@@ -135,7 +183,6 @@
 	schema:author "grandpajoe6191";
 	schema:dateCreated "Tue Sep 27 2011 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 9;
-	schema:headline "undefined";
 	schema:reviewBody "Even years after the release the movie feels fresher than many of the movies made today. Quentin Tarantino  takes a story twists it and turns plays with our expectations and leaves us with a masterpiece.".
 
 <#pulp-fiction-grandpajoe6191-sentiment>
@@ -156,7 +203,6 @@
 	schema:author "dj1982";
 	schema:dateCreated "Sat Dec 03 2011 00:00:00 GMT+0100 (Central European Standard Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody " Best movie ever..hands down!".
 
 <#pulp-fiction-dj1982-sentiment>
@@ -177,7 +223,6 @@
 	schema:author "Michelep_";
 	schema:dateCreated "Wed Dec 20 2006 00:00:00 GMT+0100 (Central European Standard Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody " Best movie of all time.".
 
 <#pulp-fiction-Michelep_-sentiment>
@@ -198,7 +243,6 @@
 	schema:author "AlvaradoKTA";
 	schema:dateCreated "Thu Jun 07 2012 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 9;
-	schema:headline "undefined";
 	schema:reviewBody " Incredible acting especially Travolta and Jackson incredible stories and incredible piece of art for Pop culture! Though the end is a bit frustrating the plot is great really I mean it.".
 
 <#pulp-fiction-AlvaradoKTA-sentiment>
@@ -219,7 +263,6 @@
 	schema:author "axelkoch";
 	schema:dateCreated "Mon Oct 15 2012 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 9;
-	schema:headline "undefined";
 	schema:reviewBody " This is one of the greatest movies ever made absolutely brilliant.".
 
 <#pulp-fiction-axelkoch-sentiment>
@@ -240,7 +283,6 @@
 	schema:author "julesw_";
 	schema:dateCreated "Sun Aug 19 2007 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody "One of the best movie i've ever seen.".
 
 <#pulp-fiction-julesw_-sentiment>
@@ -261,7 +303,6 @@
 	schema:author "ClifC_";
 	schema:dateCreated "Mon Mar 09 2009 00:00:00 GMT+0100 (Central European Standard Time)";
 	schema:reviewRating 9;
-	schema:headline "undefined";
 	schema:reviewBody " Funny and entertaining from beginning to end. Amazing script and great acting.".
 
 <#pulp-fiction-ClifC_-sentiment>
@@ -282,7 +323,6 @@
 	schema:author "KarstenN_";
 	schema:dateCreated "Sat Sep 10 2005 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody " About as perfect as a film will ever get. See it.".
 
 <#pulp-fiction-KarstenN_-sentiment>
@@ -303,7 +343,6 @@
 	schema:author "Ali";
 	schema:dateCreated "Tue Sep 20 2005 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody " Easily one of the best most finelycrafted films ever. The only movie that could ever reach the cinematic brilliance of Pulp Fiction was Wizard of Oz more than 70 years ago.".
 
 <#pulp-fiction-Ali-sentiment>
@@ -324,7 +363,6 @@
 	schema:author "KentE_";
 	schema:dateCreated "Sun Apr 01 2007 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody "One of my favorite movies ever and classic Tarantino. Noone can shoot these disjointed action dramas with such finesse and creativity. He won't be able to top this one but he has had great movies before and after it.".
 
 <#pulp-fiction-KentE_-sentiment>
@@ -345,7 +383,6 @@
 	schema:author "TroyP_";
 	schema:dateCreated "Fri Oct 17 2008 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody "The greatest film ever made. Dialogue in the film is perfect brilliantly written by Tarantino.A superb performance from John Travolta and Samuel L. Jackson.".
 
 <#pulp-fiction-TroyP_-sentiment>
@@ -366,7 +403,6 @@
 	schema:author "DaveF";
 	schema:dateCreated "Fri Sep 19 2008 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody "This is a weak movie not much stories that didn't connect and I really didn't care. This not my favorites. I'll take Revservoir Dogs anytime.".
 
 <#pulp-fiction-DaveF-sentiment>
@@ -387,7 +423,6 @@
 	schema:author "NinjaMafia";
 	schema:dateCreated "Wed Feb 11 2004 00:00:00 GMT+0100 (Central European Standard Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody "Quentin Tarantino is absolutely a genius and this movie proves how is this genialityan outstanding movie with an nonlinear story is greatsome movies would serve this movie as an example.".
 
 <#pulp-fiction-NinjaMafia-sentiment>
@@ -408,7 +443,6 @@
 	schema:author "JamesM";
 	schema:dateCreated "Sat Nov 19 2005 00:00:00 GMT+0100 (Central European Standard Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody "Great great great!Awesome movie awesome characters awesome dialogues! Just an unforgettable movie! One of my absolute favourites and I would definitely recommend to watch it. Like seriously go watch it. Now!".
 
 <#pulp-fiction-JamesM-sentiment>
@@ -429,7 +463,6 @@
 	schema:author "NickyE_";
 	schema:dateCreated "Wed Sep 14 2005 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody "24 years later and not a single movie since has ever topped this masterpiece!".
 
 <#pulp-fiction-NickyE_-sentiment>
@@ -450,7 +483,6 @@
 	schema:author "DavidP_";
 	schema:dateCreated "Fri Sep 21 2007 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody "Pulp Fiction is both a technical masterpiece of writing and acting as well as a bonifide cultural artifact with an unmatched influence on filmmaking today.".
 
 <#pulp-fiction-DavidP_-sentiment>
@@ -471,7 +503,6 @@
 	schema:author "WesE_";
 	schema:dateCreated "Tue Nov 15 2005 00:00:00 GMT+0100 (Central European Standard Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody "Pulp Fiction is an astonishing classic with a superb cast and funny and violent story!!".
 
 <#pulp-fiction-WesE_-sentiment>
@@ -492,7 +523,6 @@
 	schema:author "rodericrinehart";
 	schema:dateCreated "Sat Aug 14 2010 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody "This is probably one of the greatest movies ever to hit the silver screen in my opinion that is. Tarantino you're one hella director keep it up. If you haven't seen this movie or you're debating on seeing it well...SEE IT!!!!!!".
 
 <#pulp-fiction-rodericrinehart-sentiment>
@@ -513,7 +543,6 @@
 	schema:author "nboley08";
 	schema:dateCreated "Sun Aug 15 2010 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody "Yo The Godfather I'm really happy for you... Imma let you finish but Pulp Fiction is the best movie of ALL TIME... of ALL TIME!!!  but really I have yet to see better movie".
 
 <#pulp-fiction-nboley08-sentiment>
@@ -534,7 +563,6 @@
 	schema:author "Film_Fanatic_15";
 	schema:dateCreated "Mon Nov 22 2010 00:00:00 GMT+0100 (Central European Standard Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody " Definitely belongs to the 10 best movies of all times !!! The story and the dialogues are just awesome and it's really sad to see that it only received the scriptoscar. What about this ridiculous Forrest Gump is worth these many trophies !".
 
 <#pulp-fiction-Film_Fanatic_15-sentiment>
@@ -555,7 +583,6 @@
 	schema:author "MetallicCritic";
 	schema:dateCreated "Tue Dec 20 2011 00:00:00 GMT+0100 (Central European Standard Time)";
 	schema:reviewRating 9;
-	schema:headline "undefined";
 	schema:reviewBody "Not a huge fan of all of Tarantino's films but this one is great. Great music.. great cast... great dialog!!!!!!Must see  highlights Samuel J Travolta Steve B... great performances".
 
 <#pulp-fiction-MetallicCritic-sentiment>
@@ -576,7 +603,6 @@
 	schema:author "tedleanse";
 	schema:dateCreated "Sun May 06 2012 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody "Overrated to the point of ridicule. Pulp Fiction what is supposed to be one of the greatest films ever was a cluster of bizarre scenes that were patched up like a rag doll.".
 
 <#pulp-fiction-tedleanse-sentiment>
@@ -597,7 +623,6 @@
 	schema:author "MikeTheGai";
 	schema:dateCreated "Sat Jun 23 2012 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 9;
-	schema:headline "undefined";
 	schema:reviewBody " One of my faves.".
 
 <#pulp-fiction-MikeTheGai-sentiment>
@@ -618,7 +643,6 @@
 	schema:author "MouthofSauron";
 	schema:dateCreated "Thu Apr 18 2013 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody "One of the most influential films of the 1990s Pulp Fiction is a delirious postmodern mix of neonoir thrills pitchblack humor and popculture touchstones.".
 
 <#pulp-fiction-MouthofSauron-sentiment>
@@ -639,7 +663,6 @@
 	schema:author "gzayas91";
 	schema:dateCreated "Sun Jul 22 2018 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 5;
-	schema:headline "undefined";
 	schema:reviewBody "apparentlythis movie has been overatted by the critics.this movie's really an incorrigible and incoherant rubbish. i call this movie a ROTTEN FICTION.".
 
 <#pulp-fiction-gzayas91-sentiment>
@@ -660,7 +683,6 @@
 	schema:author "Swati";
 	schema:dateCreated "Mon Nov 25 2013 00:00:00 GMT+0100 (Central European Standard Time)";
 	schema:reviewRating 9;
-	schema:headline "undefined";
 	schema:reviewBody "Pulp Fiction was something special. Something different with fantastic character development as well as dialogue and memorable quotes. It's definitely worth watching.".
 
 <#pulp-fiction-Swati-sentiment>
@@ -681,7 +703,6 @@
 	schema:author "TheWalrus2000";
 	schema:dateCreated "Sat Mar 09 2013 00:00:00 GMT+0100 (Central European Standard Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody "one of the greatest films ever made in my opinion its better than the godfather if you havent seen it youd better because theres no other fil like it.".
 
 <#pulp-fiction-TheWalrus2000-sentiment>
@@ -702,7 +723,6 @@
 	schema:author "theunholymesiah";
 	schema:dateCreated "Wed Sep 25 2013 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody "Quentin Tarantino creates something new and original  combing the stories of a boxer two hit men and a gangsters wife into a 154 minutes of masterful filmmaking.".
 
 <#pulp-fiction-theunholymesiah-sentiment>
@@ -723,7 +743,6 @@
 	schema:author "MrPenman";
 	schema:dateCreated "Tue Oct 08 2013 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody "A very interesting movie. Its combination of extreme violence and creates something unique and fantastic. The cast is filled with some of the best actors out there and the writing is just fantastic. It's unlike anything you've ever seen before.".
 
 <#pulp-fiction-MrPenman-sentiment>
@@ -744,7 +763,6 @@
 	schema:author "joao1198pedro";
 	schema:dateCreated "Sat Nov 23 2013 00:00:00 GMT+0100 (Central European Standard Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody "Silly hair terrible casts. Watch it on 90's maybe will be better? I like Quentin Tarantino but this flick seems pointless and strange. Universal acclaim didnt attract me give better score.".
 
 <#pulp-fiction-joao1198pedro-sentiment>
@@ -765,7 +783,6 @@
 	schema:author "JamisInsomia";
 	schema:dateCreated "Thu Jul 10 2014 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody "I know everyone says it's a good movie. Yes it is but not my type. I tried to watch it 23 times but I can not resist. Something attracts me at all not at all I get bored so fast ... No offense it is my opinion".
 
 <#pulp-fiction-JamisInsomia-sentiment>
@@ -786,7 +803,6 @@
 	schema:author "TheRoyalMelon";
 	schema:dateCreated "Wed Dec 02 2015 00:00:00 GMT+0100 (Central European Standard Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody "What the f222 was this sh7t? This is the worst movie i've ever seen! What a mind f777! And how the f999 this movie has this high scores? F777 the academy awards!".
 
 <#pulp-fiction-TheRoyalMelon-sentiment>
@@ -807,7 +823,6 @@
 	schema:author "VinceRocks123";
 	schema:dateCreated "Sun Apr 12 2015 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody "This is one of the most overrated movies ever made I neither like this movie or think it is good or edge people need to get over Tarantino as he is far from a good writer or director terrible movie.".
 
 <#pulp-fiction-VinceRocks123-sentiment>
@@ -828,7 +843,6 @@
 	schema:author "MovieManiac83";
 	schema:dateCreated "Fri Apr 24 2015 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody "beautiful number 1 of all movies of all time no dought and if you do not like this movie than you will know my name is the lord".
 
 <#pulp-fiction-MovieManiac83-sentiment>
@@ -849,7 +863,6 @@
 	schema:author "CinemaBlend";
 	schema:dateCreated "Wed May 06 2015 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody " This film is continuously hilarious from beginning to end. With it".
 
 <#pulp-fiction-CinemaBlend-sentiment>
@@ -870,7 +883,6 @@
 	schema:author "YorkMan";
 	schema:dateCreated "Mon Feb 01 2016 00:00:00 GMT+0100 (Central European Standard Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody " I still remember how giddy and excited I was while I was watching this movie in the theater. A top ten favorite of mine.".
 
 <#pulp-fiction-YorkMan-sentiment>
@@ -891,7 +903,6 @@
 	schema:author "Dyliebar";
 	schema:dateCreated "Fri Aug 03 2018 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody " overall a good movie with great dialogue...i wouldnt really call this a movie though rather a combination of 3 short scenes.".
 
 <#pulp-fiction-Dyliebar-sentiment>
@@ -912,7 +923,6 @@
 	schema:author "The3AcademySins";
 	schema:dateCreated "Fri Oct 20 2017 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody " I can honestly say that this is one of the best genre changing films of the past few decades since the godfather or the goodfellas. if i made a list of my top ten favorite movies pulp fiction would without a doubt be on there somewhere.".
 
 <#pulp-fiction-The3AcademySins-sentiment>
@@ -933,7 +943,6 @@
 	schema:author "MasterRiley";
 	schema:dateCreated "Wed Aug 10 2016 00:00:00 GMT+0200 (Central European Summer Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody " Really good in a brutal weird unconfortable sort of way.".
 
 <#pulp-fiction-MasterRiley-sentiment>
@@ -954,7 +963,6 @@
 	schema:author "Benkoko11";
 	schema:dateCreated "Thu Feb 23 2017 00:00:00 GMT+0100 (Central European Standard Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody " Travolta and Jackson are absolutely perfect together one of the best duo's in movie history and that's no overstatement.".
 
 <#pulp-fiction-Benkoko11-sentiment>
@@ -975,7 +983,6 @@
 	schema:author "jaasieljunior";
 	schema:dateCreated "Tue Nov 21 2017 00:00:00 GMT+0100 (Central European Standard Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody " Most people I know love this movie. It's decent. I'd like it a lot better if it weren't for the entire part of the movie with Uma Thurman.".
 
 <#pulp-fiction-jaasieljunior-sentiment>
@@ -996,7 +1003,6 @@
 	schema:author "robertoiglesias";
 	schema:dateCreated "Fri Mar 16 2018 00:00:00 GMT+0100 (Central European Standard Time)";
 	schema:reviewRating 10;
-	schema:headline "undefined";
 	schema:reviewBody " This moive is amazing! It combines deep thought with a crazy story.".
 
 <#pulp-fiction-robertoiglesias-sentiment>

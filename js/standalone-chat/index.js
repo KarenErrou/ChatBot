@@ -15,7 +15,15 @@ app.get('/', function(req, res) {
 });
 
 /* Users partaking in the Chat */
-var users = { }
+var users = { };
+
+/* Emotion categories (currently hard coded) */
+var emotionCategories = [
+    'ambiguous-emotion',
+    'neutral-emotion',
+    'positive-emotion',
+    'negative-emotion',
+];
 
 /* Socket Connection */
 io.on('connection', function(socket) {
@@ -66,7 +74,7 @@ io.on('connection', function(socket) {
 		console.log(data);
 	});
 	
-        // respond with trumpy message
+    // respond with trumpy message
 	let resp = markov.walk();
         io.emit('message', { 'user': 'Trumpy', 'msg': resp });
         sparql.putPartOfChat(users[socket.id], resp, 'Trumpy', function(data){
@@ -74,10 +82,48 @@ io.on('connection', function(socket) {
 		console.log(data);
 	});
 
-        // extract emotion and check for possible movie
-        let emotion = bayes.classify(data.msg);
+    // get emotion category and send it back
+    let emotion = bayes.classify(data.msg);
+    graphdb.query(sparql.getEmotionCategory(emotion), function(data) {
+        if (data != null && data != undefined) {
+            // categories and subcategories are ambiguous
+            let category = data.results.bindings[0]['category'].value
+                .replace('http://gsi.dit.upm.es/ontologies/wnaffect/ns#', '');
+            let subcategory = data.results.bindings[0]['subcategory'].value
+                .replace('http://gsi.dit.upm.es/ontologies/wnaffect/ns#', '');
+
+            // we are always trying to get top level categories
+            let topCategory = ''
+            if (emotionCategories.includes(category)) {
+                topCategory = category;
+            } else if (emotionCategories.includes(subcategory)) {
+                topCategory = subcategory;
+            }
+
+            // need the other categories for requests
+            let otherCategories = [];
+            for (let i in emotionCategories) {
+                if (emotionCategories[i] != topCategory) {
+                    otherCategories.push(emotionCategories[i]);
+                }
+            }
+
+            // send emotion + category + other categories
+            socket.emit('emotion', {
+                'category': topCategory,
+                'others': otherCategories,
+                'emotion': emotion
+            });
+        }
+    });
+
+    });
+
+    /* Helper function */
+    function emitEmotionalMovie(emotion) {
         graphdb.query(sparql.getMoviePerEmotion(emotion), function(data) {
-            if (data !== null && data !== undefined) {
+            if (data !== null && data !== undefined &&
+                data.results.bindings.length > 0) {
                 // process movie data for frontend
                 var movieJSON = { };
                 for (var i = 0; i < data.head.vars.length; i++) {
@@ -87,7 +133,36 @@ io.on('connection', function(socket) {
                 socket.emit('movie', movieJSON);
             }
         });
+    }
 
+    /* Emotion response (movie) */
+    socket.on('emotion', function(data) {
+        let emotion = data.emotion;
+        emitEmotionalMovie(emotion);
+    });
+
+    /* Emotion category response (movie) */
+    socket.on('emotionCategory', function(data) {
+        let emotionCategory = data.emotionCategory;
+
+        graphdb.query(sparql.getEmotionOfCategory(emotionCategory),
+                      function(data) {
+            if (data !== null && data !== undefined &&
+                data.results.bindings.length > 0) {
+                // process emotion for sparql
+                let rawEmotion = data.results.bindings[0]['emo'].value;
+                let emotion = rawEmotion.replace(
+                    'http://gsi.dit.upm.es/ontologies/wnaffect/ns#', '');
+                emotion = emotion.substr(0, 0) +
+                          emotion[0].toUpperCase() +
+                          emotion.substr(1);
+                let n = emotion.search('-') + 1;
+                emotion = emotion.substr(0, n) +
+                          emotion[n].toUpperCase() +
+                          emotion.substr(n + 1);
+                emitEmotionalMovie(emotion);
+            }
+        });
     });
 
     /* Disconnect */
