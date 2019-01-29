@@ -63,13 +63,16 @@
 
         /* Functions for requesting movies */
         function requestMoviePerEmotion(event) {
-            let data = { 'emotion': event.originalTarget.id };
+            console.log(event);
+            //let data = { 'emotion': event.originalTarget.id };
+            let data = { 'emotion': event.target.id };
             socket.emit('emotion', data);
             $('#emotion-dialog').empty();
         }
 
         function requestMoviePerCategory(event) {
-            let data = { 'emotionCategory': event.originalTarget.id };
+            //let data = { 'emotionCategory': event.originalTarget.id };
+            let data = { 'emotionCategory': event.target.id };
             socket.emit('emotionCategory', data);
             $('#emotion-dialog').empty();
         }
