@@ -34,6 +34,7 @@ exports.getMoviePerEmotion = function(emotion) {
             '   ?m schema:text ?desc . ' +
             '   ?m schema:aggregateRating ?rtg . ' +
             '   ?m schema:image ?img . ' +
+	    '   FILTER( ?img != "https://static.metacritic.com/images/products/movies/250h-movie.jpg") . ' +
             '   ?m a schema:Movie . ' +
             '   ?s a onyx:EmotionSet . ' +
             '   ?s onyx:describesObject ?m . ' +
