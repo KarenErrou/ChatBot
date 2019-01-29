@@ -24,7 +24,7 @@ exports.getMoviePerEmotion = function(emotion) {
             'PREFIX onyx: <http://www.gsi.dit.upm.es/ontologies/onyx/ns#> ' +
             'PREFIX wnaffect: <http://www.gsi.dit.upm.es/ontologies/wnaffect/ns#>' +
             'PREFIX mcb: <http://movie.chatbot.org/>' +
-            'SELECT (SAMPLE(?m) As ?movie) ?id ?title ?duration' +
+            'SELECT (?m As ?movie) ?id ?title ?duration' +
                     '?year ?desc ?rtg ?img ' +
             'WHERE { ' +
             '   ?m mcb:hasId ?id . ' +
@@ -39,7 +39,7 @@ exports.getMoviePerEmotion = function(emotion) {
             '   ?s onyx:describesObject ?m . ' +
             '   ?s onyx:hasEmotion ?e . ' +
             '   ?e onyx:hasEmotionCategory wnaffect:' + emotion +
-            '} GROUP BY ?id ?title ?duration ?year ?desc ?rtg ?img '
+            '} ORDER BY RAND() LIMIT 1'
     }
 }
 
