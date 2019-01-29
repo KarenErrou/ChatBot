@@ -24,7 +24,8 @@ exports.getMoviePerEmotion = function(emotion) {
             'PREFIX onyx: <http://www.gsi.dit.upm.es/ontologies/onyx/ns#> ' +
             'PREFIX wnaffect: <http://www.gsi.dit.upm.es/ontologies/wnaffect/ns#>' +
             'PREFIX mcb: <http://movie.chatbot.org/>' +
-            'SELECT ?m ?id ?title ?duration ?year ?desc ?rtg ?img ' +
+            'SELECT (SAMPLE(?m) As ?movie) ?id ?title ?duration' +
+                    '?year ?desc ?rtg ?img ' +
             'WHERE { ' +
             '   ?m mcb:hasId ?id . ' +
             '   ?m mcb:hasTitle ?title . ' +
@@ -38,7 +39,7 @@ exports.getMoviePerEmotion = function(emotion) {
             '   ?s onyx:describesObject ?m . ' +
             '   ?s onyx:hasEmotion ?e . ' +
             '   ?e onyx:hasEmotionCategory wnaffect:' + emotion +
-            '} LIMIT 1 '
+            '} GROUP BY ?id ?title ?duration ?year ?desc ?rtg ?img '
     }
 }
 
@@ -72,16 +73,28 @@ exports.getDBpediaMovieData = function(movieId) {
 }
 
 /* Getting sample emotion via category */
-exports.getEmotionOfCategory = function(emotionCategory) {
+exports.getEmotionsOfCategory = function(emotionCategory) {
     return {
         'endpoint': endpoint,
         'query':
             'PREFIX skos: <http://www.w3.org/2004/02/skos/core#>' +
-            'select (SAMPLE(?e) AS ?emo) where {' +
+            'PREFIX onyx: <http://gsi.dit.upm.es/ontologies/onyx/ns#>' +
+            'select DISTINCT ?emo where {' +
+            '   ?e a onyx:EmotionCategory .' +
             '   ?e skos:broaderTransitive ' +
             '   <http://gsi.dit.upm.es/ontologies/wnaffect/ns#' +
                  emotionCategory + '> .' +
+            '   ?e skos:prefLabel ?emo .' +
             '}'
+    }
+}
+
+exports.isEmotionValid = function(emotion) {
+    return {
+        'endpoint': endpoint,
+        'query':
+            'PREFIX wna: <http://www.gsi.dit.upm.es/ontologies/wnaffect/ns#>' +
+            'ASK { ?s ?p wna:' + emotion + ' }'
     }
 }
 
