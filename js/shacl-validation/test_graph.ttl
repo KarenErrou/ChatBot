@@ -1,0 +1,8 @@
+<http://movie.chatbot.org#o1548420147065> a <http://movie.chatbot.org/PartOfChat>;
+     <http://schema.org/author> "Trumpy";
+     <http://schema.org/dateCreated> 1548420147065;
+     <http://schema.org/text> "Welcome o!" .
+
+     <http://movie.chatbot.org#o> a <http://movie.chatbot.org/User>;
+       <http://movie.chatbot.org/hasChatLog> <http://movie.chatbot.org#osChatLog>;
+         <http://movie.chatbot.org/hasNickName> "o" .

@@ -2,10 +2,9 @@ const fs = require('fs');
 const shacl = require('./index.js');
 
 try {
-
 	shacl.validate({
-		graph: fs.readFileSync('../../ontology/imdb/merged_imdb1.ttl', 'utf8'),
-		shapes: fs.readFileSync('./shacl.ttl', 'utf8')
+		graph: fs.readFileSync('./test_graph.ttl', 'utf8'),
+		shapes: fs.readFileSync('./shapes/chat.ttl', 'utf8')
 	}, function(err, report){
 
 		if (err) {

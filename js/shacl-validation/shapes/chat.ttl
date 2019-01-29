@@ -1,0 +1,62 @@
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix mcb: <http://movie.chatbot.org/> .
+
+mcb:UserShape
+	a sh:NodeShape ;
+	sh:targetClass mcb:ChatLog ;
+	sh:property [
+		sh:path mcb:hasChatLog ;
+		sh:datatype sh:IRI ;
+	] ;
+	sh:property [
+		sh:path mcb:hasNickName;
+		sh:datatype xsd:string ;
+		sh:pattern "[a-zA-Z0-9]" ;
+		sh:minLength 1 ;
+		sh:maxLength 16 ;
+		sh:maxCount 1 ;
+		sh:minCount 1 ;
+	] .
+
+mcb:ChatLogShape
+	a sh:NodeShape ;
+	sh:targetClass mcb:ChatLog ;
+	sh:property [
+		sh:path mcb:hasPartOfChat ;
+		sh:datatype sh:IRI ;
+		sh:minCount 1 ;
+	] .
+
+mcb:PartOfChatShape
+	a sh:NodeShape ;
+	sh:targetClass mcb:PartOfChat ;
+	sh:property [
+		sh:path schema:author ;
+		sh:datatype xsd:string ;
+		sh:pattern "[a-zA-Z0-9]" ;
+		sh:minLength 1 ;
+		sh:maxLength 16 ;
+		sh:maxCount 1 ;
+		sh:minCount 1 ;
+	] ;
+	sh:property [
+		sh:path schema:text ;
+		sh:datatype xsd:string ;
+		sh:pattern "[a-zA-Z0-9!?.]" ;
+		sh:minLength 1 ;
+		sh:maxLength 256 ;
+		sh:maxCount 1 ;
+		sh:minCount 1 ;
+	] ;
+	sh:property [
+		sh:path schema:dateCreated ;
+		sh:datatype xsd:integer ;
+		sh:maxCount 1 ;
+		sh:minCount 1 ;
+		sh:minInclusive 0 ;
+	] .
