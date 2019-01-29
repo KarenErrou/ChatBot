@@ -1,6 +1,32 @@
 /* Server specific - change this to your config! */
 var endpoint = 'http://localhost:7200/repositories/productionV2';
 
+exports.getSomeMovies = function() {
+	return {
+		'endpoint': endpoint,
+		'query':
+            		'PREFIX mcb: <http://movie.chatbot.org/> ' +
+            		'select ?m ?id where {'+
+            		'   ?m mcb:hasId ?id . ' +
+            		//'} ORDER BY RAND() LIMIT 1000'
+            		'} LIMIT 1000'
+	}
+
+}
+
+exports.getMovieAPI = function(id) {
+	return {
+		'endpoint': endpoint,
+		'query':
+            		'PREFIX mcb: <http://movie.chatbot.org/> ' +
+            		'select ?m ?title ?id where {'+
+            		'   ?m mcb:hasId "'+ id +'" . ' +
+            		'   ?m mcb:hasTitle ?title . ' +
+            		'}'
+	}
+
+}
+
 exports.getEmotionCategory = function(emotion) {
     return {
         'endpoint': endpoint,

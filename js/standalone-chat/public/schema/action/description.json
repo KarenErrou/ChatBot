@@ -3,7 +3,7 @@
 	"@type": "ReviewAction",
 	"target": {
 		"@type": "EntryPoint",
-		"urlTemplate": "https://localhost:3000/api/v1/review",
+		"urlTemplate": "https://localhost:1337/api/v1/review",
 		"encodingType": "application/ld+json",
 		"contentType": "application/ld+json"
 	},
