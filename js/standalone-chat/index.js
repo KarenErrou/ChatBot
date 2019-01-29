@@ -154,26 +154,44 @@ io.on('connection', function(socket) {
         emitEmotionalMovie(emotion);
     });
 
+    /* Helper function */
+    function emitValidEmotionalMovie(emotions, index) {
+        graphdb.query(sparql.isEmotionValid(emotions[index]),
+                      function(data) {
+            // if emotion is valid -> emit, else recursion
+            if (data.boolean) {
+                emitEmotionalMovie(emotions[index]);
+            } else if (++index < emotions.length) {
+                emitValidEmotionalMovie(emotions, index);
+            }
+        });
+    }
+
     /* Emotion category response (movie) */
     socket.on('emotionCategory', function(data) {
         let emotionCategory = data.emotionCategory;
 
-        graphdb.query(sparql.getEmotionOfCategory(emotionCategory),
+        graphdb.query(sparql.getEmotionsOfCategory(emotionCategory),
                       function(data) {
             if (data !== null && data !== undefined &&
                 data.results.bindings.length > 0) {
-                // process emotion for sparql
-                let rawEmotion = data.results.bindings[0]['emo'].value;
-                let emotion = rawEmotion.replace(
-                    'http://gsi.dit.upm.es/ontologies/wnaffect/ns#', '');
-                emotion = emotion.substr(0, 0) +
+                // process emotions for sparql (uppercase error)
+                let emotions = [];
+                for (let i in data.results.bindings) {
+                    let rawEmotion = data.results.bindings[i]['emo'].value;
+                    let emotion = rawEmotion.replace(
+                        'http://gsi.dit.upm.es/ontologies/wnaffect/ns#', '');
+                    emotion = emotion.substr(0, 0) +
                           emotion[0].toUpperCase() +
                           emotion.substr(1);
-                let n = emotion.search('-') + 1;
-                emotion = emotion.substr(0, n) +
+                    let n = emotion.search('-') + 1;
+                    emotion = emotion.substr(0, n) +
                           emotion[n].toUpperCase() +
                           emotion.substr(n + 1);
-                emitEmotionalMovie(emotion);
+                    emotions.push(emotion);
+                }
+                
+                emitValidEmotionalMovie(emotions, 0);
             }
         });
     });
