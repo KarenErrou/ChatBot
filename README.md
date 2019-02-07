@@ -143,7 +143,7 @@ Onyx was designed for emotions which have been extracted from text.
 This suits our needs perfectly, since we want to extract the user's emotional state from their chat messages and the emotional response to a movie from the movie's reviews.
 A basic example below shows a single opinion annotated with Onyx metadata (taken from the specification page):
 
-<img src="./img/001_onyx.png" width="100%" height="100%"/>
+<img src="./img/report1/001_onyx.png" width="100%" height="100%"/>
 
 #### WordNet-Affect Taxonomy
 
@@ -400,7 +400,7 @@ Example sub graph of our knowledge graph in *Turtle* format (Note that entries f
 
 The same example sub graph as a visual graph:
 
-<img src="./img/001_graph.png" width="100%" height="100%"/>
+<img src="./img/report1/001_graph.png" width="100%" height="100%"/>
 
 ### Derived Axioms
 
@@ -440,7 +440,7 @@ It's basically unusable, but we wanted you to know that we tried to give you the
 
 The local installation works really fine as you can see from the following screenshot, where we show off the *advanced query*, and its results.
 
-<img src="./img/001_graphdb.png" width="105%" height="105%"/>
+<img src="./img/report1/001_graphdb.png" width="105%" height="105%"/>
 
 ### Exploratory Queries on the Loaded Dataset
 
