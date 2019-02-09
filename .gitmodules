@@ -4,3 +4,6 @@
 [submodule "js/nlp/text-classifier-js"]
 	path = js/nlp/text-classifier-js
 	url = https://github.com/julietcetera/text-classifier-js
+[submodule "js/markov-js"]
+	path = js/markov-js
+	url = https://github.com/julietcetera/markov-js
