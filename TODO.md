@@ -1,26 +1,21 @@
-# TODOS for the final presentation/report
+# TODOS for the final report
 
- - [ ] assemble presentation
-     - 1. Introduction
-         - Description of Use Case
-         - Used Data sources
-         - Final Ontology used to represent the data
-     - 2. Enrichment
-         - Summary of all enrichments made (Information Extraction, Interlinking with LOD)
-     - 3. Application
-         - General Description 
-         - Validation with SHACL Shapes
-         - Demo (focus on functionality and usage of the work done in the first part of the proseminar)
-     - about the same outline as the midterm report with additions
- - [ ] shacl shapes
+ - [ ] more shacl shapes
+     - [ ] movie/review data
  - [ ] schema.org actions
  - [X] ui improvements
  - [ ] meta data (use alignments)
  - [ ] improve machine learning training set for deducing emotions
+     - [ ] produce new emotion analysis data 
+     - [ ] new emotion rdf files
  - [X] publish app/graphdb via ngrok
+     - [ ] install on raspi or something such that it stays accessible
  - [X] more chat partners
  - [ ] put nlp tagged stuff into graph and use it
+     - [ ] gather all data from ontotext tagging service
+     - [ ] translate to rdf
  - [X] improve markov chain (actually use probability distribution)
+ - [ ] make chatbot context sensitive
  - [ ] refactoring??
  - [X] user registrations + chat log
  - [ ] assemble report
