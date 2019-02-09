@@ -1,8 +1,8 @@
 #!/bin/bash
 
-rm imdb/merged_*
+rm metacritic/merged_*
 
-n_sources=1049
+n_sources=120
 chunk=25
 new_f=0
 
@@ -14,5 +14,5 @@ do
 	then
 		new_f=$(($new_f+1))
 	fi
-	cat imdb/imdb"$i".ttl >> imdb/merged_imdb"$new_f".ttl
+	cat metacritic/metacritic"$i".ttl >> metacritic/merged_metacritic"$new_f".ttl
 done
