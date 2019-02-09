@@ -1,7 +1,6 @@
 {
-  "@context" : "/api/v1/contexts/entryPoint" ,
+ "@context" : "schema:EntryPoint" ,
  "@id": "/api/v1",
  "@type": "EntryPoint" ,
- "movies": "/api/v1/movies",
- "review": "/api/v1/review"
+ "movies": "/api/v1/movies"
 }

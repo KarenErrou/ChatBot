@@ -9,7 +9,7 @@ exports.getSomeMovies = function() {
             		'select ?m ?id where {'+
             		'   ?m mcb:hasId ?id . ' +
             		//'} ORDER BY RAND() LIMIT 1000'
-            		'} LIMIT 1000'
+            		'} LIMIT 100'
 	}
 
 }

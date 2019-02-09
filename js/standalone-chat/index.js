@@ -4,7 +4,7 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
 var markov = require('../markov-js/markov.js');
-var bayes = require('../nlp/bayes.js');
+var bayes = require('../nlp/text-classifier-js/index.js');
 var graphdb = require('../graphdb/index.js');
 var sparql = require('./sparql.js');
 
@@ -130,6 +130,8 @@ io.on('connection', function(socket) {
 
     // get emotion category and send it back
     let emotion = bayes.classify(data.msg);
+    if (emotion === 'Nothing')
+        emotion = 'Neutral';
     graphdb.query(sparql.getEmotionCategory(emotion), function(data) {
         if (data != null && data != undefined) {
             // categories and subcategories are ambiguous
