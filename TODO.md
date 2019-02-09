@@ -1,6 +1,7 @@
 # TODOS for the final report
 
  - [ ] more shacl shapes
+     - [ ] user registration/chatlog data 
      - [ ] movie/review data
  - [ ] schema.org actions
  - [X] ui improvements
@@ -16,6 +17,7 @@
      - [ ] translate to rdf
  - [X] improve markov chain (actually use probability distribution)
  - [ ] make chatbot context sensitive
+     - [ ] ad hoc train reviews to the model!
  - [ ] refactoring??
  - [X] user registrations + chat log
  - [ ] assemble report
