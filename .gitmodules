@@ -1,3 +1,6 @@
 [submodule "js/shacl-validation/shacl-js"]
 	path = js/shacl-validation/shacl-js
 	url = https://github.com/TopQuadrant/shacl-js
+[submodule "js/nlp/text-classifier-js"]
+	path = js/nlp/text-classifier-js
+	url = https://github.com/julietcetera/text-classifier-js

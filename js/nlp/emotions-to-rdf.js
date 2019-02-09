@@ -25,7 +25,7 @@ mc.forEach(function(movie){
 			review.user = String(review.user).replace(/[^a-zA-Z0-9]/g, '_');
 
 			/* sentiment of a review - ex:Result1 of onyx spec */
-			rdf.makeConcept('#'+movie.substr(6)+'-'+review.user+'-sentiment');
+			rdf.makeConcept('#'+movie.substr(6)+'-'+review.user+'-bayes');
 			rdf.extendConcept('rdf:type', 'onyx:EmotionSet');
 			rdf.extendConcept('onyx:emotionText','\"'+review.text+'\"');
 			rdf.extendConcept('onyx:describesObject','<#'+movie.substr(6)+'>');
@@ -33,49 +33,52 @@ mc.forEach(function(movie){
 			rdf.finishConcept('prov:Entity', '<#'+movie.substr(6)+'-'+review.user+'>');
 
 			/* custom analysis */
-			rdf.makeConcept('#'+movie.substr(6)+'-'+review.user+'-sentiment-analysis');
+			rdf.makeConcept('#'+movie.substr(6)+'-'+review.user+'-bayes-analysis');
 			rdf.extendConcept('onyx:algorithm','\"Naive Bayes\"');
 			rdf.extendConcept('onyx:source','\"'+review.url+'\"');
 			rdf.extendConcept('onyx:usesEmotionalModel','\"http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel\"');
-			rdf.finishConcept('prov:generated','<#'+movie.substr(6)+'-'+review.user+'-sentiment>');
+			rdf.finishConcept('prov:generated','<#'+movie.substr(6)+'-'+review.user+'-bayes>');
 		});
 
 	} catch (e) {
 		console.log(e);
 	}
 });
-var imdb = require('../../data/imdb/movies.json');
-imdb.forEach(function(movie){
 
-	try {
-		var reviews = require('../../data/imdb/emotions/'+movie+'.json');
-
-		reviews.forEach(function(review){
-
-			review.text = String(review.text).replace(/[^a-zA-Z0-9.!?' ]/g, '');
-			review.user = String(review.user).replace(/[^a-zA-Z0-9]/g, '_');
-
-			/* sentiment of a review - ex:Result1 of onyx spec */
-			rdf.makeConcept('#'+movie+'-'+review.user+'-sentiment');
-			rdf.extendConcept('rdf:type', 'onyx:EmotionSet');
-			rdf.extendConcept('onyx:emotionText','\"'+review.text+'\"');
-			rdf.extendConcept('onyx:describesObject','<#'+movie+'>');
-			rdf.extendConcept('onyx:hasEmotion', '<#'+review.emotion+'>');
-			rdf.finishConcept('prov:Entity', '<#'+movie+'-'+review.user+'>');
-
-			/* custom analysis */
-			rdf.makeConcept('#'+movie+'-'+review.user+'-sentiment-analysis');
-			rdf.extendConcept('onyx:algorithm','\"Naive Bayes\"');
-			rdf.extendConcept('onyx:source','\"'+review.url+'\"');
-			rdf.extendConcept('onyx:usesEmotionalModel','\"http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel\"');
-			rdf.finishConcept('prov:generated','<#'+movie+'-'+review.user+'-sentiment>');
-		});
-
-	} catch (e) {
-		console.log(e);
-	}
-});
+//var imdb = require('../../data/imdb/movies.json');
+//var n = 35;
+//for (var i=5000*(n-1); i<5000*n; i++) {
+//	var movie = imdb[i];
+//	try {
+//		var reviews = require('../../data/imdb/emotions/'+movie+'.json');
+//
+//		reviews.forEach(function(review){
+//
+//			review.text = String(review.text).replace(/[^a-zA-Z0-9.!?' ]/g, '');
+//			review.user = String(review.user).replace(/[^a-zA-Z0-9]/g, '_');
+//
+//			/* sentiment of a review - ex:Result1 of onyx spec */
+//			rdf.makeConcept('#'+movie+'-'+review.user+'-bayes');
+//			rdf.extendConcept('rdf:type', 'onyx:EmotionSet');
+//			rdf.extendConcept('onyx:emotionText','\"'+review.text+'\"');
+//			rdf.extendConcept('onyx:describesObject','<#'+movie+'>');
+//			rdf.extendConcept('onyx:hasEmotion', '<#'+review.emotion+'>');
+//			rdf.finishConcept('prov:Entity', '<#'+movie+'-'+review.user+'>');
+//
+//			/* custom analysis */
+//			rdf.makeConcept('#'+movie+'-'+review.user+'-bayes-analysis');
+//			rdf.extendConcept('onyx:algorithm','\"Naive Bayes\"');
+//			rdf.extendConcept('onyx:source','\"'+review.url+'\"');
+//			rdf.extendConcept('onyx:usesEmotionalModel','\"http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel\"');
+//			rdf.finishConcept('prov:generated','<#'+movie+'-'+review.user+'-bayes>');
+//		});
+//
+//	} catch (e) {
+//		console.log(e);
+//	}
+//}
 
 //rdf.print();
 rdf.validate();
 rdf.printToFile('mc-emotions');
+//rdf.printToFile('imdb-emotions'+n);
