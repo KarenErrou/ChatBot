@@ -1,8 +1,8 @@
 # TODOS for the final report
 
- - [ ] more shacl shapes
-     - [ ] user registration/chatlog data 
-     - [ ] movie/review data
+ - [X] more shacl shapes
+     - [X] user registration/chatlog data 
+     - [X] movie/review data
  - [ ] schema.org actions
  - [X] ui improvements
  - [ ] meta data (use alignments)

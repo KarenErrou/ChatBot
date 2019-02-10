@@ -1,0 +1,134 @@
+@prefix mcb: <http://movie.chatbot.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+mcb:MovieShape
+	a sh:NodeShape ;
+	sh:targetClass schema:Movie ;
+    sh:closed false ;
+    sh:ignoredProperties (rdf:type) ;
+	sh:property [
+		sh:path mcb:hasId ;
+		sh:datatype xsd:string ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+		sh:severity sh:Violation ;
+		sh:message "A movie has to have exactly one id!"@en ;
+	] ;
+	sh:property [
+		sh:path mcb:hasTitle ;
+		sh:datatype xsd:string ;
+		sh:minCount 1 ;
+		sh:severity sh:Warning ;
+		sh:message "A movie should have at least one title!"@en ;
+	] ;
+	sh:property [
+		sh:path mcb:hasGenre ;
+		sh:datatype xsd:string ;
+		sh:minCount 1 ;
+		sh:severity sh:Warning ;
+		sh:message "A movie should have at least one genre!"@en ;
+	] ;
+	sh:property [
+		sh:path mcb:hasLanguage ;
+		sh:datatype xsd:string ;
+		sh:minCount 1 ;
+		sh:severity sh:Warning ;
+		sh:message "A movie should have at least one language!"@en ;
+	] ;
+	sh:property [
+		sh:path schema:duration ;
+		sh:datatype xsd:string ;
+		sh:severity sh:Warning ;
+	] ;
+	sh:property [
+		sh:path schema:dateCreated ;
+		sh:datatype xsd:string ;
+		sh:severity sh:Warning ;
+	] ;
+	sh:property [
+		sh:path schema:aggregateRating;
+		sh:datatype xsd:IRI ;
+		sh:severity sh:Violation ;
+	] ;
+	sh:property [
+		sh:path mcb:hasActor ;
+		sh:datatype xsd:IRI ;
+		sh:severity sh:Violation ;
+	] ;
+	sh:property [
+		sh:path schema:image ;
+		sh:datatype xsd:anyURI ;
+		sh:severity sh:Violation ;
+	] ;
+	sh:property [
+		sh:path schema:musicBy ;
+		sh:datatype xsd:anyURI ;
+		sh:severity sh:Violation ;
+		sh:deactivated true ;
+	] .
+
+mcb:ReviewShape
+    a sh:NodeShape ;
+    sh:targetClass schema:Review ;
+    sh:property [
+        sh:path schema:headline ;
+		sh:datatype xsd:string ;
+		sh:minCount 1 ;
+		sh:severity sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path schema:about ;
+		sh:datatype xsd:IRI ;
+		sh:severity sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path schema:author ;
+		sh:datatype xsd:string ;
+		sh:minCount 1 ;
+		sh:severity sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path schema:dateCreated ;
+		sh:datatype xsd:string ;
+		sh:minCount 1 ;
+		sh:severity sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path schema:reviewRating ;
+        sh:datatype xsd:integer ;
+		sh:severity sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path schema:reviewBody ;
+		sh:datatype xsd:string ;
+		sh:minCount 1 ;
+		sh:severity sh:Violation ;
+    ] .
+
+mcb:EmotionSetShape
+    a sh:NodeShape ;
+    sh:targetClass onyx:EmotionSet ;
+    sh:closed true ;
+    sh:property [
+        sh:path onyx:emotionText ;
+        sh:datatype xsd:string ;
+		sh:severity sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path onyx:hasEmotion ;
+		sh:datatype xsd:IRI ;
+		sh:severity sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path prov:Entity ;
+		sh:datatype xsd:IRI ;
+		sh:severity sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path onyx:describesObject ;
+		sh:datatype xsd:IRI ;
+		sh:severity sh:Violation ;
+    ] .

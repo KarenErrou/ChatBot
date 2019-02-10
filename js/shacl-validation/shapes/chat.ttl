@@ -9,9 +9,14 @@
 mcb:UserShape
 	a sh:NodeShape ;
 	sh:targetClass mcb:ChatLog ;
+    sh:closed false ;
 	sh:property [
 		sh:path mcb:hasChatLog ;
 		sh:datatype sh:IRI ;
+		sh:maxCount 1 ;
+		sh:minCount 1 ;
+		sh:severity sh:Warning ;
+		sh:message "A user should have exactly 1 ChatLog!"@en ;
 	] ;
 	sh:property [
 		sh:path mcb:hasNickName;
@@ -21,6 +26,8 @@ mcb:UserShape
 		sh:maxLength 16 ;
 		sh:maxCount 1 ;
 		sh:minCount 1 ;
+		sh:severity sh:Violation ;
+		sh:message "A user has to have exactly 1 nickname!"@en ;
 	] .
 
 mcb:ChatLogShape
