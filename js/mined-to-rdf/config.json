@@ -6,8 +6,8 @@
 	],
 	"sources":[
 		{
-			"source":"imdb",
-			"graph":"imdb"
+			"source":"metacritic",
+			"graph":"metacritic"
 		}
 	]
 }

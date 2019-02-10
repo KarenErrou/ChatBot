@@ -39,9 +39,7 @@ var entities = []
 //	// ignore meta properties
 //	if (!config.target_entities.hasOwnProperty(key))
 //		continue;
-//	//var tags_file = config.target_entities[key].tags;
-//	//console.log(tags_file);
-//	//config.target_entities[key].tags = require(tags_file);
+//	var tags_file = config.target_entities[key].tags;
 //	config.target_entities[key].tags = require('./tags/movies.json');
 //	entities.push(config.target_entities[key]);
 //}

@@ -15,7 +15,10 @@ config.sources.forEach(function(entry){
 	var movies = config.data_dir + entry.source + '/movies/';
 	var reviews = config.data_dir + entry.source + '/reviews/';
 	
-	var i, filenum=950, j, temp=[], chunk=100;
+	// from 0 to 19
+	var n = 2;
+	//var n = 35;
+	var i, filenum=n*50, j, temp=[], chunk=100;
 	for (i=filenum*chunk,j=(filenum*chunk)+5000; i<j; i+=chunk) {
 	//for (i=filenum*chunk,j=ids.length; i<j; i+=chunk) {
 
@@ -114,6 +117,7 @@ config.sources.forEach(function(entry){
 		/* temparray to avoid oversized heap */
 		temparray = ids.slice(i,i+chunk);
 		temparray.forEach(function(id){
+			id = id.substr(6);
 			var movie;
 			var review;
 			/* when the miner has 404 errors stuff might be corrupted so this is for robustness */
@@ -136,7 +140,7 @@ config.sources.forEach(function(entry){
 			rdf.makeConcept('#'+id+'-aggregateRating');
 			if (movie["movie-rating-count"][0] != null && movie["movie-rating-count"][0] != undefined)
 				rdf.extendConcept('schema:ratingCount',movie["movie-rating-count"][0]);
-			if (movie["movie-rating-value"][0] != null && movie["movie-rating-value"][0] != undefined)
+			if (movie["movie-rating-value"][0] != null && movie["movie-rating-value"][0] != undefined && movie["movie-rating-value"][0] != "tbd")
 				rdf.extendConcept('schema:ratingValue',movie["movie-rating-value"][0]);
 			if (movie["movie-best-rating"][0] != null && movie["movie-best-rating"][0] != undefined)
 				rdf.extendConcept('schema:bestRating',movie["movie-best-rating"][0]);
@@ -204,7 +208,7 @@ config.sources.forEach(function(entry){
 				rdf.finishConcept('schema:reviewBody','\"'+review_text[i]+'\"');
 
 				/* sentiment of a review - ex:Result1 of onyx spec */
-				rdf.makeConcept('#'+id+'-'+reviewer[i]+'-sentiment');
+				rdf.makeConcept('#'+id+'-'+reviewer[i]+'-random');
 				rdf.extendConcept('rdf:type', 'onyx:EmotionSet');
 				rdf.extendConcept('onyx:emotionText','\"'+review_text[i]+'\"');
 				rdf.extendConcept('onyx:describesObject','<#'+id+'>');
@@ -212,11 +216,11 @@ config.sources.forEach(function(entry){
 				rdf.finishConcept('prov:Entity', '<#'+id+'-'+reviewer[i]+'>');
 
 				/* custom analysis */
-				rdf.makeConcept('#'+id+'-'+reviewer[i]+'-sentiment-analysis');
+				rdf.makeConcept('#'+id+'-'+reviewer[i]+'-random-analysis');
 				rdf.extendConcept('onyx:algorithm','\"RNG\"');
 				rdf.extendConcept('onyx:source','\"'+review["review-url"][0]+'\"');
 				rdf.extendConcept('onyx:usesEmotionalModel','\"http://www.gsi.dit.upm.es/ontologies/wnaffect#WNAModel\"');
-				rdf.finishConcept('prov:generated','<#'+id+'-'+reviewer[i]+'-sentiment>');
+				rdf.finishConcept('prov:generated','<#'+id+'-'+reviewer[i]+'-random>');
 
 			}
 			//console.log(movie);
@@ -224,7 +228,7 @@ config.sources.forEach(function(entry){
 		});
 		//rdf.print();
 		rdf.validate();
-		rdf.printToFile('imdb/'+entry.graph+filenum);
+		rdf.printToFile('metacritic/'+entry.graph+filenum);
 		filenum++;
 		rdf = {};
 	}
