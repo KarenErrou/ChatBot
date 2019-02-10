@@ -1,0 +1,4 @@
+{
+    "ns": "/api/v1/",
+    "graphdb": "http://localhost:7200/repositories/productionV2"
+}

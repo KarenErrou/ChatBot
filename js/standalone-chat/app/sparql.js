@@ -1,30 +1,27 @@
 /* Server specific - change this to your config! */
-var endpoint = 'http://localhost:7200/repositories/productionV2';
+let endpoint = require('../config.json').graphdb;
 
 exports.getSomeMovies = function() {
 	return {
 		'endpoint': endpoint,
 		'query':
-            		'PREFIX mcb: <http://movie.chatbot.org/> ' +
-            		'select ?m ?id where {'+
-            		'   ?m mcb:hasId ?id . ' +
-            		//'} ORDER BY RAND() LIMIT 1000'
-            		'} LIMIT 100'
+            'PREFIX mcb: <http://movie.chatbot.org/> ' +
+            'select ?m ?id where {'+
+            '   ?m mcb:hasId ?id . ' +
+            '} ORDER BY RAND() LIMIT 100'
 	}
-
 }
 
 exports.getMovieAPI = function(id) {
 	return {
 		'endpoint': endpoint,
 		'query':
-            		'PREFIX mcb: <http://movie.chatbot.org/> ' +
-            		'select ?m ?title ?id where {'+
-            		'   ?m mcb:hasId "'+ id +'" . ' +
-            		'   ?m mcb:hasTitle ?title . ' +
-            		'}'
+            'PREFIX mcb: <http://movie.chatbot.org/> ' +
+            'select ?m ?title ?id where {'+
+            '   ?m mcb:hasId "'+ id +'" . ' +
+            '   ?m mcb:hasTitle ?title . ' +
+            '}'
 	}
-
 }
 
 exports.getEmotionCategory = function(emotion) {
@@ -52,7 +49,9 @@ exports.getMoviePerEmotion = function(emotion) {
             'PREFIX mcb: <http://movie.chatbot.org/>' +
             'SELECT (?m As ?movie) ?id ?title ?duration' +
                     '?year ?desc ?rtg ?img ' +
+            'FROM NAMED <http://imdb.com> '+
             'WHERE { ' +
+            '   GRAPH ?g {' +
             '   ?m mcb:hasId ?id . ' +
             '   ?m mcb:hasTitle ?title . ' +
             '   ?m schema:duration ?duration . ' +
@@ -60,13 +59,13 @@ exports.getMoviePerEmotion = function(emotion) {
             '   ?m schema:text ?desc . ' +
             '   ?m schema:aggregateRating ?rtg . ' +
             '   ?m schema:image ?img . ' +
-	    '   FILTER( ?img != "https://static.metacritic.com/images/products/movies/250h-movie.jpg") . ' +
+	        '   FILTER( ?img != "https://static.metacritic.com/images/products/movies/250h-movie.jpg") . ' +
             '   ?m a schema:Movie . ' +
             '   ?s a onyx:EmotionSet . ' +
             '   ?s onyx:describesObject ?m . ' +
             '   ?s onyx:hasEmotion ?e . ' +
             '   ?e onyx:hasEmotionCategory wnaffect:' + emotion +
-            '} ORDER BY RAND() LIMIT 1'
+            '}} ORDER BY RAND() LIMIT 1000'
     }
 }
 
@@ -128,42 +127,24 @@ exports.isEmotionValid = function(emotion) {
 exports.getUserData = function(nickname) {
     return {
         'endpoint': endpoint,
-	'query':
-	    'PREFIX mcb: <http://movie.chatbot.org/> '+
-	    'PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> '+
-	    'PREFIX owl: <http://www.w3.org/2002/07/owl#> '+
-	    'PREFIX schema: <http://schema.org/> '+
-	    'select ?date ?text ?author where { '+
-	    '    ?s rdf:type mcb:User . '+
-	    '    ?s mcb:hasNickName "'+nickname+'" . '+
-	    '    ?s mcb:hasChatLog ?l . '+
-	    '    ?l mcb:hasPartOfChat ?p . '+
-	    '    ?p schema:dateCreated ?date . '+
-	    '    ?p schema:text ?text . '+
-	    '    ?p schema:author ?author '+
-	    '} order by ?date '
+	    'query':
+	        'PREFIX mcb: <http://movie.chatbot.org/> '+
+	        'PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> '+
+	        'PREFIX owl: <http://www.w3.org/2002/07/owl#> '+
+	        'PREFIX schema: <http://schema.org/> '+
+	        'select ?date ?text ?author where { '+
+	        '    ?s rdf:type mcb:User . '+
+	        '    ?s mcb:hasNickName "'+nickname+'" . '+
+	        '    ?s mcb:hasChatLog ?l . '+
+	        '    ?l mcb:hasPartOfChat ?p . '+
+	        '    ?p schema:dateCreated ?date . '+
+	        '    ?p schema:text ?text . '+
+	        '    ?p schema:author ?author '+
+	        '} order by ?date '
     }
 }
 
-/*
-exports.putUserData = function(nickname) {
-    return {
-        'endpoint': endpoint,
-	'query':
-	    'PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ' +
-	    'PREFIX mcb: <http://movie.chatbot.org/> ' +
-	    'INSERT DATA { ' +
-	    //'    GRAPH <http://movie.chatbot.org/> { ' +
-	    '        mcb:'+nickname+'sChatLog rdf:type mcb:ChatLog . ' +
-	    '        mcb:'+nickname+' rdf:type mcb:User . ' +
-	    '        mcb:'+nickname+' mcb:hasChatLog mcb:'+nickname+'sChatLog . ' +
-	    '        mcb:'+nickname+' mcb:hasNickName "'+nickname+'" ' +
-	    //'    }' +
-	    '}'
-    }
-}
-*/
-
+/* custom requests - needed for insert purposes since the chosen library fails */
 var http = require('http');
 var querystring = require('querystring');
 
@@ -173,7 +154,7 @@ exports.putPartOfChat = function(nickname, text, author, callback) {
 
     let query = querystring.stringify({
         'update':
-	    'BASE <http://movie.chatbot.org> ' +
+            'BASE <http://movie.chatbot.org> ' +
             'PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ' +
             'PREFIX mcb: <http://movie.chatbot.org/> ' +
             'PREFIX schema: <http://schema.org/> ' +
