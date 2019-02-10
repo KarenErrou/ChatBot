@@ -1,4 +1,5 @@
-const bayes = require('./text-classifier-js/index.js');
+let bayes = require('./text-classifier-js/index.js');
+//bayes.train(require('./text-classifier-js/training.json'), true);
 const fs = require('fs');
 
 //var mc = require('../../data/metacritic/movies.json');
@@ -27,13 +28,13 @@ const fs = require('fs');
 
 let imdb = require('../../data/imdb/movies.json');
 
-for (let i=0; i<imdb.length; i++) {
+for (let i=87000; i<imdb.length; i++) {
 	
 	try {
 		let movie = imdb[i];
 		let relations = [];
 		let reviews = require('../../data/imdb/reviews/'+movie+'.json');
-		for (var j=0; j<reviews["review-text"].length; j++) {
+		for (let j=0; j<reviews["review-text"].length; j++) {
 			let emotion = bayes.classify(reviews["review-text"][j]);
 			relations.push({
 				emotion: emotion,
@@ -43,7 +44,7 @@ for (let i=0; i<imdb.length; i++) {
 				user: reviews["review-user"][j]
 			});
             console.log(movie + ': ' + emotion);
-            console.log(reviews["review-text"][j]);
+            //console.log(reviews["review-text"][j]);
 		}
 		fs.writeFileSync('../../data/imdb/emotions2/'+movie+'.json', JSON.stringify(relations));
 

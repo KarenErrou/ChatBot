@@ -6,9 +6,9 @@
  - [ ] schema.org actions
  - [X] ui improvements
  - [ ] meta data (use alignments)
- - [ ] improve machine learning training set for deducing emotions
-     - [ ] produce new emotion analysis data 
-     - [ ] new emotion rdf files
+ - [X] improve machine learning training set for deducing emotions
+     - [X] produce new emotion analysis data 
+     - [X] new emotion rdf files
  - [X] publish app/graphdb via ngrok
      - [ ] install on raspi or something such that it stays accessible
  - [X] more chat partners
