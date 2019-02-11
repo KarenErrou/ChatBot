@@ -1,8 +1,5 @@
 # TODOS for the final report
 
- - [ ] put nlp tagged stuff into graph and use it
-     - [X] gather all data from ontotext tagging service
-     - [ ] translate to rdf
  - [X] publish app/graphdb via ngrok
      - [ ] install on raspi or something such that it stays accessible
  - [ ] meta data (use alignments)
@@ -20,6 +17,9 @@
          - schema.org actions - links to videos (watch action)
          - shacl - shapes - shacl.js
          - ontology extensions - user - chatlog - ..
+ - [X] put nlp tagged stuff into graph and use it
+     - [X] gather all data from ontotext tagging service
+     - [X] translate to rdf
  - [X] user registrations + chat log
  - [X] improve markov chain (actually use probability distribution)
  - [X] make chatbot context sensitive
