@@ -1,25 +1,15 @@
 # TODOS for the final report
 
- - [X] more shacl shapes
-     - [X] user registration/chatlog data 
-     - [X] movie/review data
- - [ ] schema.org actions
- - [X] ui improvements
- - [ ] meta data (use alignments)
- - [X] improve machine learning training set for deducing emotions
-     - [X] produce new emotion analysis data 
-     - [X] new emotion rdf files
+ - [ ] put nlp tagged stuff into graph and use it
+     - [X] gather all data from ontotext tagging service
+     - [ ] translate to rdf
  - [X] publish app/graphdb via ngrok
      - [ ] install on raspi or something such that it stays accessible
- - [X] more chat partners
- - [ ] put nlp tagged stuff into graph and use it
-     - [ ] gather all data from ontotext tagging service
-     - [ ] translate to rdf
- - [X] improve markov chain (actually use probability distribution)
- - [X] make chatbot context sensitive
-     - [X] ad hoc train reviews to the model!
+ - [ ] meta data (use alignments)
+ - [ ] schema.org actions
+ - [ ] only use emotions from bayesv2 for movie recommendation
+ - [X] ui improvements
  - [ ] refactoring??
- - [X] user registrations + chat log
  - [ ] assemble report
      - Reduce first report a little and add:
          - Emotion extraction techniques/improvements/plots
@@ -30,3 +20,14 @@
          - schema.org actions - links to videos (watch action)
          - shacl - shapes - shacl.js
          - ontology extensions - user - chatlog - ..
+ - [X] user registrations + chat log
+ - [X] improve markov chain (actually use probability distribution)
+ - [X] make chatbot context sensitive
+     - [X] ad hoc train reviews to the model!
+ - [X] more chat partners
+ - [X] improve machine learning training set for deducing emotions
+     - [X] produce new emotion analysis data 
+     - [X] new emotion rdf files
+ - [X] more shacl shapes
+     - [X] user registration/chatlog data 
+     - [X] movie/review data
