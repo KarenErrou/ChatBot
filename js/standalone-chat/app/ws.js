@@ -1,92 +1,42 @@
-'use strict';
+let graphdb = require('../../graphdb/index.js');
+let sparql = require('./sparql.js');
 
-var router = require('./router.js');
-var express = require('express');
-var config = require('./config.json');
+module.exports = function(config){
 
-module.exports = dbc => {
-  var router = express.Router();
-
-  function _getType(baseUrl) {
-    switch (baseUrl) {
-      case config.ns + '/users':
-        return 'User';
-      case config.ns + '/hotels':
-        return 'Hotel';
-      case config.ns + '/rooms':
-        return 'Room';
-      case config.ns + '/bookings':
-        return 'Booking';
-      case config.ns + '/reviews':
-        return 'Review';
-      case config.ns + '/facilities':
-        return 'Facility';
-      case config.ns + '/categories':
-        return 'Category';
-      case config.ns + '/locations':
-        return 'Location';
-      case config.ns + '/media':
-        return 'Media';
-      default:
-        return 'Nothing';
-    }
-  };
-
-  /* GET REQUESTS */
-  router.get('/', (req, res, next) => {
-    var entries = dbc.all();
-    var type = _getType(req.baseUrl);
-
-    var json = {
-      '@context': config.ns + '/contexts/collection',
-      '@type': 'Collection',
-      '@id': config.ns + req.baseUrl,
-      members: []
-    };
-
-    entries.forEach(entry => {
-      json.members.push({
-        '@id': entry.id,
-        '@type': 'vocab:' + type
-      });
+    /* REST API: get list of movies */
+    config.express.get('/api/v1/movies', function(req, res){
+        let response = {
+            "@context": "http://schema.org",
+            "@type": "Collection",
+            "@id": "/api/v1",
+            "members": []
+        };
+        graphdb.query(sparql.getSomeMovies(), function(data){
+            data.results.bindings.forEach(function(entry){
+                response.members.push({
+                    "@id": "/api/v1/movies/" + entry.id.value,
+                    "@type": "schema:Movie"
+                });
+            });
+            /* get list of movie ids here */
+            res.send(response);
+        });
     });
 
-    res.send(json);
-    next();
-  });
-
-  /* POST REQUESTS */
-  router.post('/', (req, res, next) => {
-    if (dbc.create(req.body)) {
-      res.status(201).send('Entry created!');
-    } else {
-      res.status(500).send('Entry not created!');
-    }
-
-    next();
-  });
-
-  /* PUT REQUESTS */
-  router.put('/', (req, res, next) => {
-    if (dbc.update(req.body)) {
-      res.status(200).send('Entry updated!');
-    } else {
-      res.status(404).send('Entry not updated!');
-    }
-
-    next();
-  });
-
-  /* DELETE REQUESTS */
-  router.delete('/:id', (req, res, next) => {
-    if (dbc.remove(req.params.id)) {
-      res.status(200).send('Entry deleted!');
-    } else {
-      res.status(404).send('Entry not deleted!');
-    }
-
-    next();
-  });
-
-  return router;
-};
+    /* REST API: get information about specific movie here */
+    config.express.get('/api/v1/movies/:id', function(req, res){
+        graphdb.query(sparql.getMovieAPI(req.params.id), function(data){
+            res.send({
+                "@context": "http://schema.org",
+                "@type": "Movie",
+                "@id": "/api/v1",
+                "title": data.results.bindings[0].title.value,
+                "potentialAction": {
+                    "@type": "WatchAction",
+                    "target": "https://www.imdb.com/title/"+req.params.id+"/videogallery?ref_=tt_pv_vi_sm"
+                }
+            
+            });
+        });
+    });
+}

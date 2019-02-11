@@ -16,6 +16,7 @@ let emotionCategories = [
 ];
 
 module.exports = function(config) {
+
     var io = require('socket.io')(config.server);
 
     /* Socket Connection */
@@ -57,17 +58,31 @@ module.exports = function(config) {
     
             sparql.putPartOfChat(users[socket.id], data.msg, users[socket.id], function(data){
     		    /* not reachable */
-        		console.log(data);
+        		//console.log(data);
         	});
     	
             /* lookup reviews here -> train markov model with those reviews */
             console.log(latestMovies[socket.id]);
+            let reviews;
+            try {
+                reviews = require('../../../data/imdb/reviews/'+
+                                        latestMovies[socket.id]+'.json');
+                if (reviews["review-text"].length > 0) {
+                    console.log("retrain markov chain");
+                    let fs = require('fs');
+                    fs.writeFileSync('./train.json', JSON.stringify({}), 'utf8');
+                    reviews["review-text"].forEach(function(review){
+                        markov.train(review);
+                    });
+                }
+            } catch(err) {
+                console.log(err);
+            }
+
             // respond with message
     	    let resp = markov.walk();
             io.emit('message', { 'user': 'Trumpy', 'msg': resp });
                 sparql.putPartOfChat(users[socket.id], resp, 'Trumpy', function(data){
-    	    	/* not reachable */
-    	    	console.log(data);
     	    });
     
             // get emotion category and send it back
