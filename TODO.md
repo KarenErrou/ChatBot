@@ -16,8 +16,8 @@
      - [ ] gather all data from ontotext tagging service
      - [ ] translate to rdf
  - [X] improve markov chain (actually use probability distribution)
- - [ ] make chatbot context sensitive
-     - [ ] ad hoc train reviews to the model!
+ - [X] make chatbot context sensitive
+     - [X] ad hoc train reviews to the model!
  - [ ] refactoring??
  - [X] user registrations + chat log
  - [ ] assemble report
