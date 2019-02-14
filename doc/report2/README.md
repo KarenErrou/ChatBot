@@ -22,7 +22,7 @@ At the end of this document we also provide a list of links to source code that 
 
 # Emotional Reasoning Chat Bot
 
-## - Introduction
+## Introduction
 
 The goal of the proseminar was to create a knowledge graph for a given domain.
 As our domain we chose to create a chat bot that is able to perform emotional reasoning.
@@ -41,7 +41,7 @@ By trying to extract emotions out of pre-exisiting movie reviews,
 we mapped emotions to movies, and by extracting emotions out of the users chat log,
 a reasoning mechanism will try to find a good movie recommendation for the user.
 
-### - Domain Overview
+### Domain Overview
 
 Chat bots are programs where you can communicate via text with an artificial agent.
 These programs are usually designed to simulate how humans will react or behave in a conversation.
@@ -54,7 +54,7 @@ we focussed on a chat bot that recommends movies depending on the user's mood.
 While talking to the chat bot, it is able to detect your mood (happy, sad, angry...),
 and from peoples earlier reviews can recommend the best matching movies.
 
-### - Use Case
+### Use Case
 
 Below the application's typical behaviour is described:
 
@@ -66,7 +66,7 @@ Below the application's typical behaviour is described:
 6. The user can choose if they would like to watch a movie reflecting their current mood or if they would rather try to change their current mood.
 7. Based on the user's choice a movie is recommended.
 
-## - Data Sources
+## Data Sources
 
 Sadly, there was no data set to be found that provided everthing we needed, however there are web sites out there that do so.
 Thus, in order to categorize movies, preprocessing steps had to be made.
@@ -86,7 +86,7 @@ WHERE
 }
 ```
 
-### - Web Scraping 
+### Web Scraping 
 
 For the gathering of data to be done effeciently and scalable,
 a [generalized web scraping service](https://github.com/julietcetera/data-miner-js) was built.
@@ -98,7 +98,7 @@ it then can use *jQuery* on the *DOM* to extract the data of interest.
 
 <img src="./img/web_scraping.png" width="60%" height="60%"/>
 
-### - Other Metadata
+### Other Metadata
 
 Initially, we planned to provide links to [linkedmbd](http://www.linkedmdb.org/), however,
 sadly this service seems to be discontinued.
