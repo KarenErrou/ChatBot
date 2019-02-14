@@ -288,6 +288,138 @@ mcb:PartOfChatShape
 		sh:minInclusive 0 ;
 	] .
 ```
+
+An example for a faulty validation run looks like this:
+```
+$ Conforms? false
+$  - Severity: Violation for http://www.w3.org/ns/shacl#DatatypeConstraintComponent
+$  - Severity: Violation for http://www.w3.org/ns/shacl#MaxCountConstraintComponent
+$  - Severity: Violation for http://www.w3.org/ns/shacl#MinInclusiveConstraintComponent
+$ ValidationReport {
+$  graph:
+$   [
+$    { '@id': '_:b0',
+$       '@type': [ 'http://www.w3.org/ns/shacl#ValidationResult' ],
+$       'http://www.w3.org/ns/shacl#focusNode': [
+$            { '@id': 'http://movie.chatbot.org#o15484207065' }
+$        ],
+$       'http://www.w3.org/ns/shacl#resultMessage': [
+$            { '@value': 'Value does not have datatype <http://www.w3.org/2001/XMLSchema#string>' }
+$        ],
+$       'http://www.w3.org/ns/shacl#resultPath': [
+$            { '@id': 'http://schema.org/author' }
+$        ],
+$       'http://www.w3.org/ns/shacl#resultSeverity': [
+$            { '@id': 'http://www.w3.org/ns/shacl#Violation' }
+$        ],
+$       'http://www.w3.org/ns/shacl#sourceConstraintComponent': [
+$            { '@id': 'http://www.w3.org/ns/shacl#DatatypeConstraintComponent' }
+$        ],
+$       'http://www.w3.org/ns/shacl#sourceShape': [
+$            { '@id': '_:b1' }
+$        ],
+$       'http://www.w3.org/ns/shacl#value': [
+$            { '@type': 'http://www.w3.org/2001/XMLSchema#integer',
+$             '@value': '1' }
+$        ]
+$    },
+$    { '@id': '_:b2',
+$       '@type': [ 'http://www.w3.org/ns/shacl#ValidationResult' ],
+$       'http://www.w3.org/ns/shacl#focusNode': [
+$            { '@id': 'http://movie.chatbot.org#o15420147065' }
+$        ],
+$       'http://www.w3.org/ns/shacl#resultMessage': [
+$            { '@value': 'More than 1 values' }
+$        ],
+$       'http://www.w3.org/ns/shacl#resultPath': [
+$            { '@id': 'http://schema.org/author' }
+$        ],
+$       'http://www.w3.org/ns/shacl#resultSeverity': [
+$            { '@id': 'http://www.w3.org/ns/shacl#Violation' }
+$        ],
+$       'http://www.w3.org/ns/shacl#sourceConstraintComponent': [
+$            { '@id': 'http://www.w3.org/ns/shacl#MaxCountConstraintComponent' }
+$        ],
+$       'http://www.w3.org/ns/shacl#sourceShape': [ { '@id': '_:b1' } ] },
+$    { '@id': '_:b3',
+$       '@type': [ 'http://www.w3.org/ns/shacl#ValidationResult' ],
+$       'http://www.w3.org/ns/shacl#focusNode': [
+$            { '@id': 'http://movie.chatbot.org#o15420147065' }
+$        ],
+$       'http://www.w3.org/ns/shacl#resultMessage': [
+$            { '@value': 'Value is not >= 0' }
+$        ],
+$       'http://www.w3.org/ns/shacl#resultPath': [
+$            { '@id': 'http://schema.org/dateCreated' }
+$        ],
+$       'http://www.w3.org/ns/shacl#resultSeverity': [
+$            { '@id': 'http://www.w3.org/ns/shacl#Violation' }
+$        ],
+$       'http://www.w3.org/ns/shacl#sourceConstraintComponent': [
+$            { '@id': 'http://www.w3.org/ns/shacl#MinInclusiveConstraintComponent' }
+$        ],
+$       'http://www.w3.org/ns/shacl#sourceShape': [ { '@id': '_:b4' } ],
+$       'http://www.w3.org/ns/shacl#value': [
+$            { '@type': 'http://www.w3.org/2001/XMLSchema#integer',
+$            '@value': '-1' }
+$        ]
+$     },
+$    { '@id': '_:b5',
+$       '@type': [ 'http://www.w3.org/ns/shacl#ValidationReport' ],
+$       'http://www.w3.org/ns/shacl#conforms':
+$        [ { '@type': 'http://www.w3.org/2001/XMLSchema#boolean',
+$            '@value': 'false' } ],
+$       'http://www.w3.org/ns/shacl#result': [
+$             { '@id': '_:b0' },
+$             { '@id': '_:b2' },
+$             { '@id': '_:b3' }
+$        ]
+$     }
+$    ],
+$  validationNode:
+$   { '@id': '_:b5',
+$     '@type': [ 'http://www.w3.org/ns/shacl#ValidationReport' ],
+$     'http://www.w3.org/ns/shacl#conforms':
+$      [
+$         { '@type': 'http://www.w3.org/2001/XMLSchema#boolean',
+$          '@value': 'false' }
+$      ],
+$     'http://www.w3.org/ns/shacl#result': [
+$         { '@id': '_:b0' },
+$         { '@id': '_:b2' },
+$         { '@id': '_:b3' }
+$      ]
+$    }
+$}
+```
+The validated graph:
+```
+<http://movie.chatbot.org#o15484201470> a <http://movie.chatbot.org/PartOfChat>;
+	<http://schema.org/author> "Trumpy";
+	<http://schema.org/dateCreated> 1548420147065;
+	<http://schema.org/text> "Welcome o!" .
+
+<http://movie.chatbot.org#o15484207065> a <http://movie.chatbot.org/PartOfChat>;
+	<http://schema.org/author> 1;
+	<http://schema.org/dateCreated> 1548420147065;
+	<http://schema.org/text> "Welcome o!" .
+
+<http://movie.chatbot.org#o15420147065> a <http://movie.chatbot.org/PartOfChat>;
+	<http://schema.org/author> "Mandela";
+	<http://schema.org/author> "Trumpy";
+	<http://schema.org/dateCreated> -1;
+	<http://schema.org/text> "Welcome o!" .
+
+
+<http://movie.chatbot.org#o> a <http://movie.chatbot.org/User>;
+	<http://movie.chatbot.org/hasChatLog> <http://movie.chatbot.org#osChatLog>;
+	<http://movie.chatbot.org/hasNickName> "o" .
+
+<http://movie.chatbot.org#o> a <http://movie.chatbot.org/User>;
+	<http://movie.chatbot.org/hasChatLog> <http://movie.chatbot.org#osChatLog>;
+	<http://movie.chatbot.org/hasNickName> "o" .
+```
+
 ###### Movie Related Data
 
 Due to document size restrictions we only have space to present one of our shapes graphs.
@@ -441,6 +573,7 @@ we maintain links to wikidata for each of our movie entries, and links to DBpedi
 ### The Final Knowledge Graph
 
 The following figure describes all main parts of our ontology not including some minor components, as the OWL axioms.
+Colors declare namespaces.
 
 <img src="./img/ontology_final.png" width="100%" height="100%"/>
 
@@ -506,6 +639,12 @@ In this section we focus on some statistics that seem to be the most interesting
 As previously discussed, a lot of preprocessing had to be made.
 Technically, the web scraping explanation also belongs here, however,
 in order to not be too repetitive we left it out here.
+
+The frontend contains of a simple [`expressjs`](https://expressjs.com/) web server,
+using [`socket.io`](https://socket.io/) for bidirectional communication between client and server,
+in order to simplify the implementation of the chat application.
+
+Other components are:
 
 ### Data to RDF Mapping
 
@@ -577,6 +716,7 @@ So please feel free to shoot a quick message and we will make sure the applicati
 To conclude, we accomplished most of the things we wanted to do.
 However, improvements could be made regarding the frontend, namely usage design,
 as well as the natural language generation, since markov chains are not context-aware.
+We also don't make enough use of our linking, since we could actually display way more data than we do as of now. 
 By retraining it on movie reviews, we could make it seem a little more like it is actually knowing what the conversation is about.
 
 The *ontotext tagging service* was kind of a disappointment,
