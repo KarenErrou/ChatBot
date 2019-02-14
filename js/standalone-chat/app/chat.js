@@ -47,6 +47,7 @@ module.exports = function(config) {
     		    	});
     		    }
     		    users[socket.id] = nickname;
+                latestMovies[socket.id] = "tt0110912";
     	    });
     
         });
