@@ -723,7 +723,7 @@ The *ontotext tagging service* was kind of a disappointment,
 since the computational load it can handle is extremely limited and times out way to often.
 However we could at least get some data out if it.
 
-Since we all not machine learning experts, our Naive Bayes approach for classifying natural language is probably also not optimal,
+Since we're all not machine learning experts, our Naive Bayes approach for classifying natural language is probably also not optimal,
 but we were able to improve it a lot.
 
 We had success acquiring lots of data about movies, which let to a huge knowledge base.

@@ -2,21 +2,21 @@
 
  - [X] publish app/graphdb via ngrok
      - [ ] install on raspi or something such that it stays accessible
- - [ ] meta data (use alignments)
  - [ ] schema.org actions
  - [ ] only use emotions from bayesv2 for movie recommendation
- - [X] ui improvements
- - [ ] refactoring??
- - [ ] assemble report
-     - Reduce first report a little and add:
-         - Emotion extraction techniques/improvements/plots
-         - Markov chains for nlg
-         - ontotext tagging service
-         - application description
-         - application/graphdb publication/access description
-         - schema.org actions - links to videos (watch action)
-         - shacl - shapes - shacl.js
-         - ontology extensions - user - chatlog - ..
+ - [ ] ui improvements
+     - [ ] meta data (use alignments)
+ - [X] assemble report
+     - [X] Reduce first report a little and add:
+         - [X] Emotion extraction techniques/improvements/plots
+         - [X] Markov chains for nlg
+         - [X] ontotext tagging service
+         - [X] application description
+         - [X] application/graphdb publication/access description
+         - [X] schema.org actions - links to videos (watch action)
+         - [X] shacl - shapes - shacl.js
+         - [X] ontology extensions - user - chatlog - ..
+            - [X] Add user chat log ontology (img)
  - [X] put nlp tagged stuff into graph and use it
      - [X] gather all data from ontotext tagging service
      - [X] translate to rdf
