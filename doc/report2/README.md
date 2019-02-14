@@ -149,7 +149,7 @@ This suits our needs perfectly,
 since we want to extract the user's emotional state from their chat messages as well as the emotional response to a movie from the movie's reviews.
 A basic example below shows a single opinion annotated with Onyx metadata (taken from the [specification page](http://www.gsi.dit.upm.es/ontologies/onyx/)):
 
-<img src="./img/onyx.png" width="100%" height="100%"/>
+<img src="./img/onyx.png" width="91%" height="91%"/>
 
 [Onyx: A Linked Data Approach to Emotion Representation (paper)](http://oa.upm.es/37389/1/INVE_MEM_2015_190501.pdf)
 
@@ -170,17 +170,43 @@ so we decided to just stick with *GraphDB* for that.
 
 <img src="./img/user.png" width="100%" height="100%"/>
 
+##### NLP Review Annotations
+
+We used the [ontotext tagging service](https://tag.ontotext.com/documentation/), for annotating natural language.
+Ontotext provides a REST-API to their service, which is not as powerful (as in computational load capacities),
+as we initially expected, thus we did not annotate that many reviews (since there are about a million in our graph "that many" is relative).
+
+There are several different types provided by Ontotext.
+Parts of natural language texts are then assigned to those types, according to the underlying algorithms.
+
+As an example for a successful annotation: "...disney bought everything from marvel comic..." was classified as `ontotext:RelationAcquisition`.
+
+However, the linked ontology is nowhere to be found, we still keep the types though and use some artificial namespace.
+
 ##### Owl Axioms
 
-TODO
+Owl axioms are used to provide information about classes and properties,
+as well as to associate class and properties with either partial or complete specifications of their characteristics,
+and to give other logical information about classes and properties.
 
 <img src="./img/owl_axioms.png" width="100%" height="100%"/>
 
-##### Schema.org Actions
+##### Schema.org Action
 
-TODO
+In order to actually make use of a schema.org action, we implemented a REST-API, which on `/api/v1/movie/:id` returns a `potentialAction`.
+It's a watch action and the target property leads to the IMDb videogallery site for a specific movie,
+since we can not link from an IMDb ID to some web site where you can actually watch the full movie.
 
- - Watch Action
+```
+"@context": "http://schema.org",
+"@type": "Movie",
+"@id": "/api/v1",
+"title": "Pulp Fiction",
+"potentialAction": {
+    "@type": "WatchAction",
+    "target": "https://www.imdb.com/title/tt0110912/videogallery?ref_=tt_pv_vi_sm"
+}
+```
 
 ##### Shacl Shapes
 
@@ -401,31 +427,78 @@ mcb:EmotionSetShape
     ] .
 ```
 
-##### NLP Review Annotations
-
-TODO
-
 #### Linked Open Data
 
-TODO
-
- - Graph Alignments
+As previously described in the section about data sets,
+we maintain links to wikidata for each of our movie entries, and links to DBpedia whenever possible, using `owl:sameAs` relations.
 
 ### The Final Knowledge Graph
 
-TODO
+The following figure describes all main parts of our ontology not including some minor components, as the OWL axioms.
 
 <img src="./img/ontology_final.png" width="100%" height="100%"/>
 
 #### Knowledge Graph Statistics
 
-TODO
+|      |        occurrences            |
+|:----:|:-------------------------:|
+|triples| "50,197,603"^^xsd:integer |
+|instances| "5,179,490"^^xsd:integer |
+|distinct classes| "45"^^xsd:integer |
+|distinct properties| "56"^^xsd:integer |
 
- - \# of Triples etc
+##### The distinct wikidata types that may be aligned with the types in your dataset
 
-#### Linked Open Data
+|           WikiDataClass                | EquivalentClass |
+|:--------------------------------------:|:---------------:|
+| http://www.wikidata.org/entity/Q215627 | schema:Person   |
+| http://www.wikidata.org/entity/Q11424  | schema:Movie    |
 
-TODO
+##### Total number of instances per class per data source
+
+| graphs                 | classes                                                 |           instances    |
+|:----------------------:|:-------------------------------------------------------:|:----------------------:|
+| http://imdb.com        | http://www.w3.org/2002/07/owlObjectProperty             | "1"^^xsd:integer       |        
+| http://metacritic.com  | http://www.w3.org/2002/07/owlObjectProperty             | "1"^^xsd:integer       |
+| http://imdb.com        | http://www.w3.org/2002/07/owlDatatypeProperty           | "4"^^xsd:integer       |
+| http://metacritic.com  | http://www.w3.org/2002/07/owlDatatypeProperty           | "4"^^xsd:integer       |
+| http://imdb.com        | http://www.w3.org/2002/07/owlFunctionalProperty         | "1"^^xsd:integer       |
+| http://metacritic.com  | http://www.w3.org/2002/07/owlFunctionalProperty         | "1"^^xsd:integer       |
+| http://imdb.com        | http://www.w3.org/2002/07/owlClass                      | "2"^^xsd:integer       |
+| http://metacritic.com  | http://www.w3.org/2002/07/owlClass                      | "2"^^xsd:integer       |
+| http://imdb.com        | http://www.w3.org/2002/07/owlRestriction                | "3"^^xsd:integer       |
+| http://metacritic.com  | http://www.w3.org/2002/07/owlRestriction                | "3"^^xsd:integer       |
+| http://imdb.com        | schema:Person                                           | "565063"^^xsd:integer | 
+| http://imdb.com        | schema:Movie                                            | "171536"^^xsd:integer|
+| http://imdb.com        | onyx:EmotionSet                                         | "1768320"^^xsd:integer|
+| http://metacritic.com  | schema:Movie                                            | "11681"^^xsd:integer|
+| http://metacritic.com  | onyx:EmotionSet                                         | "110876"^^xsd:integer|
+| http://emotions.org    | onyx:EmotionSet                                         | "938334"^^xsd:integer|
+| http://emotion.org     | onyx:EmotionSet                                         | "2608120"^^xsd:integer|
+| http://tag.ontotext.com| http://www.w3.org/2002/07/owlClass                      | "1"^^xsd:integer|
+| http://tag.ontotext.com| http://www.w3.org/2002/07/owlObjectProperty             | "1"^^xsd:integer|
+| http://tag.ontotext.com| mcb:ReviewAnnotation                                    | "79854"^^xsd:integer|
+| http://tag.ontotext.com| ontotext:Keyphrase                                      | "7240"^^xsd:integer|
+| http://tag.ontotext.com| ontotext:RelationAcquisition                            | "1"^^xsd:integer|
+| http://tag.ontotext.com| ontotext:RelationPersonRole                             | "1020"^^xsd:integer|
+| http://tag.ontotext.com| ontotext:Person                                         | "25334"^^xsd:integer|
+| http://tag.ontotext.com| ontotext:RelationPersonQuotation                        | "60"^^xsd:integer|
+| http://tag.ontotext.com| ontotext:Organization                                   | "5749"^^xsd:integer|
+| http://tag.ontotext.com| ontotext:Location                                       | "4492"^^xsd:integer|
+| http://tag.ontotext.com| ontotext:Work                                           | "22308"^^xsd:integer|
+| http://tag.ontotext.com| ontotext:Event                                          | "1844"^^xsd:integer|
+| http://tag.ontotext.com| ontotext:Thing                                          | "7800"^^xsd:integer|
+| http://tag.ontotext.com| ontotext:Species                                        | "2941"^^xsd:integer|
+| http://tag.ontotext.com| ontotext:Software                                       | "740"^^xsd:integer|
+| http://tag.ontotext.com| ontotext:CelestialBody                                  | "133"^^xsd:integer|
+| http://tag.ontotext.com| ontotext:Currency                                       | "31"^^xsd:integer|
+| http://tag.ontotext.com| ontotext:RelationOrganizationAffiliatedWithOrganization | "25"^^xsd:integer|
+| http://tag.ontotext.com| ontotext:RelationOrganizationQuotation                  | "6"^^xsd:integer|
+| http://tag.ontotext.com| ontotext:Device                                         | "7"^^xsd:integer|
+| http://tag.ontotext.com| ontotext:RelationOrganizationAbbreviation               | "2"^^xsd:integer|
+| http://tag.ontotext.com| ontotext:Sport                                          | "96"^^xsd:integer|
+| http://tag.ontotext.com| ontotext:RelationOrganizationLocation                   | "24"^^xsd:integer|
+| http://tag.ontotext.com| ontotext:RelationOrganizationHasCompetitor              | "1"^^xsd:integer|
 
 ## Application
 
