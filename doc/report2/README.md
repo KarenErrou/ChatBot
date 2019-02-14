@@ -18,6 +18,7 @@ For the sake of readability, we do not include too much of our code base in here
 if you want to have a look at the code,
 you can do so at all times by visiting our [github repository](https://github.com/julietcetera/semantic-web-course).
 Where applicable, we provide more specific links, maybe also to *outsourced* repositories.
+At the end of this document we also provide a list of links to source code that might be of interest.
 
 # Emotional Reasoning Chat Bot
 
@@ -287,8 +288,12 @@ mcb:PartOfChatShape
 		sh:minInclusive 0 ;
 	] .
 ```
-
 ###### Movie Related Data
+
+Due to document size restrictions we only have space to present one of our shapes graphs.
+If you want to see this one as well follow [this link](https://github.com/julietcetera/semantic-web-course/blob/master/js/shacl-validation/shapes/movie.ttl).
+
+<!--
 
 ```
 @prefix mcb: <http://movie.chatbot.org/> .
@@ -426,6 +431,7 @@ mcb:EmotionSetShape
 		sh:severity sh:Violation ;
     ] .
 ```
+-->
 
 #### Linked Open Data
 
@@ -440,19 +446,14 @@ The following figure describes all main parts of our ontology not including some
 
 #### Knowledge Graph Statistics
 
-|      |        occurrences            |
-|:----:|:-------------------------:|
-|triples| "50,197,603"^^xsd:integer |
-|instances| "5,179,490"^^xsd:integer |
-|distinct classes| "45"^^xsd:integer |
-|distinct properties| "56"^^xsd:integer |
+In this section we focus on some statistics that seem to be the most interesting.
 
-##### The distinct wikidata types that may be aligned with the types in your dataset
-
-|           WikiDataClass                | EquivalentClass |
-|:--------------------------------------:|:---------------:|
-| http://www.wikidata.org/entity/Q215627 | schema:Person   |
-| http://www.wikidata.org/entity/Q11424  | schema:Movie    |
+|                    |        occurrences        |
+|:------------------:|:-------------------------:|
+|triples             | "50,197,603"^^xsd:integer |
+|instances           | "5,179,490"^^xsd:integer  |
+|distinct classes    | "45"^^xsd:integer         |
+|distinct properties | "56"^^xsd:integer         |
 
 ##### Total number of instances per class per data source
 
@@ -468,75 +469,146 @@ The following figure describes all main parts of our ontology not including some
 | http://metacritic.com  | http://www.w3.org/2002/07/owlClass                      | "2"^^xsd:integer       |
 | http://imdb.com        | http://www.w3.org/2002/07/owlRestriction                | "3"^^xsd:integer       |
 | http://metacritic.com  | http://www.w3.org/2002/07/owlRestriction                | "3"^^xsd:integer       |
-| http://imdb.com        | schema:Person                                           | "565063"^^xsd:integer | 
-| http://imdb.com        | schema:Movie                                            | "171536"^^xsd:integer|
-| http://imdb.com        | onyx:EmotionSet                                         | "1768320"^^xsd:integer|
-| http://metacritic.com  | schema:Movie                                            | "11681"^^xsd:integer|
-| http://metacritic.com  | onyx:EmotionSet                                         | "110876"^^xsd:integer|
-| http://emotions.org    | onyx:EmotionSet                                         | "938334"^^xsd:integer|
-| http://emotion.org     | onyx:EmotionSet                                         | "2608120"^^xsd:integer|
-| http://tag.ontotext.com| http://www.w3.org/2002/07/owlClass                      | "1"^^xsd:integer|
-| http://tag.ontotext.com| http://www.w3.org/2002/07/owlObjectProperty             | "1"^^xsd:integer|
-| http://tag.ontotext.com| mcb:ReviewAnnotation                                    | "79854"^^xsd:integer|
-| http://tag.ontotext.com| ontotext:Keyphrase                                      | "7240"^^xsd:integer|
-| http://tag.ontotext.com| ontotext:RelationAcquisition                            | "1"^^xsd:integer|
-| http://tag.ontotext.com| ontotext:RelationPersonRole                             | "1020"^^xsd:integer|
-| http://tag.ontotext.com| ontotext:Person                                         | "25334"^^xsd:integer|
-| http://tag.ontotext.com| ontotext:RelationPersonQuotation                        | "60"^^xsd:integer|
-| http://tag.ontotext.com| ontotext:Organization                                   | "5749"^^xsd:integer|
-| http://tag.ontotext.com| ontotext:Location                                       | "4492"^^xsd:integer|
-| http://tag.ontotext.com| ontotext:Work                                           | "22308"^^xsd:integer|
-| http://tag.ontotext.com| ontotext:Event                                          | "1844"^^xsd:integer|
-| http://tag.ontotext.com| ontotext:Thing                                          | "7800"^^xsd:integer|
-| http://tag.ontotext.com| ontotext:Species                                        | "2941"^^xsd:integer|
-| http://tag.ontotext.com| ontotext:Software                                       | "740"^^xsd:integer|
-| http://tag.ontotext.com| ontotext:CelestialBody                                  | "133"^^xsd:integer|
-| http://tag.ontotext.com| ontotext:Currency                                       | "31"^^xsd:integer|
-| http://tag.ontotext.com| ontotext:RelationOrganizationAffiliatedWithOrganization | "25"^^xsd:integer|
-| http://tag.ontotext.com| ontotext:RelationOrganizationQuotation                  | "6"^^xsd:integer|
-| http://tag.ontotext.com| ontotext:Device                                         | "7"^^xsd:integer|
-| http://tag.ontotext.com| ontotext:RelationOrganizationAbbreviation               | "2"^^xsd:integer|
-| http://tag.ontotext.com| ontotext:Sport                                          | "96"^^xsd:integer|
-| http://tag.ontotext.com| ontotext:RelationOrganizationLocation                   | "24"^^xsd:integer|
-| http://tag.ontotext.com| ontotext:RelationOrganizationHasCompetitor              | "1"^^xsd:integer|
+| http://imdb.com        | schema:Person                                           | "565063"^^xsd:integer  | 
+| http://imdb.com        | schema:Movie                                            | "171536"^^xsd:integer  |
+| http://imdb.com        | onyx:EmotionSet                                         | "1768320"^^xsd:integer |
+| http://metacritic.com  | schema:Movie                                            | "11681"^^xsd:integer   |
+| http://metacritic.com  | onyx:EmotionSet                                         | "110876"^^xsd:integer  |
+| http://emotions.org    | onyx:EmotionSet                                         | "938334"^^xsd:integer  |
+| http://emotion.org     | onyx:EmotionSet                                         | "2608120"^^xsd:integer |
+| http://tag.ontotext.com| http://www.w3.org/2002/07/owlClass                      | "1"^^xsd:integer       |
+| http://tag.ontotext.com| http://www.w3.org/2002/07/owlObjectProperty             | "1"^^xsd:integer       |
+| http://tag.ontotext.com| mcb:ReviewAnnotation                                    | "79854"^^xsd:integer   |
+| http://tag.ontotext.com| ontotext:Keyphrase                                      | "7240"^^xsd:integer    |
+| http://tag.ontotext.com| ontotext:RelationAcquisition                            | "1"^^xsd:integer       |
+| http://tag.ontotext.com| ontotext:RelationPersonRole                             | "1020"^^xsd:integer    |
+| http://tag.ontotext.com| ontotext:Person                                         | "25334"^^xsd:integer   |
+| http://tag.ontotext.com| ontotext:RelationPersonQuotation                        | "60"^^xsd:integer      |
+| http://tag.ontotext.com| ontotext:Organization                                   | "5749"^^xsd:integer    |
+| http://tag.ontotext.com| ontotext:Location                                       | "4492"^^xsd:integer    |
+| http://tag.ontotext.com| ontotext:Work                                           | "22308"^^xsd:integer   |
+| http://tag.ontotext.com| ontotext:Event                                          | "1844"^^xsd:integer    |
+| http://tag.ontotext.com| ontotext:Thing                                          | "7800"^^xsd:integer    |
+| http://tag.ontotext.com| ontotext:Species                                        | "2941"^^xsd:integer    |
+| http://tag.ontotext.com| ontotext:Software                                       | "740"^^xsd:integer     |
+| http://tag.ontotext.com| ontotext:CelestialBody                                  | "133"^^xsd:integer     |
+| http://tag.ontotext.com| ontotext:Currency                                       | "31"^^xsd:integer      |
+| http://tag.ontotext.com| ontotext:RelationOrganizationAffiliatedWithOrganization | "25"^^xsd:integer      |
+| http://tag.ontotext.com| ontotext:RelationOrganizationQuotation                  | "6"^^xsd:integer       |
+| http://tag.ontotext.com| ontotext:Device                                         | "7"^^xsd:integer       |
+| http://tag.ontotext.com| ontotext:RelationOrganizationAbbreviation               | "2"^^xsd:integer       |
+| http://tag.ontotext.com| ontotext:Sport                                          | "96"^^xsd:integer      |
+| http://tag.ontotext.com| ontotext:RelationOrganizationLocation                   | "24"^^xsd:integer      |
+| http://tag.ontotext.com| ontotext:RelationOrganizationHasCompetitor              | "1"^^xsd:integer       |
 
 ## Application
 
-TODO
+As previously discussed, a lot of preprocessing had to be made.
+Technically, the web scraping explanation also belongs here, however,
+in order to not be too repetitive we left it out here.
 
- - Workflow Diagram
+### Data to RDF Mapping
 
-### Preprocessing
+A simple and lightweight tool was built,
+that helped us automating the process of mapping all our JSON-formatted data to RDF in turtle format.
+It automatically also validates the produced RDF files for validity, including error messages.
 
-TODO
+### SHACL Validation
 
- - Web Scraping
- - Data Mapper
- - Emotional Analysis of Reviews
- - SHACL Validation
+Our SHACL shapes have already been mentioned, however in order to validate our files in an automated fashion, we need some sort of library.
+We decided to use [*SHACL-JS*](https://github.com/TopQuadrant/shacl-js), the backend implementation for [shacl playground](http://shacl.org/playground/).
 
-### Backend
+### Markov Chains
 
-TODO
+> A Markov chain is a mathematical system that experiences transitions from one state to another according to certain probabilistic rules. The defining characteristic of a Markov chain is that no matter how the process arrived at its present state, the possible future states are fixed.
+>
+> -- <cite>Wikipedia</cite>
 
- - GraphDB
- - Markov Chains
- - Bayesian Classifier 
+It is a very simple technique also used to create Natural Language.
+However, its lack of context-awareness is kind of a problem,
+which we tried to tackle by training it dynamically.
+So as the figure below shows, it is retrained every time a new movie is recommended to the user,
+using the reviews of the respective movie.
 
-### Frontend
+<img src="./img/application_chat.png" width="75%" height="75%"/>
 
-TODO
+### Triple Store - GraphDB
 
- - Web Socket - Chat/User Interface
- - Markov Chains
- - Web Service - Schema.org Actions
+We decided to use *GraphDB* for the project.
+It provides a very simple way to upload our *ttl* files, and a neat interface for testing *SPARQL* queries.
+Another argument for *GraphDB* was its REST API which basically works with every programming language,
+instead of limiting us to some library and thus to a certain set of languages.
+This is an important point, since we wanted to use *Node.js* simply because it's really nice for handling *JSON* formatted data, and web techniques as in *HTTP* requests in general.
+
+> GraphDB is a family of highly-efficient, robust and scalable RDF databases. It streamlines the load and use of linked data cloud datasets as well as your own resources. For an easy use and compatibility with the industry standards, GraphDB implements the RDF4J framework interfaces, the W3C SPARQL Protocol specification and supports all RDF serialisation formats.
+>
+> -- <cite>GraphDB Web Site</cite>
+
+We mainly used a [*SPARQL* API](https://www.npmjs.com/package/sparql-client-2) for requests to our server,
+however, problems occurred when trying to run "insert" queries.
+For these cases we use custom *HTTP* requests.
+
+### Bayesian Classifier
+
+We had to analyze nearly one million reviews, to extract their assumed emotional values and accomplished that using a bayesian classifier.
+The classifier is also used to extract the emotional value out of the user's chat messages as shown below:
+
+<img src="./img/application.png" width="100%" height="100%"/>
+
+We also used *stemming* as well as *map reduce* techniques in order to enhance our results.
+Using these techniques, we were able to detect a much more evenly distribution of emotion population in our reviews,
+which seems to be way more realistic than our first approach without these techniques.
+
+### REST Interface
+
+In order to put our schema.org action to use, we implemented a REST API next to the frontend.
+One can now request `/api/v1/movies` to get a list of movies from our database (not exhaustive due to the database's large size).
+From there you can pick an ID and request `/api/v1/movies/` to obtain the description of a watchaction, as already described in the "Schema.org action" section.
 
 ## Deployment
 
-TODO
-
- - Raspi ngrok installation
+We publish our app on the web using [*ngrok*](https://ngrok.com/),
+however, since we use its free version a random URL will be generated every time we restart the process,
+thus it is highly unlikely, that if we posted a URL here, it would still be alive at the time you test it.
+So please feel free to shoot a quick message and we will make sure the application/our GraphDB instance is published. 
 
 ## Conclusion
 
-TODO
+To conclude, we accomplished most of the things we wanted to do.
+However, improvements could be made regarding the frontend, namely usage design,
+as well as the natural language generation, since markov chains are not context-aware.
+By retraining it on movie reviews, we could make it seem a little more like it is actually knowing what the conversation is about.
+
+The *ontotext tagging service* was kind of a disappointment,
+since the computational load it can handle is extremely limited and times out way to often.
+However we could at least get some data out if it.
+
+Since we all not machine learning experts, our Naive Bayes approach for classifying natural language is probably also not optimal,
+but we were able to improve it a lot.
+
+We had success acquiring lots of data about movies, which let to a huge knowledge base.
+Sometimes this big amount of data is also not so beneficial, especially when running more complex queries, since they require a lot of processing time.
+But also when validating our graph, using SHACL shapes, we observed excessive runtimes.
+Our database is also very well linked to *LOD* which is very nice,
+whenever we want to extend functionality or present additional data we could do so, by using those links.
+
+## Appendix
+
+- [Ontology](../../ontology)
+- [Web Scraping](https://github.com/julietcetera/data-miner-js)
+    - [IMDb](https://github.com/julietcetera/semantic-web-course/tree/master/js/imdb-data-miner)
+    - [metacritic](https://github.com/julietcetera/semantic-web-course/tree/master/js/metacritic-data-miner)
+- [SHACL](https://github.com/julietcetera/semantic-web-course/tree/master/js/shacl-validation)
+    - [Validation API Wrapper](https://github.com/julietcetera/semantic-web-course/blob/master/js/shacl-validation/validate.s://github.com/julietcetera/semantic-web-course/blob/master/js/shacl-validation/validate.js)
+    - [Script for automated Testing](https://github.com/julietcetera/semantic-web-course/blob/master/js/shacl-validation/validate.sh)
+    - [Shape Definitions](https://github.com/julietcetera/semantic-web-course/tree/master/js/shacl-validation/shapes)
+- [Data to RDF mapping](https://github.com/julietcetera/semantic-web-course/tree/master/js/rdf-builder)
+- [Frontend](https://github.com/julietcetera/semantic-web-course/tree/master/js/standalone-chat)
+    - [SPARQL Queries](https://github.com/julietcetera/semantic-web-course/blob/master/js/standalone-chat/app/sparql.js)
+- [Improved Naive Bayes](https://github.com/julietcetera/text-classifier-js)
+- [Markov Chains](https://github.com/julietcetera/markov-js)
+- [GraphDB API](https://github.com/julietcetera/semantic-web-course/blob/master/js/graphdb)
+    - [DBpedia Alignments](https://github.com/julietcetera/semantic-web-course/tree/master/js/graphdb/load-dbpedia-links)
+    - [Wikidata Alignments](https://github.com/julietcetera/semantic-web-course/blob/master/js/graphdb/load-wikidata-links/index.js)
+    - [Wikidata Genres](https://github.com/julietcetera/semantic-web-course/tree/master/js/graphdb/load-wikidata-genres)
+- [Ontotext Tagging Service](https://github.com/julietcetera/semantic-web-course/tree/master/js/ontotext_tag)
